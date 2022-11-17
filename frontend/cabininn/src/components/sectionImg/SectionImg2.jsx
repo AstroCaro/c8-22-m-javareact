@@ -13,7 +13,7 @@ function ImgOverlayExample() {
           />
           <Card.ImgOverlay>
             <Card.Title className="my-5 py-5 text-center font-monospace">
-              Card title
+              Card title 1
             </Card.Title>
             <Card.Text className="text-center font-monospace">
               This is a wider card with supporting text below as a natural

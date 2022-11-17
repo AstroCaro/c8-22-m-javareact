@@ -19,7 +19,7 @@ const App = () => {
             <HeaderAll />
             <CarrouselAll />
             <SectionImg1 />
-            <SectionImg2 />
+            {/* <SectionImg2 /> */}
             <SectionImg3 />
             <Footer />
         </div>
