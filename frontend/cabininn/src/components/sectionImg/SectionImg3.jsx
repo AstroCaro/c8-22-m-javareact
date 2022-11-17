@@ -4,18 +4,23 @@ import Card from "react-bootstrap/Card";
 function SectionImg3() {
   return (
     <>
-      <Container className="my-5">
-        <Card>
+      <Container className="my-5 w-100 h-25">
+      <Card className="bg-dark text-white">
           <Card.Img
-            variant="top"
             src="https://www.w3schools.com/howto/img_fjords.jpg"
-            className="w-100 h-25"
+            className="w-100"
+            alt="Card image"
           />
-          <Card.Body>
-            <Card.Text>
-              Here's going to be some Image. This is an example of a card
+          <Card.ImgOverlay>
+            <Card.Title className="justify-content-center text-center font-monospace">
+              Card title
+            </Card.Title>
+            <Card.Text className="text-center font-monospace">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
             </Card.Text>
-          </Card.Body>
+          </Card.ImgOverlay>
         </Card>
       </Container>
     </>
