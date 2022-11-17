@@ -1,9 +1,15 @@
 import React from 'react';
+import CarrouselAll from './components/carousel/CarrouselAll';
+import HeaderAll from './components/header/HeaderAll';
+import NavBarAll from './components/navbar/NavBarAll';
+
 
 const App = () => {
     return (
         <div>
-            hola mundo
+            <NavBarAll />
+            <HeaderAll />
+            <CarrouselAll />
         </div>
     );
 };
