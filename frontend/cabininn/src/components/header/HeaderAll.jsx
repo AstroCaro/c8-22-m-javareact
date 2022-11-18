@@ -3,7 +3,7 @@ import BtnWatsap from "./BtnWatsap";
 import InputSearch from "./InputSearch";
 import "./header.css";
 import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
+// import Container from "react-bootstrap/Container";
 
 
 const HeaderAll = () => {

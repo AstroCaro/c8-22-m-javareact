@@ -8,11 +8,15 @@ const NavBarAll = () => {
     <div>
       <Navbar bg="light">
         <Container>
-          <Navbar.Brand href="#home">Logo Cabininn</Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <h2>CabinInn</h2>
+          </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Button  variant="secondary" className="mx-3">Boton</Button>
-            <Button  variant="secondary">Boton</Button>
+            <Button variant="secondary" className="mx-3">
+              Boton
+            </Button>
+            <Button variant="secondary">Boton</Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
