@@ -1,10 +1,16 @@
+import React from "react";
+import BtnWatsap from "./BtnWatsap";
+import InputSearch from "./InputSearch";
+import "./header.css";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 
-function ImgOverlayExample() {
+
+const HeaderAll = () => {
   return (
     <>
-      <Container className="mx-auto my-5">
+      <div className="header-container">
+      {/* <Container className="mx-auto"> */}
         <Card className="bg-dark text-white">
           <Card.Img
             src="https://www.w3schools.com/howto/img_fjords.jpg"
@@ -22,9 +28,14 @@ function ImgOverlayExample() {
             </Card.Text>
           </Card.ImgOverlay>
         </Card>
-      </Container>
+        <InputSearch />
+      {/* </Container> */}
+      
+      <BtnWatsap />
+      </div>
+      
     </>
   );
-}
+};
 
-export default ImgOverlayExample;
+export default HeaderAll;
