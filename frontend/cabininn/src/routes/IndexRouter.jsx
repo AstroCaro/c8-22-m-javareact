@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../components/footer/Footer";
 import NavBarAll from "../components/navbar/NavBarAll";
 import { Route, Routes } from "react-router-dom";
@@ -7,9 +7,12 @@ import Results from "../pages/results/Results";
 import NotFound from "../pages/notfound/NotFound";
 
 const IndexRouter = () => {
+  const [modalShow, setModalShow] = useState(false);
+ 
+
   return (
     <div>
-      <NavBarAll />
+      <NavBarAll setModalShow={setModalShow} modalShow={modalShow}/>
       <Routes>
         <Route path="/" element={ <Home/> } />
         <Route path="/results" element={ <Results/> } />
