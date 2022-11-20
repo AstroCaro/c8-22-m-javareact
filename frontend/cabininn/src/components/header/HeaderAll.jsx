@@ -3,14 +3,14 @@ import BtnWatsap from "./BtnWatsap";
 import InputSearch from "./InputSearch";
 import "./header.css";
 import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
+
 
 
 const HeaderAll = () => {
   return (
     <>
       <div className="header-container">
-      {/* <Container className="mx-auto"> */}
+     
         <Card className="bg-dark text-white">
           <Card.Img
             src="https://www.w3schools.com/howto/img_fjords.jpg"
