@@ -2,9 +2,9 @@ import React from "react";
 import Footer from "../components/footer/Footer";
 import NavBarAll from "../components/navbar/NavBarAll";
 import { Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
-import Results from "../pages/Results";
-import NotFound from "../pages/NotFound";
+import Home from "../pages/home/Home";
+import Results from "../pages/results/Results";
+import NotFound from "../pages/notfound/NotFound";
 
 const IndexRouter = () => {
   return (

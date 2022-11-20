@@ -10,7 +10,6 @@ const App = () => {
         <div>
             <BrowserRouter>
                 <IndexRouter />
-
             </BrowserRouter>
 
         </div>
