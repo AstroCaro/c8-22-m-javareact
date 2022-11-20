@@ -5,7 +5,6 @@ import "./header.css";
 import Card from "react-bootstrap/Card";
 
 
-
 const HeaderAll = () => {
   return (
     <>
