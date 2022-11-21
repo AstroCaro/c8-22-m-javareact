@@ -1,17 +1,19 @@
 import React from 'react';
-import CarrouselAll from './components/carousel/CarrouselAll';
-import HeaderAll from './components/header/HeaderAll';
-import NavBarAll from './components/navbar/NavBarAll';
+
+
+import { BrowserRouter } from 'react-router-dom'
+import IndexRouter from './routes/IndexRouter';
 
 
 const App = () => {
     return (
         <div>
-            <NavBarAll />
-            <HeaderAll />
-            <CarrouselAll />
+            <BrowserRouter>
+                <IndexRouter />
+            </BrowserRouter>
+
         </div>
     );
 };
 
-export default App;
+export default App
