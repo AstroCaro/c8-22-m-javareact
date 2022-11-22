@@ -24,7 +24,10 @@ const NavBarAll = ({setModalShow, modalShow}) => {
             <NavLink to="/results" variant="secondary" className="btn btn-secondary mx-2">
               Buscar Hoteles
             </NavLink>
-            <Button variant="secondary" onClick={()=>setModalShow(true)}>Login</Button>
+            <NavLink to="/pays" variant="secondary" className="btn btn-secondary mx-2">
+              Pagos
+            </NavLink>
+            <Button className="btn-secondary mx-2" onClick={()=>setModalShow(true)}>Login</Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>

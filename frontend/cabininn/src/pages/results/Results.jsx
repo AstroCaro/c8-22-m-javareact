@@ -100,6 +100,7 @@ const Results = () => {
                         <Card.Title>{item.title}</Card.Title>
                         <Card.Text>descripcion : {item.name}</Card.Text>
                         <Card.Text>Pais : {item.country}</Card.Text>
+                        <Card.Text>Tags : {item.tags.join(", ")}</Card.Text> 
                       </Card.Body>
                     </Card>
                   </Col>
