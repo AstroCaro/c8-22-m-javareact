@@ -1,0 +1,26 @@
+[
+    {
+        "country":"Argentina",
+        "name": "Hotel Rosario",
+        "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
+      "title": "Hotel Rosario"
+    },
+    {
+        "country":"Chile",
+        "name": "Hotel Luna",
+        "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
+      "title": "Hotel Luna"
+    },
+    {
+        "country":"Argentina",
+        "name": "Hotel Valdez",
+        "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
+      "title": "Hotel Valdez"
+    },
+    {
+        "country":"Uruguay",
+        "name": "Hotel Rodriguez",
+        "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
+      "title": "Hotel Rodriguez"
+    }
+]
