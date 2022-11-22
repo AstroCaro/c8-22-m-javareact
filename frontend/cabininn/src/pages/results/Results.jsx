@@ -1,58 +1,52 @@
-import React from "react";
-import { useState } from "react";
+import React, { useMemo } from "react";
+import { useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import API from "./api.json";
 
 import "./results.css";
 
 const Results = () => {
-  const [search, setSearch] = useState({
-    query: "",
-    list: [],
-  });
+  const [query, setQuery] = useState("");
+  const [items, setItems] = useState([]);
 
-  const posts = [
-    {
-      url: "",
-      tags: ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
-      title: "Hotel de ejemplo",
-    },
-    {
-      url: "",
-      tags: ["node", "express"],
-      title: "Hotel de ejemplo 2",
-    },
-    {
-      url: "",
-      tags: ["node", "express"],
-      title: "Argentina",
-    },
-  ];
+  const inputRef = useRef();
 
-  const handleChange = (e) => {
-    const results = posts.filter((post) => {
-      if (e.target.value === "") return posts;
-      return post.title.toLowerCase().includes(e.target.value.toLowerCase());
+  const hoteles = API;
+
+  const filteredHoteles = useMemo(() => {
+    return hoteles.filter((items) =>
+      items.name.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [query, hoteles]);
+
+  function onSubmit(e) {
+    e.preventDefault();
+
+    const value = inputRef.current.value;
+
+    setQuery(value);
+    if (value === "") return;
+    setItems((prev) => {
+      return [...prev, value];
     });
-    setSearch({
-      query: e.target.value,
-      list: results,
-    });
-  };
+
+    inputRef.current.value = "";
+  }
 
   return (
     <>
-      <form>
+      <form onSubmit={onSubmit}>
         <div className="containers">
           <input
             placeholder="Type to search..."
             className="inputs"
             name="text"
             type="search"
-            value={search.query}
-            onChange={handleChange}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
           <div className="icons">
             <svg
@@ -81,32 +75,38 @@ const Results = () => {
         </div>
       </form>
       <Container>
-      <h2>Buscar Hoteles</h2>
-      <div>
-        {search.query === ""
-          ? `Busqueda vacia`
-          : !search.list.length
-          ? "No se encontraron resultados"
-          : search.list.map((post) => {
-              return (
-                <>
-                  <Row xs={2} md={3} className="g-3 mt-2">
-                    {posts.map((post) => (
-                      <Col>
-                        <Card className="text-center" border="success">
-                          <Card.Img variant="top" src="" />
-                          <Card.Body className="py-4 my-4">
-                            <Card.Title>{post.title}</Card.Title>
-                            <Card.Text>Example text</Card.Text>
-                          </Card.Body>
-                        </Card>
-                      </Col>
-                    ))}   
-                  </Row>
-                </>
-              );
-            })}
-            </div>
+        <h2>Buscar Hoteles</h2>
+        {/* <h2>agregar Hoteles</h2>
+        <form onSubmit={onSubmit}>
+          Nuevo Hotel
+          <input type="text" ref={inputRef} />
+          <button className="btn btn-primary" type="submit">
+            Agregar
+          </button>
+        </form> */}
+        <div className="text-center">
+          <h2>Hoteles</h2>
+          <>
+            <Row xs={2} md={3} className="g-3 mt-2">
+              {filteredHoteles
+                .filter((item) => {
+                  return item.title.toLowerCase().includes(query.toLowerCase());
+                })
+                .map((item) => (
+                  <Col>
+                    <Card className="text-center" border="success">
+                      <Card.Img variant="top" src="" />
+                      <Card.Body className="py-4 my-4">
+                        <Card.Title>{item.title}</Card.Title>
+                        <Card.Text>descripcion : {item.name}</Card.Text>
+                        <Card.Text>Pais : {item.country}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
+            </Row>
+          </>
+        </div>
       </Container>
     </>
   );
