@@ -85,7 +85,7 @@ const Results = () => {
           </button>
         </form> */}
         <div className="text-center">
-          <h2>Hoteles</h2>
+          <h2 className="p-4">Hoteles</h2>
           <>
             <Row xs={2} md={3} className="g-3 mt-2">
               {filteredHoteles
@@ -94,12 +94,20 @@ const Results = () => {
                 })
                 .map((item) => (
                   <Col>
-                    <Card className="text-center" border="success">
-                      <Card.Img variant="top" src="" />
-                      <Card.Body className="py-4 my-4">
+                    <Card
+                      className="text-center shadow-lg my-4 mx-2"
+                      border="success"
+                    >
+                      <Card.Img
+                        variant="top"
+                        className="img-fluid h-100"
+                        src={item.image}
+                      />
+                      <Card.Body className="py-4 my-2 border-3">
                         <Card.Title>{item.title}</Card.Title>
                         <Card.Text>descripcion : {item.name}</Card.Text>
                         <Card.Text>Pais : {item.country}</Card.Text>
+                        <Card.Text>Tags : {item.tags.join(", ")}</Card.Text>
                       </Card.Body>
                     </Card>
                   </Col>

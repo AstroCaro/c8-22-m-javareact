@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <HeaderAll />
       <CarrouselAll />
-      <SectionImg1 />      
+      <SectionImg1 />
       <SectionImg3 />
     </>
   );

@@ -6,10 +6,9 @@ import Login from "../../pages/login/Login";
 import {
     NavLink,
 } from 'react-router-dom'
+import './Navbar.css'
 
 const NavBarAll = ({setModalShow, modalShow}) => {
-
-
 
   return (
     <>
@@ -21,15 +20,21 @@ const NavBarAll = ({setModalShow, modalShow}) => {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <NavLink to="/results" variant="secondary" className="btn btn-secondary mx-2">
+            <NavLink to="/results" className="btn btnNav mx-2">
               Buscar Hoteles
             </NavLink>
-            <Button variant="secondary" onClick={()=>setModalShow(true)}>Login</Button>
+            <NavLink to="/pays" className="btn btnNav mx-2">
+              Pagos
+            </NavLink>
+            <NavLink to="/reservation/:id" className="btn btnNav mx-2">
+              Reservacion
+            </NavLink>
+      <Login show={modalShow}
+        onHide={() => setModalShow(false)}/>    
+            <Button className="btn btnNav mx-2" onClick={()=>setModalShow(true)}>Login</Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Login show={modalShow}
-        onHide={() => setModalShow(false)}/>    
     </div>
     </>
   );
