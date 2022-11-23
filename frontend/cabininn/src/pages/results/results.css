@@ -16,13 +16,13 @@
   height: var(--size-button);
   font-size: 15px;
   border: none;
-  color: #10D3B0;
+  color: var(--colorBase);
   outline: none;
   width: var(--size-button);
   transition: all ease 0.3s;
-  background-color: #10D3B0;
+  background-color: var(--colorBase);
   box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%),
-    inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+    inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px var(--colorGrey);
   border-radius: 50px;
   cursor: pointer;
 }
