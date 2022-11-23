@@ -11,7 +11,7 @@ const CarrouselAll = () => {
   return (
     <>
       <h2 className="text-center my-5">
-        Lorem ipsum dolor sit amet consectetur!
+        Promociones de Noviembre!
       </h2>
       <Carousel activeIndex={index} onSelect={handleSelect} className='container  mb-5 carrousel'>
         <Carousel.Item>

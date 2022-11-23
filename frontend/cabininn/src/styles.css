@@ -1,5 +1,32 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --mainFont: url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+  --colorMainWhite: #fff;
+  --colorBase: #10d3b0;
+  --colorHover: #26b499;
+  --colorActivo: #025f4e;
+  --colorGrey: #545252;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 800;
+}
+
+h2 {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 400;
 }

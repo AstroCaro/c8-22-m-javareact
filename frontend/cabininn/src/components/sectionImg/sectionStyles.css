@@ -1,0 +1,29 @@
+
+
+.heroCardTitle {
+  font-weight: 700;
+  font-size: 90px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heroCardSubTitle {
+  font-weight: 600;
+  font-size: 60px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 768px) {
+    .heroCardTitle {
+        font-size: 38px;
+    }
+
+    .heroCardSubTitle {
+        font-size: 28px;
+    }
+}
