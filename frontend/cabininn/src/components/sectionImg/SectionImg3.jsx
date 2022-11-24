@@ -1,27 +1,26 @@
-import { Container } from "react-bootstrap";
+/* import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-
+ */
+import { Container } from "react-bootstrap";
+import "./sectionimg3.css";
 function SectionImg3() {
   return (
     <>
-      <Container className="my-5 w-100 h-25">
-      <Card className="bg-dark text-white">
-          <Card.Img
-            src="https://www.w3schools.com/howto/img_fjords.jpg"
-            className="w-100"
-            alt="Card image"
-          />
-          <Card.ImgOverlay>
-            <Card.Title className="justify-content-center text-center font-monospace">
-              Card title
-            </Card.Title>
-            <Card.Text className="text-center font-monospace">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
-          </Card.ImgOverlay>
-        </Card>
+      <Container>
+        <h2 className="card-1__title">¿Todavia no te decidiste?</h2>
+        <p className="card-1__text">Mirá los destinos exclusivos para vos</p>
+        <div className="card-1 hero-image">
+          <p>
+            Salta <br /> $8960
+          </p>
+        </div>
+      </Container>
+      <Container>
+        <h2 className="card-2__title">Tu alojamiento ideal</h2>
+        <p className="card-2__text">A un click de distancia</p>
+        <div className="card-2 hero-image">
+          <p className="card-2__hero-text">Reserva ahora en pesos</p>
+        </div>
       </Container>
     </>
   );

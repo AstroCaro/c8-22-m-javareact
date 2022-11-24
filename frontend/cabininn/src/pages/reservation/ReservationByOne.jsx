@@ -5,7 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './reservation.css'
+import "./reservation.css";
 
 const ReservationByOne = () => {
   let reservId = useParams();
@@ -65,7 +65,7 @@ const ReservationByOne = () => {
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
-                className='datatime text-center'
+                className="datatime text-center"
                 placeholderText="LLEGADA"
               />
               <DatePicker
@@ -75,7 +75,7 @@ const ReservationByOne = () => {
                 startDate={startDate}
                 endDate={endDate}
                 minDate={startDate}
-                className='datatime text-center'
+                className="datatime text-center"
                 placeholderText="SALIDA"
               />
             </InputGroup>

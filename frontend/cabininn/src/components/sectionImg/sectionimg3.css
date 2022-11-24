@@ -1,0 +1,51 @@
+/* =====TITULOS ========== SALTA */
+.card-1__title {
+  font-size: 3rem;
+  text-align: center;
+  color: #025f4e;
+  font-weight: 700;
+}
+.card-1__text {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* =====TITULOS ========== RESERVA */
+.card-2__title {
+  font-size: 3rem;
+  text-align: center;
+  color: #025f4e;
+  font-weight: 700;
+  padding-top: 2rem;
+}
+.card-2__text {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* ======== HERO IMAGE 1 ,2================  */
+.hero-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-1 {
+  background-image: url("../../images/s3-saltos.png");
+  height: 100vh;
+  color: white;
+  font-size: 2.5rem;
+
+  font-weight: 700;
+}
+
+.card-2 {
+  background-image: url("../../images/s3-saltos.png");
+  height: 100vh;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
