@@ -23,9 +23,9 @@ const NavBarAll = ({ setModalShow, modalShow }) => {
               <NavLink to="/pays" className="btn btnNav mx-2">
                 Pagos
               </NavLink>
-              <NavLink to="/reservation/:id" className="btn btnNav mx-2">
+              {/* <NavLink to="/reservation/:id" className="btn btnNav mx-2">
                 Reservacion
-              </NavLink>
+              </NavLink> */}
               <Login show={modalShow} onHide={() => setModalShow(false)} />
               <Button
                 className="btn btnNav mx-2"
