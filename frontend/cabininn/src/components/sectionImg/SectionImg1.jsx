@@ -2,12 +2,13 @@ import Card from "react-bootstrap/Card";
 import { Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import './sectionStyles.css'
 
 function SectionImg1() {
   return (
     <>
       <Container className="grid">
-        <h2 className="text-center">Example text</h2>
+        <h2 className="text-center">Todavia no te decidiste?</h2>
         <Row>
           <Col>
             <Card className="my-5">
