@@ -24,6 +24,7 @@ function BasicExample() {
                   <Col>
                     <Card.Text>Edita </Card.Text>
                     <Card.Text>Edita</Card.Text>
+                    <Card.Text>Edita</Card.Text>
                   </Col>
                 </Row>
               </div>

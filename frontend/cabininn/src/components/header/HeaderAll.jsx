@@ -4,35 +4,23 @@ import InputSearch from "./InputSearch";
 import "./header.css";
 import Card from "react-bootstrap/Card";
 
-
 const HeaderAll = () => {
   return (
-    <>
-      <div className="header-container">
-     
-        <Card className="bg-dark text-white">
+    <>     
+        <Card className="heroCard bg-dark">
           <Card.Img
             src="https://www.w3schools.com/howto/img_fjords.jpg"
-            className="w-50 ps-5"
+            className="heroImg"
             alt="Card image"
           />
           <Card.ImgOverlay>
-            <Card.Title className="my-5 py-5 text-center font-monospace">
-              Card title 1
+            <Card.Title className="heroTitle flex text-center py-5 text-white">
+              Encontra tu alojamiento ideal
             </Card.Title>
-            <Card.Text className="text-center font-monospace">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
           </Card.ImgOverlay>
-        </Card>
         <InputSearch />
-      {/* </Container> */}
-      
-      <BtnWatsap />
-      </div>
-      
+        </Card>
+      <BtnWatsap />      
     </>
   );
 };
