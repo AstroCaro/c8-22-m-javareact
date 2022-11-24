@@ -1,3 +1,31 @@
-.carrousel{
-    /* height: 80vh; */
+.tittle-carr {
+  color: #025f4e;
+  font-family: "Poppins", sans-serif;
+  font-size: 80px;
+  font-weight: 700;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.content-carr {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 52px;
+  text-align: center;
+
+  color: rgba(48, 46, 46, 0.82);
+}
+
+
+
+.item-img {
+cursor: pointer;
+}
+
+.btn-slider {
+  background-color: white;
+  border: none;
+  color: darkgrey;
 }
