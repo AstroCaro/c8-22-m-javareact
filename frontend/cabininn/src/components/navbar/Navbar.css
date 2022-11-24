@@ -1,20 +1,24 @@
-:root {
-    --colorMainWhite: #fff;
-    --colorBase: #07a98b;
-    --colorActivo:  #025F4E;
-    --pageFont : 
+.btnNav {
+  color: var(--colorMainWhite);
+  background-color: var(--colorBase);
 }
 
-.btnNav {
-    color: var(--colorMainWhite);
-    background-color: var(--colorBase);
+.btnNav:hover {
+  color: var(--colorMainWhite);
+  background-color: var(--colorHover);
 }
 
 /* Boton del nav activo, 
 se edito la clase directamente de Bootstrap pero,
  afecta a los demas botones de la pagina,
 la clase era .btn.active */
-.btnNav:active {
-    color: var(--colorMainWhite);
-    background-color: var(--colorActivo);
+
+.btnNav.active {
+  color: var(--colorMainWhite);
+  background-color: var(--colorActivo);
+}
+
+btnNav:active {
+  color: var(--colorMainWhite);
+  background-color: var(--colorActivo);
 }

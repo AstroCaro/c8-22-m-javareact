@@ -24,7 +24,7 @@ import { CDBFooter, CDBBtn, CDBIcon, CDBBox } from 'cdbreact';
             <CDBIcon fab icon="facebook-f" />
           </CDBBtn>
           <CDBBtn flat color="dark" className="mx-3 p-2">
-            <CDBIcon fab icon="twitter" />
+            <CDBIcon fab icon="whatsapp" />
           </CDBBtn>
           <CDBBtn flat color="dark" className="p-2">
             <CDBIcon fab icon="instagram" />
