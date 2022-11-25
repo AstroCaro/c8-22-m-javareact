@@ -45,7 +45,7 @@ public class HotelController {
         return hotelServ.findHotel(id).orElse(null);
     }
     
-    @PostMapping("/address/{addressId}/hotel/add")
+    @PostMapping("/hotels/add/{addressId}")
     public ResponseEntity<Hotel> createHotel(@PathVariable("addressId") Long addressId, @RequestBody Hotel hotel){
         Optional<Address> addOpt = addServ.findAddress(addressId);
         
