@@ -45,3 +45,29 @@
   width: 100%;
   height: 100%;
 }
+
+.cardIcons {
+  color: var(--colorBase);
+  font-size: 26px;
+}
+
+.cardTitleResult {
+  font-size: 36px;
+  color: var(--colorBase);
+}
+
+.btnCard {
+  color: var(--colorMainWhite);
+  background-color: var(--colorActivo);
+  font-size: 20px;
+}
+
+.btnCard:hover {
+  color: var(--colorMainWhite);
+  background-color: var(--colorHover);
+}
+
+.btnCard:active {
+  color: var(--colorMainWhite);
+  background-color: var(--colorActivo);
+}

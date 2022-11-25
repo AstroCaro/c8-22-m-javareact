@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "d015efa7-84d1-4b73-90d6-a2272f4a70e2",
+		"name": "EndpointsCabininn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Filtros",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"countryName\":\"Perú\",\r\n    \"cityName\":\"Cuzco\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/list",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Hotel",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"chainCode\": \"WV\",\r\n      \"iataCode\": \"PMY\",\r\n      \"name\": \"DAZZLER PUERTO MADRYN\",\r\n      \"dailyPrice\": 5700,\r\n      \"urlFoto\": \"https://www.shutterstock.com/image-photo/khao-yai-thailand-dec-26-600w-323074640.jpg\",\r\n      \"geoCode\": {\r\n        \"latitude\": -42.77077,\r\n        \"longitude\": -65.0494\r\n      },\r\n      \"distance\": {\r\n        \"value\": 4.54,\r\n        \"unit\": \"KM\"\r\n      }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/hotels/add/5",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"hotels",
+						"add",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Direccion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"postalCode\": \"U9120\" ,\r\n    \"countryCode\": \"AR\",\r\n    \"countryName\": \"Argentina\",\r\n    \"cityName\": \"Puerto Madryn\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/addresses/add",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"addresses",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Hotel",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/hotels/delete/23",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"hotels",
+						"delete",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Direccion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/addresses/delete/17",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"addresses",
+						"delete",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Hoteles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/hotels",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"hotels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Direcciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/addresses",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"addresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Geo Codes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/geoCodes",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"geoCodes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Distancias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pruebanocountry-production.up.railway.app/distances",
+					"protocol": "https",
+					"host": [
+						"pruebanocountry-production",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"distances"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

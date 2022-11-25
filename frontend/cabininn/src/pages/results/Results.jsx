@@ -5,6 +5,8 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import API from "./api.json";
+import { AiOutlineHeart } from "react-icons/ai";
+import { BiCommentDetail } from "react-icons/bi";
 
 import "./results.css";
 
@@ -100,14 +102,26 @@ const Results = () => {
                     >
                       <Card.Img
                         variant="top"
-                        className="img-fluid h-100"
-                        src={item.image}
+                        className="img-fluid h-100 rounded"
+                        src={item.urlFoto}
                       />
                       <Card.Body className="py-4 my-2 border-3">
-                        <Card.Title>{item.title}</Card.Title>
+                        <Card.Title>
+                          <span className="cardTitleResult">{item.title}</span>
+                        </Card.Title>
                         <Card.Text>descripcion : {item.name}</Card.Text>
-                        <Card.Text>Pais : {item.country}</Card.Text>
+                        <Card.Text>Reservacion : {item.country}</Card.Text>
                         <Card.Text>Tags : {item.tags.join(", ")}</Card.Text>
+                        <Card.Text>Total : $ {item.price}</Card.Text>
+                        <div className="">
+                          <span className="cardIcons">
+                            <BiCommentDetail />
+                          </span>
+                          <span className="cardIcons">
+                            <AiOutlineHeart />
+                          </span>
+                          <span className="btn btnCard">Reservar</span>
+                        </div>
                       </Card.Body>
                     </Card>
                   </Col>

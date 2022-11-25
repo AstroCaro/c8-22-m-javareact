@@ -1,30 +1,31 @@
 [
-    {
-        "country":"Argentina",
-        "name": "Hotel Rosario",
-        "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
-      "title": "Hotel Rosario",
-      "image" : "https://a0.muscache.com/im/pictures/13f0cf7b-c119-4597-a9c7-608f217d7422.jpg?im_w=1200"
-    },
-    {
-        "country":"Chile",
-        "name": "Hotel Luna",
-        "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
-      "title": "Hotel Luna",
-      "image" : "https://www.w3schools.com/howto/img_fjords.jpg"
-    },
-    {
-        "country":"Argentina",
-        "name": "Hotel Valdez",
-        "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
-      "title": "Hotel Valdez",
-      "image" : "https://www.w3schools.com/howto/img_fjords.jpg"
-    },
-    {
-        "country":"Uruguay",
-        "name": "Hotel Rodriguez",
-        "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
-      "title": "Hotel Rodriguez",
-      "image" : "https://www.w3schools.com/howto/img_fjords.jpg"
-    }
+  {
+    "country": "Argentina",
+    "name": "Hotel Rosario",
+    "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
+    "title": "Hotel Rosario",
+    "urlFoto": "https://images.pexels.com/photos/756083/pexels-photo-756083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "country": "Chile",
+    "name": "Hotel Luna",
+    "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
+    "title": "Hotel Luna",
+    "price" : 5000,
+    "urlFoto": "https://images.pexels.com/photos/53577/hotel-architectural-tourism-travel-53577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    "country": "Argentina",
+    "name": "Hotel Valdez",
+    "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
+    "title": "Hotel Valdez",
+    "urlFoto": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg"
+  },
+  {
+    "country": "Uruguay",
+    "name": "Hotel Rodriguez",
+    "tags": ["Hotel", "vacaciones", "hoteles", "5 estrellas"],
+    "title": "Hotel Rodriguez",
+    "urlFoto": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  }
 ]
