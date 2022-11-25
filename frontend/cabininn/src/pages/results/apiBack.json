@@ -1,0 +1,274 @@
+[
+  {
+    "id": 1,
+    "chainCode": "CH",
+    "iataCode": "BUE",
+    "name": "AEROPARQUE HOTEL INN AND SUITES",
+    "dailyPrice": 6000,
+    "urlFoto": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "geoCode": { "id": 2, "latitude": -34.57, "longitude": -58.3988 },
+    "address": {
+      "id": 1,
+      "postalCode": "1427",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "cityName": "Buenos Aires"
+    },
+    "distance": { "id": 1, "unit": "KM", "value": 1.95 }
+  },
+  {
+    "id": 2,
+    "chainCode": "TY",
+    "iataCode": "BUE",
+    "name": "CASA LAS CANITAS",
+    "dailyPrice": 5500,
+    "urlFoto": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+    "geoCode": { "id": 4, "latitude": -34.5729, "longitude": -58.4317 },
+    "address": {
+      "id": 1,
+      "postalCode": "1427",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "cityName": "Buenos Aires"
+    },
+    "distance": { "id": 3, "unit": "KM", "value": 2.12 }
+  },
+  {
+    "id": 3,
+    "chainCode": "TY",
+    "iataCode": "BUE",
+    "name": "PALERMO SUITES BUENOS AIRES",
+    "dailyPrice": 6500,
+    "urlFoto": "https://images.pexels.com/photos/53577/hotel-architectural-tourism-travel-53577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "geoCode": { "id": 6, "latitude": -34.5789, "longitude": -58.4239 },
+    "address": {
+      "id": 1,
+      "postalCode": "1427",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "cityName": "Buenos Aires"
+    },
+    "distance": { "id": 5, "unit": "KM", "value": 2.33 }
+  },
+  {
+    "id": 4,
+    "chainCode": "XH",
+    "iataCode": "EZE",
+    "name": "HOSTEL SUITES PALERMO",
+    "dailyPrice": 4000,
+    "urlFoto": "https://images.pexels.com/photos/756083/pexels-photo-756083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "geoCode": { "id": 8, "latitude": -34.581, "longitude": -58.4268 },
+    "address": {
+      "id": 1,
+      "postalCode": "1427",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "cityName": "Buenos Aires"
+    },
+    "distance": { "id": 7, "unit": "KM", "value": 2.64 }
+  },
+  {
+    "id": 5,
+    "chainCode": "XH",
+    "iataCode": "EZE",
+    "name": "HOSTEL SUITES PALERMO",
+    "dailyPrice": 6600,
+    "urlFoto": "https://images.pexels.com/photos/2844474/pexels-photo-2844474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "geoCode": { "id": 10, "latitude": -34.579, "longitude": -58.4322 },
+    "address": {
+      "id": 1,
+      "postalCode": "1427",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "cityName": "Buenos Aires"
+    },
+    "distance": { "id": 9, "unit": "KM", "value": 2.68 }
+  },
+  {
+    "id": 6,
+    "chainCode": "XT",
+    "iataCode": "CUZ",
+    "name": "RECOLETA PLAZA CUZCO",
+    "dailyPrice": 5000,
+    "urlFoto": "https://img.freepik.com/foto-gratis/diseno-apartamento-estudio-moderno-dormitorio-sala-estar_1262-12375.jpg?w=996&t=st=1668907119~exp=1668907719~hmac=3d8f31bfff2bcd80c2f179a69f6da16d1cec8720bb2c4c65c3967a3a8421a0af",
+    "geoCode": { "id": 14, "latitude": -13.525, "longitude": -71.9722 },
+    "address": {
+      "id": 2,
+      "postalCode": "00800",
+      "countryCode": "PE",
+      "countryName": "Perú",
+      "cityName": "Cuzco"
+    },
+    "distance": { "id": 13, "unit": "KM", "value": 3.8 }
+  },
+  {
+    "id": 10,
+    "chainCode": "SN",
+    "iataCode": "CUZ",
+    "name": "SONESTA HOTEL CUSCO",
+    "dailyPrice": 4500,
+    "urlFoto": "https://img.freepik.com/foto-gratis/acogedor-apartamento-estudio-dormitorio-sala-estar_1262-12323.jpg?w=996&t=st=1668921800~exp=1668922400~hmac=6dd387603911936bad052670d39361ae310c91fd3e053a201278eddf43d609cd",
+    "geoCode": { "id": 18, "latitude": -13.5246, "longitude": -71.9731 },
+    "address": {
+      "id": 2,
+      "postalCode": "00800",
+      "countryCode": "PE",
+      "countryName": "Perú",
+      "cityName": "Cuzco"
+    },
+    "distance": { "id": 17, "unit": "KM", "value": 3.91 }
+  },
+  {
+    "id": 11,
+    "chainCode": "LC",
+    "iataCode": "CUZ",
+    "name": "LC PALACIO DEL INKA CUSCO",
+    "dailyPrice": 5250,
+    "urlFoto": "https://img.freepik.com/fotos-premium/dormitorio-hotel_691588-5961.jpg?w=996",
+    "geoCode": { "id": 20, "latitude": -13.5196, "longitude": -71.975 },
+    "address": {
+      "id": 2,
+      "postalCode": "00800",
+      "countryCode": "PE",
+      "countryName": "Perú",
+      "cityName": "Cuzco"
+    },
+    "distance": { "id": 19, "unit": "KM", "value": 4.3 }
+  },
+  {
+    "id": 12,
+    "chainCode": "IR",
+    "iataCode": "CUZ",
+    "name": "HOTEL AND MIRADOR LOS APUS",
+    "dailyPrice": 3500,
+    "urlFoto": "https://img.freepik.com/foto-gratis/vacaciones-habitacion-juvenil-marron-dormir_1253-770.jpg?w=740&t=st=1668922112~exp=1668922712~hmac=0e9bd8d5410eace82061ba9269c3ea9a32f2d9f06fab034e8c9f1343ee987932",
+    "geoCode": { "id": 22, "latitude": -13.5142, "longitude": -71.9767 },
+    "address": {
+      "id": 2,
+      "postalCode": "00800",
+      "countryCode": "PE",
+      "countryName": "Perú",
+      "cityName": "Cuzco"
+    },
+    "distance": { "id": 21, "unit": "KM", "value": 4.75 }
+  },
+  {
+    "id": 13,
+    "chainCode": "HI",
+    "iataCode": "COR",
+    "name": "HOLIDAY INN",
+    "dailyPrice": 3000,
+    "urlFoto": "https://as2.ftcdn.net/v2/jpg/00/38/93/43/1000_F_38934318_HsR1HcEDgo66taO4ggNE8YZnaoPriddq.jpg",
+    "geoCode": { "id": 24, "latitude": -31.3665, "longitude": -64.2114 },
+    "address": {
+      "id": 2,
+      "postalCode": "00800",
+      "countryCode": "PE",
+      "countryName": "Perú",
+      "cityName": "Cuzco"
+    },
+    "distance": { "id": 23, "unit": "KM", "value": 4.78 }
+  },
+  {
+    "id": 14,
+    "chainCode": "XH",
+    "iataCode": "COR",
+    "name": "HOLIDAY INN CORDOBA",
+    "dailyPrice": 3500,
+    "urlFoto": "https://img.freepik.com/foto-gratis/interior-comedor-oferta-casa-privada-moderna_181624-17504.jpg?w=996&t=st=1668929541~exp=1668930141~hmac=265e56b38d837e8d0a40cce1f1caf62e16a88b7964a9596ec1d77d9c1d5ae539",
+    "geoCode": { "id": 26, "latitude": -34.8587, "longitude": -55.0563 },
+    "address": {
+      "id": 3,
+      "postalCode": "5000",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "cityName": "Córdoba"
+    },
+    "distance": { "id": 25, "unit": "KM", "value": 3.47 }
+  },
+  {
+    "id": 16,
+    "chainCode": "WV",
+    "iataCode": "PDP",
+    "name": "HOTEL DEL LAGO",
+    "dailyPrice": 6800,
+    "urlFoto": "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "geoCode": { "id": 30, "latitude": -13.5146, "longitude": -71.9773 },
+    "address": {
+      "id": 3,
+      "postalCode": "5000",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "cityName": "Córdoba"
+    },
+    "distance": { "id": 29, "unit": "KM", "value": 4.78 }
+  },
+  {
+    "id": 17,
+    "chainCode": "HS",
+    "iataCode": "CUZ",
+    "name": "HOTELPLAZA DEARMAS",
+    "dailyPrice": 4500,
+    "urlFoto": "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "geoCode": { "id": 32, "latitude": -13.5164, "longitude": -71.9785 },
+    "address": {
+      "id": 2,
+      "postalCode": "00800",
+      "countryCode": "PE",
+      "countryName": "Perú",
+      "cityName": "Cuzco"
+    },
+    "distance": { "id": 31, "unit": "KM", "value": 4.8 }
+  },
+  {
+    "id": 18,
+    "chainCode": "OE",
+    "iataCode": "CUZ",
+    "name": "BELMOND PALACIO NAZARENAS",
+    "dailyPrice": 6000,
+    "urlFoto": "https://images.pexels.com/photos/1838640/pexels-photo-1838640.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "geoCode": { "id": 34, "latitude": -34.5828, "longitude": -58.4239 },
+    "address": {
+      "id": 2,
+      "postalCode": "00800",
+      "countryCode": "PE",
+      "countryName": "Perú",
+      "cityName": "Cuzco"
+    },
+    "distance": { "id": 33, "unit": "KM", "value": 2.74 }
+  },
+  {
+    "id": 19,
+    "chainCode": "SN",
+    "iataCode": "CUZ",
+    "name": "SONESTA POSADA CUSCO",
+    "dailyPrice": 3800,
+    "urlFoto": "https://images.pexels.com/photos/974382/pexels-photo-974382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "geoCode": { "id": 36, "latitude": -34.5804, "longitude": -58.4322 },
+    "address": {
+      "id": 2,
+      "postalCode": "00800",
+      "countryCode": "PE",
+      "countryName": "Perú",
+      "cityName": "Cuzco"
+    },
+    "distance": { "id": 35, "unit": "KM", "value": 2.81 }
+  },
+  {
+    "id": 23,
+    "chainCode": "WV",
+    "iataCode": "PMY",
+    "name": "DAZZLER PUERTO MADRYN",
+    "dailyPrice": 5700,
+    "urlFoto": "https://www.shutterstock.com/image-photo/khao-yai-thailand-dec-26-600w-323074640.jpg",
+    "geoCode": { "id": 16, "latitude": -42.7708, "longitude": -65.0494 },
+    "address": {
+      "id": 5,
+      "postalCode": "U9120",
+      "countryCode": "AR",
+      "countryName": "Argentina",
+      "cityName": "Puerto Madryn"
+    },
+    "distance": { "id": 15, "unit": "KM", "value": 4.54 }
+  }
+]
