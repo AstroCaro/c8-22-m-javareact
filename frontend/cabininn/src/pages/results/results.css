@@ -59,6 +59,7 @@
 .btnCard {
   color: var(--colorMainWhite);
   background-color: var(--colorActivo);
+  width: 120px;
   font-size: 20px;
 }
 
