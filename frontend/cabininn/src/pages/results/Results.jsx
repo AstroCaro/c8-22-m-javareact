@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import API from "./api.json";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiCommentDetail } from "react-icons/bi";
+import { MdGTranslate } from "react-icons/md";
 
 import "./results.css";
 
@@ -89,39 +90,51 @@ const Results = () => {
         <div className="text-center">
           <h2 className="p-4">Hoteles</h2>
           <>
-            <Row xs={2} md={3} className="g-3 mt-2">
+            <Row xs={1} md={2} className="g-3 mt-2">
               {filteredHoteles
                 .filter((item) => {
                   return item.title.toLowerCase().includes(query.toLowerCase());
                 })
                 .map((item) => (
                   <Col>
-                    <Card
-                      className="text-center shadow-lg my-4 mx-2"
-                      border="success"
-                    >
+                    <Card className="shadow-lg my-4 mx-2" border="success">
                       <Card.Img
                         variant="top"
                         className="img-fluid h-100 rounded"
                         src={item.urlFoto}
                       />
                       <Card.Body className="py-4 my-2 border-3">
-                        <Card.Title>
-                          <span className="cardTitleResult">{item.title}</span>
-                        </Card.Title>
-                        <Card.Text>descripcion : {item.name}</Card.Text>
-                        <Card.Text>Reservacion : {item.country}</Card.Text>
-                        <Card.Text>Tags : {item.tags.join(", ")}</Card.Text>
-                        <Card.Text>Total : $ {item.price}</Card.Text>
-                        <div className="">
-                          <span className="cardIcons">
-                            <BiCommentDetail />
-                          </span>
-                          <span className="cardIcons">
-                            <AiOutlineHeart />
-                          </span>
-                          <span className="btn btnCard">Reservar</span>
-                        </div>
+                        <Row>
+                          <Col className="text-start mx-4">
+                            <Card.Title>
+                              <span className="cardTitleResult">
+                                {item.title}
+                              </span>
+                            </Card.Title>
+                          </Col>
+                          <Col className="text-end">
+                            <span className="cardIcons mx-2 my-4">
+                              <BiCommentDetail />
+                            </span>
+                            <span className="cardIcons mx-2 my-4">
+                              <AiOutlineHeart />
+                            </span>
+                            <span className="cardIcons mx-2 my-4">
+                              <MdGTranslate />
+                            </span>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className="text-start mx-4">
+                            <Card.Text>descripcion : {item.name}</Card.Text>
+                            <Card.Text>Reservacion : {item.country}</Card.Text>
+                            <Card.Text>Tags : {item.tags.join(", ")}</Card.Text>
+                            <Card.Text>Total : $ {item.price}</Card.Text>
+                          </Col>
+                          <Col className="text-end my-2">
+                            <span className="btn btnCard">Reservar</span>
+                          </Col>
+                        </Row>
                       </Card.Body>
                     </Card>
                   </Col>
