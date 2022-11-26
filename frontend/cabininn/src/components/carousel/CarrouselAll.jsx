@@ -16,10 +16,10 @@ const CarrouselAll = () => {
   };
   return (
     <div className="carrousel-section mb-5">
-      <h2 className="text-center mt-5 mb-2 tittle-carr">
+      <h2 className="mainTitles text-center mt-5 mb-2 ">
         Promociones Noviembre
       </h2>
-      <p className="content-carr mb-3">
+      <p className="subTitles mb-4">
         ¿Quién dijo paz? Aprovechá estas ofertas y disfrutá un fin de semana en
         el bosque.
       </p>

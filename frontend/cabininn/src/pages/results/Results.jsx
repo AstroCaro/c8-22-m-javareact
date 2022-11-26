@@ -78,7 +78,7 @@ const Results = () => {
         </div>
       </form>
       <Container>
-        <h2>Buscar Hoteles</h2>
+        <h2 className="mainTitleResult text-center mt-5">7 Resultados para Bariloche</h2>
         {/* <h2>agregar Hoteles</h2>
         <form onSubmit={onSubmit}>
           Nuevo Hotel
@@ -88,7 +88,7 @@ const Results = () => {
           </button>
         </form> */}
         <div className="text-center">
-          <h2 className="p-4">Hoteles</h2>
+          <h2 className="subTitleResult">Estos son los resultados de tu búsqueda ¡Encontrá el que más te gusté! </h2>
           <>
             <Row xs={1} md={2} className="g-3 mt-2">
               {filteredHoteles
@@ -129,7 +129,7 @@ const Results = () => {
                             <Card.Text>descripcion : {item.name}</Card.Text>
                             <Card.Text>Reservacion : {item.country}</Card.Text>
                             <Card.Text>Tags : {item.tags.join(", ")}</Card.Text>
-                            <Card.Text>Total : $ {item.price}</Card.Text>
+                            <Card.Text className="cardTotal">Total : $ {item.price}</Card.Text>
                           </Col>
                           <Col className="text-end my-2">
                             <span className="btn btnCard">Reservar</span>
