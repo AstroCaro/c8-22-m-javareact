@@ -16,6 +16,7 @@ const Results = () => {
   const [items, setItems] = useState([]);
 
   const inputRef = useRef();
+  console.log(items);
 
   const hoteles = API;
 

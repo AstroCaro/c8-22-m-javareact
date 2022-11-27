@@ -3,6 +3,10 @@
   background-color: var(--colorBase);
 }
 
+.btn-primary {
+  border-color: transparent;
+}
+
 .btnNav:hover {
   color: var(--colorMainWhite);
   background-color: var(--colorHover);
@@ -22,3 +26,8 @@ btnNav:active {
   color: var(--colorMainWhite);
   background-color: var(--colorActivo);
 }
+
+.logo {
+  height: 100%;
+}
+
