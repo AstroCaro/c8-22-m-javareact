@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Login from "../../pages/login/Login";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+import logoSVG from './logo.svg'
 
 const NavBarAll = ({ setModalShow, modalShow }) => {
   return (
@@ -13,7 +14,7 @@ const NavBarAll = ({ setModalShow, modalShow }) => {
         <Navbar bg="light">
           <Container>
             <Navbar.Brand href="/">
-              <h2>CabinInn</h2>
+              <img src={logoSVG} alt="logo" className="logo" />
             </Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
