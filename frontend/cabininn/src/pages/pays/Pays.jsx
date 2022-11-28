@@ -1,5 +1,6 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import PaysFazt from "./PaysFazt";
 
 function BasicExample() {
   return (
@@ -131,6 +132,7 @@ function BasicExample() {
           </Col>
         </Row>
       </Container>
+      <PaysFazt />
     </>
   );
 }
