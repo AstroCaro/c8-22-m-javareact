@@ -1,19 +1,23 @@
-.btnNav {
+/* .btnNav {
   color: var(--colorMainWhite);
   background-color: var(--colorBase);
+}
+
+.btn-primary {
+  border-color: transparent;
 }
 
 .btnNav:hover {
   color: var(--colorMainWhite);
   background-color: var(--colorHover);
-}
+} */
 
 /* Boton del nav activo, 
 se edito la clase directamente de Bootstrap pero,
  afecta a los demas botones de la pagina,
 la clase era .btn.active */
 
-.btnNav.active {
+/* .btnNav.active {
   color: var(--colorMainWhite);
   background-color: var(--colorActivo);
 }
@@ -21,4 +25,73 @@ la clase era .btn.active */
 btnNav:active {
   color: var(--colorMainWhite);
   background-color: var(--colorActivo);
+}
+
+.logo {
+  height: 100%;
+} */
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 20px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+
+}
+
+
+
+.bg-header{
+  background-color: rgba(0, 0, 0, .6);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+header ul li {
+list-style: none;
+}
+
+header ul li a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+
+}
+
+.btn-reg {
+  display: inline-block;
+  padding: 0 10px;
+  background-color: var(--colorBase);
+  height: 38px;
+  line-height: 38px;
+  
+}
+
+.btn-reg:hover {
+  background-color: var(--colorActivo);
+  color: white;
+}
+
+.btn-search {
+  display: inline-block;
+  background-color: var(--colorBase);
+  width: 69px;
+  height: 69px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -6,29 +6,46 @@ import { useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './reservation.css'
+import axios from 'axios'
 
 const ReservationByOne = () => {
-  let reservId = useParams();
-  console.log(reservId);
+ 
+  let {id} = useParams();
+  const [hotels, sethotels] = useState([]);
+  const [hotelid, sethotelid] = useState()
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
+
+  useEffect(()=> {
+    axios.get('https://api.jsonbin.io/v3/b/637ecc2f65b57a31e6c15c6d')
+    .then(res=>sethotels(res.data.record))
+     
+  },[])
+
+
+
+  const hotelFind = hotels.filter(h => h.id == id)
+
+
+  
+
   return (
-    <div className="container pt-4">
-      <h2>Cuzco Stylish Getaway Cabin below Sacsayhuaman Archeological Site</h2>
-      <p className="fw-bold text-decoration-underline">Cusco, Perú</p>
+    <div className="container pt-4 reservation">
+      <h2>{hotelFind[0]?.name}</h2>
+      <p className="fw-bold text-decoration-underline">{hotelFind[0]?.location} {hotelFind[0]?.country}</p>
       <div className="row">
         <div className="col-8">
           <img
-            src="https://a0.muscache.com/im/pictures/13f0cf7b-c119-4597-a9c7-608f217d7422.jpg?im_w=1200"
+            src={hotelFind[0]?.img1}
             alt=""
             className="img-fluid h-100"
           />
         </div>
         <div className="col-4">
           <img
-            src="https://a0.muscache.com/im/pictures/8197e682-9cad-4765-b478-dbbf1ef2d900.jpg?im_w=720"
+            src={hotelFind[0]?.img2}
             alt=""
-            className="img-fluid"
+            className="img-fluid h-100"
           />
         </div>
       </div>
@@ -38,11 +55,7 @@ const ReservationByOne = () => {
           <p>2 huéspedes1 - habitación1 - cama1 - baño</p>
 
           <p>
-            Admira el jardín de hortensias desde la cubierta delantera y busca
-            los motivos de toros gemelos en la azotea, tradicionales en las
-            casas locales. En el interior, una pared de piedra proporciona un
-            telón de fondo espectacular. Refrésquese bajo una ducha con efecto
-            de lluvia, con laterales de mármol y techo de cristal.{" "}
+          {hotelFind[0]?.description}
           </p>
 
           <p>

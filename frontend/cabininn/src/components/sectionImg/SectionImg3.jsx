@@ -1,26 +1,16 @@
 import { Container } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
+import final from '../../images/final.jpg'
 
 function SectionImg3() {
   return (
     <>
     <Container className="text-center">
-
-      <h2 className="my-5">Tu alojamiento ideal</h2>
-      <h4 className="mb-5">A un Click de distancia</h4>
+      <h2 className="mainTitles mt-5 mb-2">Tu alojamiento ideal</h2>
+      <h4 className="subTitles mb-5 mb-2">A un Click de distancia</h4>
     </Container>
-      <Card className="heroCard bg-dark text-white">
-          <Card.Img
-            src="https://www.w3schools.com/howto/img_fjords.jpg"
-            className="heroImg"
-            alt="Card image"
-          />
-          <Card.ImgOverlay>
-            <Card.Title className="heroCardTitle text-center">
-              Reserva ahora en pesos
-            </Card.Title>
-          </Card.ImgOverlay>
-        </Card>
+    <div>
+      <img className="w-100 img-fluid" src={final} alt="" />
+    </div>
 
     </>
   );
