@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "./carrousel.css";
 import image1 from "../../images/Barilocheuikit.jpg";
-import image2 from "../../images/UshuaiaUIKIT.jpg";
-import image3 from "../../images/CarlosPazuikit.jpg";
+import image2 from "../../images/Ushuaiazoomuikit.jpg";
+import image3 from "../../images/CarlosPazzoomuikit.jpg";
 import { Link } from "react-router-dom";
 
 const images = [image1, image2, image3];
@@ -28,7 +28,7 @@ const CarrouselAll = () => {
         {images.map((img, id) => (         
             <div key={id}>
             <Link to={`/reservation/${id+1}`}>
-            <img className="item-img" src={img} alt="" />
+            <img className="item-img img-fluid" src={img} alt="" />
             </Link>
             </div>
         ))}

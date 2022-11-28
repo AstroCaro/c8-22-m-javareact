@@ -1,24 +1,56 @@
-import Card from "react-bootstrap/Card";
-import './sectionStyles.css'
+import Carousel from "react-bootstrap/Carousel";
+import "./sectionStyles.css";
+import image1 from '../../images/Group8.jpg'
+import image2 from '../../images/Group9.jpg'
+import image3 from '../../images/Group10.jpg'
+import image4 from '../../images/Group11.jpg'
+
 
 function ImgOverlayExample() {
   return (
     <>
-        <Card className="heroCard bg-dark text-white">
-          <Card.Img
-            src="https://www.w3schools.com/howto/img_fjords.jpg"
-            className="heroImg"
-            alt="Card image"
+      <div className="container">
+        <h2 className="mainTitles text-center mt-5 mb-2 ">
+          ¿Todavia no te decidiste?
+        </h2>
+        <p className="subTitles mb-4">Mirá los destinos exclusivos para vos</p>
+      </div>
+      <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={image1}
+            alt="First slide"
           />
-          <Card.ImgOverlay>
-            <Card.Title className="heroCardTitle my-5 py-5 text-center">
-              Salta
-            </Card.Title>
-            <Card.Text className="heroCardSubTitle text-center">
-            $8960
-            </Card.Text>
-          </Card.ImgOverlay>
-        </Card>
+         
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={image2}
+            alt="Second slide"
+          />
+
+         
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={image3}
+            alt="Third slide"
+          />
+         
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={image4}
+            alt="Third slide"
+          />
+         
+        </Carousel.Item>
+      </Carousel>
     </>
   );
 }
