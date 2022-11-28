@@ -30,7 +30,7 @@ const ReservationByOne = () => {
   
 
   return (
-    <div className="container pt-4">
+    <div className="container pt-4 reservation">
       <h2>{hotelFind[0]?.name}</h2>
       <p className="fw-bold text-decoration-underline">{hotelFind[0]?.location} {hotelFind[0]?.country}</p>
       <div className="row">
