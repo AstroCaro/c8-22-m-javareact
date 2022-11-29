@@ -29,4 +29,8 @@ public class Booking {
 
     private Double price;
 
+    private Date creationDate;
+
+    private Date cancellationDate;
+
 }

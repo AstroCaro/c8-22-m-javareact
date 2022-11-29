@@ -2,7 +2,7 @@
 package com.nocountry.cabininn.controller;
 
 import com.nocountry.cabininn.criteria.HotelCriteria;
-import com.nocountry.cabininn.dto.SearchDTO;
+import com.nocountry.cabininn.dto.SearchDto;
 import com.nocountry.cabininn.model.Address;
 import com.nocountry.cabininn.model.Hotel;
 import com.nocountry.cabininn.service.impl.HotelService2;
@@ -67,13 +67,13 @@ public class HotelController {
 //    @PostMapping("/address/{addressId}/hotels/add")
     
     @PostMapping("/list")
-    public ResponseEntity<List<Hotel>> list(@RequestBody SearchDTO searchDTO){
+    public ResponseEntity<List<Hotel>> list(@RequestBody SearchDto searchDTO){
         HotelCriteria hotelCriteria = createCriteria(searchDTO);
         List<Hotel> list = hotel2Serv.findByCriteria(hotelCriteria);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    private HotelCriteria createCriteria(SearchDTO dto){
+    private HotelCriteria createCriteria(SearchDto dto){
         HotelCriteria hotelCriteria = new HotelCriteria();
         if(dto!=null){
             if(StringUtils.hasText(dto.getCountryName())){

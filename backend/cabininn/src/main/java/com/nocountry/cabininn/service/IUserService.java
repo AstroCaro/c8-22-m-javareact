@@ -9,11 +9,13 @@ import java.util.List;
 public interface IUserService {
 
     User saveUser(User user);
+
     Role saveRole(Role role);
+
     void addRoleToUser(String roleName, String email);
 
     User getUserByUsername(String username);
+
     List<User> getUsers();
 
-    void processOAuthPostLogin(OAuth2User oAuth2User);
 }
