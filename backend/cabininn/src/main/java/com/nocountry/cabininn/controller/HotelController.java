@@ -2,10 +2,10 @@
 package com.nocountry.cabininn.controller;
 
 import com.nocountry.cabininn.criteria.HotelCriteria;
-import com.nocountry.cabininn.dto.BusquedaDTO;
+import com.nocountry.cabininn.dto.SearchDTO;
 import com.nocountry.cabininn.model.Address;
 import com.nocountry.cabininn.model.Hotel;
-import com.nocountry.cabininn.service.HotelService2;
+import com.nocountry.cabininn.service.impl.HotelService2;
 import com.nocountry.cabininn.service.IAddressService;
 import com.nocountry.cabininn.service.IHotelService;
 import io.github.jhipster.service.filter.IntegerFilter;
@@ -21,7 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import io.github.jhipster.service.filter.StringFilter;
-import net.logstash.logback.encoder.org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
+
 
 @RestController
 public class HotelController {
@@ -66,21 +67,21 @@ public class HotelController {
 //    @PostMapping("/address/{addressId}/hotels/add")
     
     @PostMapping("/list")
-    public ResponseEntity<List<Hotel>> list(@RequestBody BusquedaDTO busquedaDTO){
-        HotelCriteria hotelCriteria = createCriteria(busquedaDTO);
+    public ResponseEntity<List<Hotel>> list(@RequestBody SearchDTO searchDTO){
+        HotelCriteria hotelCriteria = createCriteria(searchDTO);
         List<Hotel> list = hotel2Serv.findByCriteria(hotelCriteria);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    private HotelCriteria createCriteria(BusquedaDTO dto){
+    private HotelCriteria createCriteria(SearchDTO dto){
         HotelCriteria hotelCriteria = new HotelCriteria();
         if(dto!=null){
-            if(!StringUtils.isBlank(dto.getCountryName())){
+            if(StringUtils.hasText(dto.getCountryName())){
                 StringFilter filter = new StringFilter();
                 filter.setEquals(dto.getCountryName());
                 hotelCriteria.setCountryName(filter);
             }
-            if(!StringUtils.isBlank(dto.getCityName())){
+            if(StringUtils.hasText(dto.getCityName())){
                 StringFilter filter = new StringFilter();
                 filter.setEquals(dto.getCityName());
                 hotelCriteria.setCityName(filter);
@@ -92,7 +93,7 @@ public class HotelController {
                 hotelCriteria.setDailyPrice(filter);
             }
         }
-        
+
        return hotelCriteria;
     }
 }

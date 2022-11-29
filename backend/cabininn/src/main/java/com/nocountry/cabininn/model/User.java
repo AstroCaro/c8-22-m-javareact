@@ -34,8 +34,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @NotBlank(message = "Password cannot be empty")
-    @Size(min = 7, max = 250, message = "Password must have at least 8 characters")
+//    @NotBlank(message = "Password cannot be empty")
+//    @Size(min = 7, max = 250, message = "Password must have at least 8 characters")
     private String password;
 
     //@NotBlank(message = "Phone number cannot be empty")
@@ -50,5 +50,7 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private Collection<PaymentMethod> paymentMethods = new ArrayList<PaymentMethod>();
 
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
 
 }

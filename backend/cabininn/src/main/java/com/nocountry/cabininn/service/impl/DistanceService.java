@@ -1,10 +1,12 @@
 
-package com.nocountry.cabininn.service;
+package com.nocountry.cabininn.service.impl;
 
 import com.nocountry.cabininn.model.Distance;
 import com.nocountry.cabininn.repository.DistanceRepository;
 import java.util.List;
 import java.util.Optional;
+
+import com.nocountry.cabininn.service.IDistanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
