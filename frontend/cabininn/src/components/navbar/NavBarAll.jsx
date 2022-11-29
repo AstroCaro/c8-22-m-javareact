@@ -8,43 +8,30 @@ import "./Navbar.css";
 import logoSVG from "./logo.svg";
 import InputSearch from "../header/InputSearch";
 import axios from "axios";
-
-const NavBarAll = ({ setModalShow, modalShow }) => {
+import { Link } from "react-router-dom";
+const NavBarAll = ({ setModalShow, modalShow, setsearching, search, searching }) => {
   const [colore, setcolore] = useState(false);
-  const [searching, setsearching] = useState('');
-  const [capture, setcapture] = useState('Argentina')
+  // const [searching, setsearching] = useState('');
+  // const [capture, setcapture] = useState('Argentina')
+  // const [hotels, sethotels] = useState([])
+
 
   const changecolor = () => {
     setcolore(true);
   };
 
 window.addEventListener('scroll', changecolor)
-//  const data = JSON.stringify({countryName: capture })
 
 
-// useEffect(()=> {
+// const search = (bycountry) => {
+// setcapture(searching)
+// axios.get('https://api.jsonbin.io/v3/b/638601547966e84526cf3d75')
+// .then( res => sethotels(res.data.record))
+// .catch( err => console.log(err))
 
- 
-// },[])
+// const hotelbyCountry = hotels.filter( hotel => hotel.address.countryName == 'Argentina' )
 
-const search = () => {
-setcapture(searching)
-// axios.post('https://pruebanocountry-production.up.railway.app/list/',
-// {"countryName": "Peru"})
-const config = {
-  mode: 'no-cors',
-  headers:{
-    'Access-Control-Allow-Origin': '*',
-       
-  },
-  withCredentials: true,
-  credentials: 'same-origin',
-};
-axios.get('http://pruebanocountry-production.up.railway.app/hotels', config)
-
-.then( res => console.log(res.data))
-.catch( err => console.log(err))
-}
+// }
 
   return (
     <>
@@ -55,7 +42,7 @@ axios.get('http://pruebanocountry-production.up.railway.app/hotels', config)
         <nav className="me-5">
           <ul>
             <li>
-              <input type="text" onChange={(e)=>setsearching(e.target.value)} />
+              <input type="text" onChange={(e)=>setsearching(e.target.value)} value={searching} />
               <a
                 className="btn-reg rounded"
                 href="#"
@@ -74,9 +61,9 @@ axios.get('http://pruebanocountry-production.up.railway.app/hotels', config)
               </a>
             </li>
             <li>
-              <a className="btn-search fs-2 ms-5" href="#" onClick={search}>
+              <Link className="btn-search fs-2 ms-5" to="./results" onClick={search}>
                 <i className="fa-solid fa-magnifying-glass"></i>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

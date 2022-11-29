@@ -11,15 +11,15 @@ import { MdGTranslate } from "react-icons/md";
 
 import "./results.css";
 
-const Results = () => {
+const Results = ({capture}) => {
   // const [query, setQuery] = useState("");
   // const [items, setItems] = useState([]);
 
   // const inputRef = useRef();
   // console.log(items);
 
+  console.log(capture);
   const hoteles = API;
-
   // const filteredHoteles = useMemo(() => {
   //   return hoteles.filter((items) =>
   //     items.name.toLowerCase().includes(query.toLowerCase())
@@ -42,6 +42,7 @@ const Results = () => {
 
   return (
     <>
+
       {/* <form onSubmit={onSubmit}>
         <div className="containers">
           <input
