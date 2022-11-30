@@ -61,7 +61,7 @@ window.addEventListener('scroll', changecolor)
               </a>
             </li>
             <li>
-              <Link className="btn-search fs-2 ms-5" to="./results" onClick={search}>
+              <Link className="btn-search fs-2 ms-5" to={`./results/${searching}`} onClick={search}>
                 <i className="fa-solid fa-magnifying-glass"></i>
               </Link>
             </li>

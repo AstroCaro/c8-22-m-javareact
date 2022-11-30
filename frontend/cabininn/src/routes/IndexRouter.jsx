@@ -43,7 +43,7 @@ const IndexRouter = () => {
       />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/results" element={<Results capture={capture} />} />
+        <Route path="/results/:country" element={<Results capture={capture} hotels={hotels} />} />
         <Route path="/reservation/:id" element={<ReservationByOne />} />
         <Route path="/pays" element={<Pays />} />
         <Route path="*" element={<NotFound />} />
