@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Distance {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String unit;
