@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Collections;
 
 @RestController
@@ -71,15 +72,28 @@ public class AuthController {
         return ResponseEntity.ok(new AuthResponseDto(token));
     }
 
-    @GetMapping("/logout")
-    public ResponseEntity<?> logout (HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
+//    @GetMapping("/logout")
+//    public ResponseEntity<?> logout (HttpServletRequest request, HttpServletResponse response) {
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (auth != null) {
+//            new SecurityContextLogoutHandler().logout(request, response, auth);
+//        }
+//
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @RequestMapping("/exit")
+    public void exit(HttpServletRequest request, HttpServletResponse response) {
+        // token can be revoked here if needed
+        new SecurityContextLogoutHandler().logout(request, null, null);
+        try {
+            //sending back to client app
+            response.sendRedirect(request.getHeader("referer"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 
 }
