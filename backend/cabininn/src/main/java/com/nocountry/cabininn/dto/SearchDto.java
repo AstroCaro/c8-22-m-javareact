@@ -1,7 +1,6 @@
-
 package com.nocountry.cabininn.dto;
 
-public class BusquedaDTO {
+public class SearchDto {
     
     private String countryName;
     private String cityName;

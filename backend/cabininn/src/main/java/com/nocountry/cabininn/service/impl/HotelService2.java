@@ -1,5 +1,5 @@
 
-package com.nocountry.cabininn.service;
+package com.nocountry.cabininn.service.impl;
 
 import com.nocountry.cabininn.criteria.HotelCriteria;
 import com.nocountry.cabininn.model.Address_;

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title>Demo</title>
+        <meta name="description" content=""/>
+        <meta name="viewport" content="width=device-width"/>
+        <base href="/"/>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+
+    </head>
+    <body>
+    <h1>Demo</h1>
+    <div class="container unauthenticated">
+        With Google: <a href="/oauth2/authorization/google">click here</a>
+    </div>
+    <div class="container authenticated" style="display:none">
+        Logged in as: <span id="user"></span>
+        <div>
+            <button onClick="logout()" class="btn btn-primary">Logout</button>
+        </div>
+    </div>
+<!--    <form th:action="@{/auth/register}" method="post" style="max-width: 400px; margin: 0 auto;">-->
+<!--        <div class="border border-secondary rounded p-3">-->
+<!--            <div th:if="${param.error}">-->
+<!--                <p class="text-danger">Invalid username or password.</p>-->
+<!--            </div>-->
+<!--            <div th:if="${param.logout}">-->
+<!--                <p class="text-warning">You have been logged out.</p>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <p><input type="email" name="email" required class="form-control" placeholder="E-mail" /></p>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <p><input type="password" name="pass" required class="form-control" placeholder="Password" /></p>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <p><input type="submit" value="Login" class="btn btn-primary" /></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+    <script type="text/javascript">
+    $.get("/user", function(data) {
+        $("#user").html(data.name);
+        $(".unauthenticated").hide()
+        $(".authenticated").show()
+        console.log(data.name);
+    });
+
+    var logout = function() {
+        $.post("/logout", function() {
+            $("#user").html('');
+            $(".unauthenticated").show();
+            $(".authenticated").hide();
+        })
+        return true;
+    };
+    $.ajaxSetup({
+      beforeSend : function(xhr, settings) {
+        if (settings.type == 'POST' || settings.type == 'PUT'
+            || settings.type == 'DELETE') {
+          if (!(/^http:.*/.test(settings.url) || /^https:.*/
+            .test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-XSRF-TOKEN",
+              Cookies.get('XSRF-TOKEN'));
+          }
+        }
+      }
+    });
+    </script>
+    </body>
+</html>
