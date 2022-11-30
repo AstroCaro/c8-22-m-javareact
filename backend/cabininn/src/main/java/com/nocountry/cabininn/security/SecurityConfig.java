@@ -39,8 +39,11 @@ public class SecurityConfig {
                 .authorizeRequests(auth -> {
                     auth.antMatchers("/", "/error", "/webjars/**").permitAll();
                     auth.antMatchers("/auth/**").permitAll();
-                    auth.antMatchers("/list/**", "/hotels", "/addresses").permitAll();
+                    auth.antMatchers("/list/**", "/hotels/**", "/addresses").permitAll();
+                    auth.antMatchers("/bookings/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
+                    auth.antMatchers("/bookings/delete").hasAnyAuthority("ROLE_ADMIN");
                     auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
+
                     auth.antMatchers(GET, "/api/users/**").hasAnyAuthority("ROLE_ADMIN");
                     auth.antMatchers(POST, "/api/users/save").hasAnyAuthority("ROLE_ADMIN");
                     auth.anyRequest().authenticated();

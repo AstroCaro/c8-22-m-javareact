@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
-
-    @Query("SELECT b FROM booking b WHERE b.check_in <= :checkOutDate AND :checkInDate <= b.check_out")
+    @Query(value = "SELECT b FROM booking b WHERE b.check_in <= :checkOutDate AND :checkInDate <= b.check_out", nativeQuery = true)
     List<Booking> findAllByHotelIdAndDateBetween(@Param("checkInDate")Date checkIn,@Param("checkOutDate") Date checkOut);
 }

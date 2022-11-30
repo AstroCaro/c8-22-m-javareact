@@ -1,10 +1,11 @@
 package com.nocountry.cabininn.controller;
 
+import com.nocountry.cabininn.dto.UserDto;
 import com.nocountry.cabininn.model.Role;
-import com.nocountry.cabininn.model.User;
 import com.nocountry.cabininn.service.IUserService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.*;
-
-import static java.util.Arrays.stream;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,22 +24,47 @@ public class UserController {
 
     private final IUserService userService;
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> findById(@PathVariable("id") Long id) {
+        UserDto userDto = userService.findById(id);
+        return ResponseEntity.ok().body(userDto);
+    }
+
+    @PostMapping("/find")
+    public ResponseEntity<UserDto> findByUsername(@RequestBody String username) {
+        return ResponseEntity.ok().body(userService.findByUsername(username));
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<UserDto>> getUsers() {
+        return ResponseEntity.ok().body(userService.findAllUsers());
+    }
+
+    @PutMapping("/cancel")
+    public ResponseEntity<UserDto> cancel(@RequestBody String username) {
+        return ResponseEntity.ok().body(userService.cancelUserByUsername(username));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteUser(
+            @PathVariable("id") Long id) {
+        userService.deleteUserById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> deleteUser(
+            @RequestBody String username) {
+        userService.deleteUserByUsername(username);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+
     @GetMapping("/user")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         System.out.println(principal);
         return Collections.singletonMap("name", principal.getAttribute("email"));
     }
-
-    @GetMapping("/users")
-    public ResponseEntity<List<User>> getUsers() {
-        return ResponseEntity.ok().body(userService.getUsers());
-    }
-
-//    @PostMapping("/users/save")
-//    public ResponseEntity<User> saveUser(@RequestBody User user) {
-//        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user/save").toUriString());
-//        return ResponseEntity.created(uri).body(userService.saveUser(user));
-//    }
 
     @PostMapping("/role/save")
     public ResponseEntity<Role> saveRole(@RequestBody Role role) {

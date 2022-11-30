@@ -25,4 +25,7 @@ public class BookingDto {
 
     private Double price;
 
+    private Date creationDate;
+
+    private Date cancellationDate;
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BookingServiceImpl implements com.nocountry.cabininn.service.IBookingService {
@@ -21,6 +22,24 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
 
     @Autowired
     private Mapper mapper;
+
+    @Override
+    public BookingDto findById(Long id) {
+        Booking booking = bookingRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Booking ID Invalid"));
+        BookingDto bookingDto = mapper.getMapper().map(booking, BookingDto.class);
+        return bookingDto;
+    }
+
+    @Override
+    public List<BookingDto> findAllBookings() {
+        return bookingRepository.findAll().
+                stream().
+                map(booking ->
+                        mapper.getMapper()
+                                .map(booking, BookingDto.class)
+                ).collect(Collectors.toList());
+    }
 
     @Override
     public BookingDto createBooking(BookingDto bookingDto) {
@@ -45,5 +64,14 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
         }
         throw new ResourceNotFoundException("Booking not found with the given id");
     }
+
+    @Override
+    public void deleteBookingById(Long id) {
+        Booking booking = bookingRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Booking ID Invalid")
+        );
+        bookingRepository.deleteById(id);
+    }
+
 
 }
