@@ -1,5 +1,6 @@
 package com.nocountry.cabininn.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nocountry.cabininn.model.Hotel;
 import com.nocountry.cabininn.model.User;
 import lombok.Getter;
@@ -17,10 +18,12 @@ public class BookingDto {
 
     private Long hotelId;
 
-    private Long bookingId;
+    private Long userId;
 
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date checkIn;
 
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date checkOut;
 
     private Double price;

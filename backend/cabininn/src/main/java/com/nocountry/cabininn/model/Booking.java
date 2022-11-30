@@ -1,5 +1,6 @@
 package com.nocountry.cabininn.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,8 +24,10 @@ public class Booking {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date checkIn;
 
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date checkOut;
 
     private Double price;

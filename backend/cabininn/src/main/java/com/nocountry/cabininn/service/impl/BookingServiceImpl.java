@@ -44,6 +44,7 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
     @Override
     public BookingDto createBooking(BookingDto bookingDto) {
         List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getCheckIn(), bookingDto.getCheckOut());
+        System.out.println(bookingDto);
         if (bookingsFound.isEmpty()) {
             Booking booking = mapper.getMapper().map(bookingDto, Booking.class);
             booking.setCreationDate(new Date());

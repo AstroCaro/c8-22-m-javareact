@@ -1,5 +1,6 @@
 package com.nocountry.cabininn.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -52,5 +53,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Provider provider;
+
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
+    @JsonIgnore
+    private List<Booking> bookings;
 
 }

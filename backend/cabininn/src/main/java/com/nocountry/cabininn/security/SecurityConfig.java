@@ -40,8 +40,8 @@ public class SecurityConfig {
                     auth.antMatchers("/", "/error", "/webjars/**").permitAll();
                     auth.antMatchers("/auth/**").permitAll();
                     auth.antMatchers("/list/**", "/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
-                    auth.antMatchers("/bookings/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
-                    auth.antMatchers("/bookings/delete").hasAnyAuthority("ROLE_ADMIN");
+                    auth.antMatchers("/bookings/**").permitAll();//hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
+//                    auth.antMatchers("/bookings/delete").hasAnyAuthority("ROLE_ADMIN");
                     auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
 
                     auth.antMatchers(GET, "/api/users/**").hasAnyAuthority("ROLE_ADMIN");
@@ -58,10 +58,10 @@ public class SecurityConfig {
                         .invalidateHttpSession(true)
                         .clearAuthentication(true).permitAll()
                 )
-//                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-                //.addFilter(customAuthenticationFilter)
+//                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS)
+// .addFilter(customAuthenticationFilter)
 //               .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
