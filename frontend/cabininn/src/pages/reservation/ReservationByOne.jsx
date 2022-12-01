@@ -17,7 +17,7 @@ const ReservationByOne = () => {
   const [endDate, setEndDate] = useState();
 
   useEffect(()=> {
-    axios.get('https://api.jsonbin.io/v3/b/637ecc2f65b57a31e6c15c6d')
+    axios.get('https://api.jsonbin.io/v3/b/638601547966e84526cf3d75')
     .then(res=>sethotels(res.data.record))
      
   },[])
@@ -27,7 +27,7 @@ const ReservationByOne = () => {
   const hotelFind = hotels.filter(h => h.id == id)
 
 
-  
+  console.log(hotelFind);
 
   return (
     <div className="container pt-4 reservation">
@@ -36,7 +36,7 @@ const ReservationByOne = () => {
       <div className="row">
         <div className="col-8">
           <img
-            src={hotelFind[0]?.img1}
+            src={hotelFind[0]?.urlFoto}
             alt=""
             className="img-fluid h-100"
           />
@@ -53,9 +53,9 @@ const ReservationByOne = () => {
         <div className="col-7">
           <h3>Cabaña entero - Anfitrión: Patty</h3>
           <p>2 huéspedes1 - habitación1 - cama1 - baño</p>
-
+          <p>$ {hotelFind[0]?.dailyPrice}</p>
           <p>
-          {hotelFind[0]?.description}
+           {hotelFind[0]?.description}
           </p>
 
           <p>

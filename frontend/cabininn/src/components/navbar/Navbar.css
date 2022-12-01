@@ -26,10 +26,11 @@ btnNav:active {
   color: var(--colorMainWhite);
   background-color: var(--colorActivo);
 }
+*/
 
 .logo {
   height: 100%;
-} */
+} 
 
 header {
   width: 100%;
@@ -39,13 +40,10 @@ header {
   position: fixed;
   z-index: 10;
   top: 0;
-
 }
 
-
-
-.bg-header{
-  background-color: rgba(0, 0, 0, .6);
+.bg-header {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 nav {
@@ -55,20 +53,33 @@ nav {
 }
 
 header ul {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header ul li {
-list-style: none;
+  list-style: none;
 }
 
 header ul li a {
   margin: 0 15px;
   text-decoration: none;
   color: white;
+}
 
+.searchBox {
+  width: 50%;
+  height: 30%;
+  position: absolute;
+  top: 28%;
+  right: 30%;
+  border-radius: 10px;
+  border-color: var(--colorBase);
+}
+
+.searchBox:active {
+  border-color: var(--colorBase);
 }
 
 .btn-reg {
@@ -77,7 +88,6 @@ header ul li a {
   background-color: var(--colorBase);
   height: 38px;
   line-height: 38px;
-  
 }
 
 .btn-reg:hover {

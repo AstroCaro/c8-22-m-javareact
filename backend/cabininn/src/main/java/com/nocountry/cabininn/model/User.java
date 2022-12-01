@@ -1,10 +1,10 @@
 package com.nocountry.cabininn.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -34,8 +35,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @NotBlank(message = "Password cannot be empty")
-    @Size(min = 7, max = 250, message = "Password must have at least 8 characters")
+//    @NotBlank(message = "Password cannot be empty")
+//    @Size(min = 7, max = 250, message = "Password must have at least 8 characters")
     private String password;
 
     //@NotBlank(message = "Phone number cannot be empty")
@@ -50,5 +51,11 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private Collection<PaymentMethod> paymentMethods = new ArrayList<PaymentMethod>();
 
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
+
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
+    @JsonIgnore
+    private List<Booking> bookings;
 
 }

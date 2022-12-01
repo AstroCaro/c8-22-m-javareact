@@ -10,5 +10,4 @@ public class CabininnApplication {
 		SpringApplication.run(CabininnApplication.class, args);
 	}
 
-
 }
