@@ -56,8 +56,9 @@ public class HotelController {
     }
     
     @DeleteMapping("hotels/delete/{id}")
-    public void deleteHotel(@PathVariable Long id){
+    public ResponseEntity<Void> deleteHotel(@PathVariable Long id){
         hotelServ.deleteHotel(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
     
 //    @PostMapping("/address/{addressId}/hotels/add")

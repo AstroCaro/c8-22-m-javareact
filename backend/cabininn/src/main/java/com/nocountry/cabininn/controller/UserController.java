@@ -1,5 +1,6 @@
 package com.nocountry.cabininn.controller;
 
+import com.nocountry.cabininn.dto.BookingDto;
 import com.nocountry.cabininn.dto.UserDto;
 import com.nocountry.cabininn.model.Role;
 import com.nocountry.cabininn.service.IUserService;
@@ -19,18 +20,17 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping()
+@RequestMapping("/users")
 public class UserController {
 
     private final IUserService userService;
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable("id") Long id) {
-        UserDto userDto = userService.findById(id);
-        return ResponseEntity.ok().body(userDto);
+        return ResponseEntity.ok().body(userService.findById(id));
     }
 
-    @PostMapping("/find")
+    @PostMapping("/")
     public ResponseEntity<UserDto> findByUsername(@RequestBody String username) {
         return ResponseEntity.ok().body(userService.findByUsername(username));
     }
@@ -45,24 +45,25 @@ public class UserController {
         return ResponseEntity.ok().body(userService.cancelUserByUsername(username));
     }
 
+    @PutMapping("/cancel/{id}")
+    public ResponseEntity<UserDto> cancel(@PathVariable("id") Long id) {
+        return ResponseEntity.ok().body(userService.cancelUserById(id));
+    }
+
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUser(
-            @PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Void> deleteUser(
-            @RequestBody String username) {
+    public ResponseEntity<Void> deleteUser(@RequestBody String username) {
         userService.deleteUserByUsername(username);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-
-    @GetMapping("/user")
+    @GetMapping("/username")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-        System.out.println(principal);
         return Collections.singletonMap("name", principal.getAttribute("email"));
     }
 

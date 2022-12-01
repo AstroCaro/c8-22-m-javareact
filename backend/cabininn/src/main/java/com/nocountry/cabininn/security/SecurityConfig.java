@@ -22,7 +22,6 @@ import static org.springframework.http.HttpMethod.POST;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
     private final CustomOAuth2UserService customOAuth2UserService;
     private final CustomOidcUserService customOidcUserService;
     private final JwtAuthEntryPoint authEntryPoint;
@@ -37,7 +36,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authEntryPoint))
                 .authorizeRequests(auth -> {
-                    auth.antMatchers("/", "/error", "/webjars/**").permitAll();
+                    auth.antMatchers("/", "/error", "/webjars/**", "/swagger-ui.html").permitAll();
                     auth.antMatchers("/auth/**").permitAll();
                     auth.antMatchers("/list/**", "/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
                     auth.antMatchers("/bookings/**").permitAll();//hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
