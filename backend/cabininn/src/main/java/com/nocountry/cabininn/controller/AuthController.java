@@ -7,6 +7,7 @@ import com.nocountry.cabininn.model.Role;
 import com.nocountry.cabininn.model.User;
 import com.nocountry.cabininn.repository.RoleRepository;
 import com.nocountry.cabininn.repository.UserRepository;
+import com.nocountry.cabininn.security.CustomUserDetailsService;
 import com.nocountry.cabininn.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,35 +32,20 @@ import java.util.Collections;
 public class AuthController {
 
     private AuthenticationManager authenticationManager;
-    private UserRepository userRepository;
-    private RoleRepository roleRepository;
-    private PasswordEncoder passwordEncoder;
+    private CustomUserDetailsService customUserDetailsService;
     private JWTGenerator jwtGenerator;
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator) {
+    public AuthController(AuthenticationManager authenticationManager, JWTGenerator jwtGenerator, CustomUserDetailsService customUserDetailsService) {
         this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
         this.jwtGenerator = jwtGenerator;
+        this.customUserDetailsService = customUserDetailsService;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
-        if(userRepository.existsByUsername(registerDto.getUsername())) {
-            return new ResponseEntity<> ("Username is taken", HttpStatus.BAD_REQUEST);
-        }
-        User user = new User();
-        user.setUsername(registerDto.getUsername());
-        user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
-
-        Role roles = roleRepository.findByName("ROLE_USER");
-        user.setRoles(Collections.singletonList(roles));
-
-        userRepository.save(user);
-
-        return new ResponseEntity<>("User registered success", HttpStatus.OK);
+    public ResponseEntity<RegisterDto> register(@RequestBody RegisterDto registerDto) {
+        RegisterDto newUser = customUserDetailsService.save(registerDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
     }
 
     @PostMapping("/login")

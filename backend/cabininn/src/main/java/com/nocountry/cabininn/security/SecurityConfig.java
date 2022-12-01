@@ -22,7 +22,6 @@ import static org.springframework.http.HttpMethod.POST;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
     private final CustomOAuth2UserService customOAuth2UserService;
     private final CustomOidcUserService customOidcUserService;
     private final JwtAuthEntryPoint authEntryPoint;
@@ -37,13 +36,14 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authEntryPoint))
                 .authorizeRequests(auth -> {
-                    auth.antMatchers("/", "/error", "/webjars/**").permitAll();
+                    auth.antMatchers("/", "/error", "/webjars/**", "/swagger-ui.html").permitAll();
                     auth.antMatchers("/auth/**").permitAll();
-                    auth.antMatchers("/list/**", "/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
+                    auth.antMatchers("/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
                     auth.antMatchers("/bookings/**").permitAll();//hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
+                    auth.antMatchers("/bookings/**").hasAnyAuthority("ROLE_ADMIN");
 //                    auth.antMatchers("/bookings/delete").hasAnyAuthority("ROLE_ADMIN");
-                    auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
-
+//                    auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
+                    auth.antMatchers(GET, "/users/listWithToken").hasAnyAuthority("ROLE_ADMIN");
                     auth.antMatchers(GET, "/api/users/**").hasAnyAuthority("ROLE_ADMIN");
                     auth.antMatchers(POST, "/api/users/save").hasAnyAuthority("ROLE_ADMIN");
                     auth.anyRequest().authenticated();
@@ -61,7 +61,7 @@ public class SecurityConfig {
 //                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS)
 // .addFilter(customAuthenticationFilter)
 //               .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-//                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
