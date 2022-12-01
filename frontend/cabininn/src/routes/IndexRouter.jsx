@@ -26,7 +26,7 @@ const IndexRouter = () => {
 
   const search = () => {
     const hotelbyCountry = hotels.filter(
-      (hotel) => hotel.address.countryName == searching
+      (hotel) => hotel.address.countryName === searching
     );
     setcapture(hotelbyCountry);
     // return <Link to="./results"> </Link>;
