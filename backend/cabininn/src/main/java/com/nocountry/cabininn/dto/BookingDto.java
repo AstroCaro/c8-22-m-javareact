@@ -1,17 +1,12 @@
 package com.nocountry.cabininn.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.nocountry.cabininn.model.Hotel;
-import com.nocountry.cabininn.model.User;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
 public class BookingDto {
 
     private Long id;
@@ -21,10 +16,10 @@ public class BookingDto {
     private Long userId;
 
     @JsonFormat(pattern="dd-MM-yyyy")
-    private Date checkIn;
+    private LocalDate checkIn;
 
     @JsonFormat(pattern="dd-MM-yyyy")
-    private Date checkOut;
+    private LocalDate checkOut;
 
     private Double price;
 
