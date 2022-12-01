@@ -51,29 +51,32 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
                                 .map(booking, BookingDto.class)
                 ).collect(Collectors.toList());
     }
+
     @Override
     public BookingDto createBooking(BookingDto bookingDto) {
         User userFound = mapper.getMapper().map(userService.findById(bookingDto.getUserId()),
                 User.class);
         Hotel hotelFound = mapper.getMapper().map(hotelService.findById(bookingDto.getHotelId()),
                 Hotel.class);
-        if (hotelFound != null && userFound != null) {
-            List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getCheckIn(), bookingDto.getCheckOut());
-            System.out.println(bookingDto);
-            if (bookingsFound.isEmpty()) {
-                Booking booking = mapper.getMapper().map(bookingDto, Booking.class);
-                System.out.println(booking.getHotel());
-                booking.setUser(userFound);
-                booking.setHotel(hotelFound);
-                booking.setCreationDate(new Date());
-                booking.setDuration();
-                booking.setPrice();
-                Booking bookingCreated = bookingRepository.save(booking);
-                return mapper.getMapper().map(bookingCreated, BookingDto.class);
-            }
-            throw new ResourceNotFoundException("Invalid Ids");
+        if (hotelFound == null || userFound == null) {
+            throw new ResourceFoundException("Invalid Ids");
         }
-        throw new ResourceFoundException("Cabin not available");
+        if (bookingDto.getCheckIn().compareTo(bookingDto.getCheckOut()) >= 0) {
+            throw new ResourceFoundException("Invalid dates");
+        }
+        List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getCheckIn(), bookingDto.getCheckOut());
+        if (!bookingsFound.isEmpty()) {
+            throw new ResourceNotFoundException("Cabin not available for these dates");
+        }
+        Booking booking = mapper.getMapper().map(bookingDto, Booking.class);
+        System.out.println(booking.getHotel());
+        booking.setUser(userFound);
+        booking.setHotel(hotelFound);
+        booking.setCreationDate(new Date());
+        booking.setDuration();
+        booking.setPrice();
+        Booking bookingCreated = bookingRepository.save(booking);
+        return mapper.getMapper().map(bookingCreated, BookingDto.class);
     }
 
     @Override

@@ -40,6 +40,11 @@ public class UserController {
         return ResponseEntity.ok().body(userService.findAllUsers());
     }
 
+    @GetMapping("/listWithToken")
+    public ResponseEntity<List<UserDto>> getUsersWithToken() {
+        return ResponseEntity.ok().body(userService.findAllUsers());
+    }
+
     @PutMapping("/cancel")
     public ResponseEntity<UserDto> cancel(@RequestBody String username) {
         return ResponseEntity.ok().body(userService.cancelUserByUsername(username));
@@ -64,7 +69,7 @@ public class UserController {
 
     @GetMapping("/username")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-        return Collections.singletonMap("name", principal.getAttribute("email"));
+        return Collections.singletonMap("username", principal.getAttribute("email"));
     }
 
     @PostMapping("/role/save")

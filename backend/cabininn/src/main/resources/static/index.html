@@ -44,16 +44,16 @@
 <!--        </div>-->
 <!--    </form>-->
     <script type="text/javascript">
-    $.get("/user", function(data) {
-        $("#user").html(data.name);
+    $.get("/users/username", function(data) {
+        $("#username").html(data.username);
         $(".unauthenticated").hide()
         $(".authenticated").show()
-        console.log(data.name);
+        console.log(data.username);
     });
 
     var logout = function() {
         $.post("/logout", function() {
-            $("#user").html('');
+            $("#username").html('');
             $(".unauthenticated").show();
             $(".authenticated").hide();
         })
