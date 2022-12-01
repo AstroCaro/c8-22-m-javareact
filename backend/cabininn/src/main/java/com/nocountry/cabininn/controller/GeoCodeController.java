@@ -15,24 +15,24 @@ public class GeoCodeController {
     @Autowired
     private IGeoService geoServ;
     
-    @GetMapping("/geoCodes")
+    @GetMapping("")
     public ResponseEntity<List<GeoCode>> showGeoCodes(){
         return ResponseEntity.ok().body(geoServ.showGeoCodes());
     }
     
-    @GetMapping("/geoCodes/{id}")
+    @GetMapping("/{id}")
     public GeoCode findGeoCode(@PathVariable Long id) {
         return geoServ.findGeoCode(id).orElse(null);
     }
     
-    @PostMapping("/geoCodes/add")
+    @PostMapping("/add")
     public ResponseEntity<GeoCode> createGeoCode(@RequestBody GeoCode geoCode){ 
                                                                                         
         geoServ.createGeoCode(geoCode);
         return ResponseEntity.ok().body(geoCode);
     }
     
-    @DeleteMapping("/geoCodes/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteGeoCode(@PathVariable Long id){
         geoServ.deleteGeoCode(id);
     }

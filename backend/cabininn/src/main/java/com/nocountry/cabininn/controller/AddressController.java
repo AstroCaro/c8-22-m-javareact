@@ -15,24 +15,24 @@ public class AddressController {
     @Autowired
     private IAddressService addServ;
     
-    @GetMapping("/addresses")
+    @GetMapping("")
     public ResponseEntity<List<Address>> showAddresses(){
         return ResponseEntity.ok().body(addServ.showAddresses());
     }
     
-    @GetMapping("/addresses/{id}")
+    @GetMapping("/{id}")
     public Address findAddress(@PathVariable Long id) {
         return addServ.findAddress(id).orElse(null);
     }
     
-    @PostMapping("/addresses/add")
+    @PostMapping("/add")
     public ResponseEntity<Address> createAddress(@RequestBody Address address){ 
                                                                                         
         addServ.createAddress(address);
         return ResponseEntity.ok().body(address);
     }
     
-    @DeleteMapping("/addresses/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteAddress(@PathVariable Long id){
         addServ.deleteAddress(id);
     }
