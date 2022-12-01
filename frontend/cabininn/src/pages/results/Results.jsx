@@ -22,7 +22,7 @@ const Results = ({ capture, hotels }) => {
       return (
         <Container>
           <h2 className="mainTitleResult text-center ">
-            7 Resultados para Bariloche
+            Resultados para {country}
           </h2>
 
           <div className="text-center">
@@ -109,7 +109,7 @@ const Results = ({ capture, hotels }) => {
       return (
         <Container>
           <h2 className="mainTitleResult text-center ">
-            7 Resultados para Bariloche
+           Resultados para {country}
           </h2>
 
           <div className="text-center">

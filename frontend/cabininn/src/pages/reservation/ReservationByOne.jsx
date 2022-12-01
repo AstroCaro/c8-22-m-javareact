@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './reservation.css'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
 const ReservationByOne = () => {
  
   let {id} = useParams();
@@ -99,9 +99,12 @@ const ReservationByOne = () => {
               <option value="3">Three</option>
             </Form.Select>
             <Form.Group className="mt-3 mb-1">
+
+            <Link to='../../pays'>
               <Button variant="danger" className="d-block mx-auto">
                 Confirmar Reserva
               </Button>
+              </Link>
             </Form.Group>
             <p>No se hará ningún cargo por el momento</p>
             <hr />
