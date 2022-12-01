@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { AiOutlineHeart } from "react-icons/ai";  
+import { AiOutlineHeart } from "react-icons/ai";
 import { BiCommentDetail } from "react-icons/bi";
 import { MdGTranslate } from "react-icons/md";
 import { useParams } from "react-router-dom";
@@ -34,7 +34,10 @@ const Results = ({ capture, hotels }) => {
               <Row xs={1} md={1} className="g-3 mt-2">
                 {hotelbyCountry.map((item) => (
                   <Col key={item.id}>
-                    <Link to={`/reservation/${item.id}`} className="text-decoration-none text-body">
+                    <Link
+                      to={`/reservation/${item.id}`}
+                      className="text-decoration-none text-body"
+                    >
                       <Card className="shadow-lg my-4 mx-2" border="success">
                         <Card.Img
                           variant="top"
@@ -118,7 +121,10 @@ const Results = ({ capture, hotels }) => {
               <Row xs={1} md={1} className="g-3 mt-2">
                 {capture.map((item) => (
                   <Col key={item.id}>
-                    <Link to={`/reservation/${item.id}`}>
+                    <Link
+                      to={`/reservation/${item.id}`}
+                      className="text-decoration-none text-body"
+                    >
                       <Card className="shadow-lg my-4 mx-2" border="success">
                         <Card.Img
                           variant="top"
