@@ -1,10 +1,15 @@
 package com.nocountry.cabininn.service.impl;
 
 import com.nocountry.cabininn.dto.BookingDto;
+import com.nocountry.cabininn.dto.UserDto;
 import com.nocountry.cabininn.exception.ResourceFoundException;
 import com.nocountry.cabininn.exception.ResourceNotFoundException;
 import com.nocountry.cabininn.model.Booking;
+import com.nocountry.cabininn.model.Hotel;
+import com.nocountry.cabininn.model.User;
 import com.nocountry.cabininn.repository.BookingRepository;
+import com.nocountry.cabininn.service.IHotelService;
+import com.nocountry.cabininn.service.IUserService;
 import com.nocountry.cabininn.utils.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +24,12 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
 
     @Autowired
     private BookingRepository bookingRepository;
+
+    @Autowired
+    private IUserService userService;
+
+    @Autowired
+    private IHotelService hotelService;
 
     @Autowired
     private Mapper mapper;
@@ -40,16 +51,27 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
                                 .map(booking, BookingDto.class)
                 ).collect(Collectors.toList());
     }
-
     @Override
     public BookingDto createBooking(BookingDto bookingDto) {
-        List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getCheckIn(), bookingDto.getCheckOut());
-        System.out.println(bookingDto);
-        if (bookingsFound.isEmpty()) {
-            Booking booking = mapper.getMapper().map(bookingDto, Booking.class);
-            booking.setCreationDate(new Date());
-            Booking bookingCreated = bookingRepository.save(booking);
-            return mapper.getMapper().map(bookingCreated, BookingDto.class);
+        User userFound = mapper.getMapper().map(userService.findById(bookingDto.getUserId()),
+                User.class);
+        Hotel hotelFound = mapper.getMapper().map(hotelService.findById(bookingDto.getHotelId()),
+                Hotel.class);
+        if (hotelFound != null && userFound != null) {
+            List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getCheckIn(), bookingDto.getCheckOut());
+            System.out.println(bookingDto);
+            if (bookingsFound.isEmpty()) {
+                Booking booking = mapper.getMapper().map(bookingDto, Booking.class);
+                System.out.println(booking.getHotel());
+                booking.setUser(userFound);
+                booking.setHotel(hotelFound);
+                booking.setCreationDate(new Date());
+                booking.setDuration();
+                booking.setPrice();
+                Booking bookingCreated = bookingRepository.save(booking);
+                return mapper.getMapper().map(bookingCreated, BookingDto.class);
+            }
+            throw new ResourceNotFoundException("Invalid Ids");
         }
         throw new ResourceFoundException("Cabin not available");
     }
@@ -57,13 +79,16 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
     @Override
     public BookingDto cancelBookingById(Long id) {
         Optional<Booking> booking = bookingRepository.findById(id);
-        if (booking.isPresent()) {
-            booking.get().setCancellationDate(new Date());
-            bookingRepository.save(booking.get());
-            BookingDto bookingDto = mapper.getMapper().map(booking, BookingDto.class);
-            return bookingDto;
+        if (!booking.isPresent()) {
+            throw new ResourceNotFoundException("Booking not found with the given id");
         }
-        throw new ResourceNotFoundException("Booking not found with the given id");
+        if (booking.get().getCancellationDate() != null) {
+            throw new ResourceFoundException("Booking has already been canceled");
+        }
+        booking.get().setCancellationDate(new Date());
+        bookingRepository.save(booking.get());
+        BookingDto bookingDto = mapper.getMapper().map(booking, BookingDto.class);
+        return bookingDto;
     }
 
     @Override
@@ -73,6 +98,5 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
         );
         bookingRepository.deleteById(id);
     }
-
 
 }
