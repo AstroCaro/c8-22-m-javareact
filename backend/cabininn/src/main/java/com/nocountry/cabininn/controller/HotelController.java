@@ -32,17 +32,17 @@ public class HotelController {
     @Autowired
     private HotelService2 hotel2Serv;
     
-    @GetMapping("/hotels")
+    @GetMapping("")
     public ResponseEntity<List<Hotel>> showHotels(){
         return ResponseEntity.ok().body(hotelServ.showHotels());
     }
     
-    @GetMapping("/hotels/{id}")
+    @GetMapping("/{id}")
     public Hotel findHotel(@PathVariable Long id) {
         return hotelServ.findHotel(id).orElse(null);
     }
     
-    @PostMapping("/address/{addressId}/hotel/add")
+    @PostMapping("/add/{addressId}")
     public ResponseEntity<Hotel> createHotel(@PathVariable("addressId") Long addressId, @RequestBody Hotel hotel){
         Optional<Address> addOpt = addServ.findAddress(addressId);
         
@@ -55,7 +55,7 @@ public class HotelController {
         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     
-    @DeleteMapping("hotels/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteHotel(@PathVariable Long id){
         hotelServ.deleteHotel(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

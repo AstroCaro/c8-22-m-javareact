@@ -15,24 +15,24 @@ public class DistanceController {
     @Autowired
     private IDistanceService distServ;
     
-    @GetMapping("/distances")
+    @GetMapping("")
     public ResponseEntity<List<Distance>> showDistances(){
         return ResponseEntity.ok().body(distServ.showDistances());
     }
     
-    @GetMapping("/distances/{id}")
+    @GetMapping("/{id}")
     public Distance findDistance(@PathVariable Long id) {
         return distServ.findDistance(id).orElse(null);
     }
     
-    @PostMapping("/distances/add")
+    @PostMapping("/add")
     public ResponseEntity<Distance> createDistance(@RequestBody Distance distance){ 
                                                                                         
         distServ.createDistance(distance);
         return ResponseEntity.ok().body(distance);
     }
     
-    @DeleteMapping("/distances/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteDistance(@PathVariable Long id){
         distServ.deleteDistance(id);
     }

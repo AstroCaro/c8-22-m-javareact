@@ -1,10 +1,10 @@
 import { Card, Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-
+import './pays.css'
 function BasicExample() {
   return (
     <>
-      <Container className="mt-3">
+      <Container className="mt-3 marg">
         <Row>
           <Col>
             {/* Tarjeta 1 */}

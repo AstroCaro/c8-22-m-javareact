@@ -15,7 +15,13 @@ public class HotelDto {
     private String iataCode;
     private String name;
     private Integer dailyPrice;
-    private String urlFoto;
+    private String descripcion;
+    private String urlImage;
+    private String urlImage2;
+    private String urlImage3;
+    private Integer guestsNumber;
+    private Integer rooms;
+    private Integer bathrooms;
     private GeoCode geoCode;
     private Address address;
     private Distance distance;

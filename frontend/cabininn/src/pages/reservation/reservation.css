@@ -8,3 +8,7 @@
 .input-group {
     flex-wrap:nowrap !important;
 }
+
+.reservation {
+    margin-top: 180px;
+}

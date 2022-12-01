@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './reservation.css'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
 const ReservationByOne = () => {
  
   let {id} = useParams();
@@ -17,7 +17,7 @@ const ReservationByOne = () => {
   const [endDate, setEndDate] = useState();
 
   useEffect(()=> {
-    axios.get('https://api.jsonbin.io/v3/b/637ecc2f65b57a31e6c15c6d')
+    axios.get('https://api.jsonbin.io/v3/b/638601547966e84526cf3d75')
     .then(res=>sethotels(res.data.record))
      
   },[])
@@ -27,16 +27,16 @@ const ReservationByOne = () => {
   const hotelFind = hotels.filter(h => h.id == id)
 
 
-  
+  console.log(hotelFind);
 
   return (
-    <div className="container pt-4">
+    <div className="container pt-4 reservation">
       <h2>{hotelFind[0]?.name}</h2>
       <p className="fw-bold text-decoration-underline">{hotelFind[0]?.location} {hotelFind[0]?.country}</p>
       <div className="row">
         <div className="col-8">
           <img
-            src={hotelFind[0]?.img1}
+            src={hotelFind[0]?.urlFoto}
             alt=""
             className="img-fluid h-100"
           />
@@ -53,9 +53,9 @@ const ReservationByOne = () => {
         <div className="col-7">
           <h3>Cabaña entero - Anfitrión: Patty</h3>
           <p>2 huéspedes1 - habitación1 - cama1 - baño</p>
-
+          <p>$ {hotelFind[0]?.dailyPrice}</p>
           <p>
-          {hotelFind[0]?.description}
+           {hotelFind[0]?.description}
           </p>
 
           <p>
@@ -99,9 +99,12 @@ const ReservationByOne = () => {
               <option value="3">Three</option>
             </Form.Select>
             <Form.Group className="mt-3 mb-1">
+
+            <Link to='../../pays'>
               <Button variant="danger" className="d-block mx-auto">
                 Confirmar Reserva
               </Button>
+              </Link>
             </Form.Group>
             <p>No se hará ningún cargo por el momento</p>
             <hr />
