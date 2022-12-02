@@ -71,7 +71,8 @@
 }
 
 .cardTitleResult {
-  font-size: 36px;
+  font-size: 28px;
+  line-height: 20px;
   font-weight: 700;
   color: var(--colorBase);
 }
