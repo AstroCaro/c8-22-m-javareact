@@ -44,7 +44,7 @@
 <!--        </div>-->
 <!--    </form>-->
     <script type="text/javascript">
-    $.get("/users/username", function(data) {
+    $.get("/username", function(data) {
         $("#username").html(data.username);
         $(".unauthenticated").hide()
         $(".authenticated").show()
