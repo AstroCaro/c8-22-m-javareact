@@ -46,8 +46,8 @@ public class UserController {
     }
 
     @PutMapping("/cancel")
-    public ResponseEntity<UserDto> cancel(@RequestBody String username) {
-        return ResponseEntity.ok().body(userService.cancelUserByUsername(username));
+    public ResponseEntity<UserDto> cancel(@RequestBody UserDto userDto) {
+        return ResponseEntity.ok().body(userService.cancelUserByUsername(userDto.getUsername()));
     }
 
     @PutMapping("/cancel/{id}")
@@ -62,8 +62,8 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Void> deleteUser(@RequestBody String username) {
-        userService.deleteUserByUsername(username);
+    public ResponseEntity<Void> deleteUser(@RequestBody UserDto userDto) {
+        userService.deleteUserByUsername(userDto.getUsername());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

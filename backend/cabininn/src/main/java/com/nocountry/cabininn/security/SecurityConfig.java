@@ -38,9 +38,8 @@ public class SecurityConfig {
                 .authorizeRequests(auth -> {
                     auth.antMatchers("/", "/error", "/webjars/**", "/swagger-ui.html").permitAll();
                     auth.antMatchers("/auth/**").permitAll();
-                    auth.antMatchers("/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
+                    auth.antMatchers("/users/**", "/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
                     auth.antMatchers("/bookings/**").permitAll();//hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
-                    auth.antMatchers("/bookings/**").hasAnyAuthority("ROLE_ADMIN");
 //                    auth.antMatchers("/bookings/delete").hasAnyAuthority("ROLE_ADMIN");
 //                    auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
                     auth.antMatchers(GET, "/users/listWithToken").hasAnyAuthority("ROLE_ADMIN");

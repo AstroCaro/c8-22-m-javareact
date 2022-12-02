@@ -64,7 +64,7 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
         if (bookingDto.getCheckIn().compareTo(bookingDto.getCheckOut()) >= 0) {
             throw new ResourceFoundException("Invalid dates");
         }
-        List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getCheckIn(), bookingDto.getCheckOut());
+        List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getHotelId(), bookingDto.getCheckIn(), bookingDto.getCheckOut());
         if (!bookingsFound.isEmpty()) {
             throw new ResourceNotFoundException("Cabin not available for these dates");
         }

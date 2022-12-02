@@ -98,7 +98,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void deleteUserByUsername(String username) {
         User user = userRepository.findByUsername(username).orElseThrow(
-                () -> new ResourceNotFoundException("User ID Invalid")
+                () -> new ResourceNotFoundException("Username Invalid")
         );
         userRepository.deleteByUsername(username);
     }
