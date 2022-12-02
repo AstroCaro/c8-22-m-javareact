@@ -43,8 +43,6 @@ public class SecurityConfig {
 //                    auth.antMatchers("/bookings/delete").hasAnyAuthority("ROLE_ADMIN");
 //                    auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
                     auth.antMatchers(GET, "/users/listWithToken").hasAnyAuthority("ROLE_ADMIN");
-                    auth.antMatchers(GET, "/api/users/**").hasAnyAuthority("ROLE_ADMIN");
-                    auth.antMatchers(POST, "/api/users/save").hasAnyAuthority("ROLE_ADMIN");
 //                    auth.antMatchers(GET, "/users/username").authenticated();
                     auth.anyRequest().authenticated();
                 })
