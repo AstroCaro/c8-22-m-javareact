@@ -44,7 +44,7 @@ const Results = ({ capture, hotels }) => {
                           className="img-fluid h-100 rounded"
                           src={item.urlFoto}
                         />
-                        <Card.Body className="py-4 my-2 border-3">
+                        <Card.Body className="py-4 my-2 border-3 rounded">
                           <Row>
                             <Col className="text-start mx-4">
                               <Card.Title>
@@ -73,14 +73,11 @@ const Results = ({ capture, hotels }) => {
                               </Card.Text>
                               <Card.Text>iataCode : {item.iataCode}</Card.Text>
                               <Card.Text>
-                                address :{item.address.postalCode}
-                                <br />
+                                Codigo Postal :{item.address.postalCode}
+                                
                                 {item.address.countryCode}
-                                <br />
                                 {item.address.countryName}
-                                <br />
                                 {item.address.cityName}
-                                <br />
                                 {item.address.id}
                               </Card.Text>
                               <Card.Text>
@@ -90,9 +87,6 @@ const Results = ({ capture, hotels }) => {
                               <Card.Text className="cardTotal">
                                 Total : $ {item.dailyPrice}
                               </Card.Text>
-                            </Col>
-                            <Col className="text-end my-2">
-                              <span className="btn btnCard">Reservar</span>
                             </Col>
                           </Row>
                         </Card.Body>
@@ -109,7 +103,7 @@ const Results = ({ capture, hotels }) => {
       return (
         <Container>
           <h2 className="mainTitleResult text-center ">
-           Resultados para {country}
+            Resultados para {country}
           </h2>
 
           <div className="text-center">
@@ -118,14 +112,14 @@ const Results = ({ capture, hotels }) => {
               gusté!{" "}
             </h2>
             <>
-              <Row xs={1} md={1} className="g-3 mt-2">
+              <Row xs={1} md={3} className="g-3 mt-2">
                 {capture.map((item) => (
                   <Col key={item.id}>
                     <Link
                       to={`/reservation/${item.id}`}
                       className="text-decoration-none text-body"
                     >
-                      <Card className="shadow-lg my-4 mx-2" border="success">
+                      <Card className="shadow-lg my-4 mx-2 border-0">
                         <Card.Img
                           variant="top"
                           className="img-fluid h-100 rounded"
@@ -160,15 +154,13 @@ const Results = ({ capture, hotels }) => {
                               </Card.Text>
                               <Card.Text>iataCode : {item.iataCode}</Card.Text>
                               <Card.Text>
-                                address :{item.address.postalCode}
+                                Codigo Postal :{item.address.postalCode}
                                 <br />
                                 {item.address.countryCode}
                                 <br />
                                 {item.address.countryName}
                                 <br />
                                 {item.address.cityName}
-                                <br />
-                                {item.address.id}
                               </Card.Text>
                               <Card.Text>
                                 distance :{item.distance.value}
@@ -177,9 +169,6 @@ const Results = ({ capture, hotels }) => {
                               <Card.Text className="cardTotal">
                                 Total : $ {item.dailyPrice}
                               </Card.Text>
-                            </Col>
-                            <Col className="text-end my-2">
-                              <span className="btn btnCard">Reservar</span>
                             </Col>
                           </Row>
                         </Card.Body>
