@@ -42,7 +42,7 @@ const Results = ({ capture, hotels }) => {
                         <Card.Img
                           variant="top"
                           className="img-fluid h-100 rounded"
-                          src={item.urlFoto}
+                          src={item.urlImage}
                         />
                         <Card.Body className="py-4 my-2 border-3 rounded">
                           <Row>
@@ -54,7 +54,9 @@ const Results = ({ capture, hotels }) => {
                               </Card.Title>
                               <span className="d-flex justify-content-start align-content-center">
                                 <BiMap className="mapIcon" />
-                                <Link className="mx-2 text-decoration-none">Ver Mapa</Link>
+                                <Link className="mx-2 text-decoration-none">
+                                  Ver Mapa
+                                </Link>
                               </span>
                             </Col>
                             <Col className="text-end">
@@ -120,7 +122,7 @@ const Results = ({ capture, hotels }) => {
                         <Card.Img
                           variant="top"
                           className="img-fluid h-100 rounded"
-                          src={item.urlFoto}
+                          src={item.urlImage}
                         />
                         <Card.Body className="py-4 my-2 border-3 rounded">
                           <Row>
