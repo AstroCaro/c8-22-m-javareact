@@ -14,5 +14,5 @@ public interface IHotelService {
     void createHotel(Hotel hotel);
     void deleteHotel(Long id);
     Optional<Hotel> findHotel(Long id);
-    
+    Hotel findHotelRandom();
 }
