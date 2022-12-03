@@ -38,6 +38,7 @@ const NavBarAll = ({
               <datalist id="countries">
                 <option value="Argentina"></option>
                 <option value="Perú"></option>
+                <option value="Uruguay"></option>
               </datalist>
               <a
                 className="btn-reg rounded"
