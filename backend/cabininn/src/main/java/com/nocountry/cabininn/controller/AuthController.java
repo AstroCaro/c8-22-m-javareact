@@ -1,12 +1,8 @@
 package com.nocountry.cabininn.controller;
 
-import com.nocountry.cabininn.dto.AuthResponseDto;
+import com.nocountry.cabininn.dto.response.AuthResponse;
 import com.nocountry.cabininn.dto.LoginDto;
 import com.nocountry.cabininn.dto.RegisterDto;
-import com.nocountry.cabininn.model.Role;
-import com.nocountry.cabininn.model.User;
-import com.nocountry.cabininn.repository.RoleRepository;
-import com.nocountry.cabininn.repository.UserRepository;
 import com.nocountry.cabininn.security.CustomUserDetailsService;
 import com.nocountry.cabininn.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +12,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
 
 @RestController
 @RequestMapping("/auth")
@@ -49,13 +41,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponseDto> login(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginDto loginDto) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(),
                         loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
-        return ResponseEntity.ok(new AuthResponseDto(token));
+        return ResponseEntity.ok(new AuthResponse(token));
     }
 
 //    @GetMapping("/logout")
