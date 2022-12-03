@@ -20,26 +20,32 @@ const NavBarAll = ({
 
   return (
     <>
-      <header className={colore ? "bg-header" : ""}>
-        <a className="ms-5" href="/">
+      <header className={colore ? "bg-header " : ""}>
+        <a className="d-flex justify-content-center" href="/">
           <img src={logoSVG} alt="logo" className="logo" />
         </a>
-        <nav className="me-5">
-          <ul>
-            <li>
-              <input
+        <p className="text-logo ms-3 mt-3">CABININN</p>
+        <div className="container-searchbox">
+        <input
                 list="countries"
                 type="text"
                 onChange={(e) => setsearching(e.target.value)}
                 value={searching}
-                className="searchBox"
+                className="searchBox px-3"
                 placeholder=" Buscar"
               />
-              <datalist id="countries">
-                <option value="Argentina"></option>
-                <option value="Perú"></option>
-                <option value="Uruguay"></option>
-              </datalist>
+
+          <datalist id="countries">
+            <option value="Argentina"></option>
+            <option value="Perú"></option>
+          </datalist>
+              
+        </div>
+        <nav className="me-5">
+          <ul>
+            <li>
+             
+
               <a
                 className="btn-reg rounded"
                 href="#"

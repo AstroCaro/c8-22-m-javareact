@@ -25,3 +25,25 @@ cursor: pointer;
   border: none;
   color: darkgrey;
 }
+
+@media (max-width: 991.98px) { 
+  .mainTitles {
+    font-size: 45px;
+  }
+
+  .subTitles{
+    font-size: 20px;
+  }
+}
+
+
+@media (max-width: 575.98px) {
+  .mainTitles {
+    font-size: 25px;
+  }
+
+  .subTitles {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
