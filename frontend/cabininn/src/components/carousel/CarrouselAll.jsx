@@ -16,14 +16,14 @@ const CarrouselAll = () => {
   };
   return (
     <div className="carrousel-section mb-5">
-      <h2 className="mainTitles text-center mt-5 mb-2 ">
+      <h2 className="mainTitles text-center mt-5 mb-2 mx-auto">
         Promociones Noviembre
       </h2>
-      <p className="subTitles mb-4">
+      <p className="subTitles mb-4 ms-2 me-2">
         ¿Quién dijo paz? Aprovechá estas ofertas y disfrutá un fin de semana en
         el bosque.
       </p>
-      <div className="container-img d-flex justify-content-center gap-4">
+      <div className="container-img d-flex justify-content-center gap-1 gap-sm-4 ">
         <button className="btn-slider fs-4"><i className="fa-solid fa-chevron-left"></i></button>
         {images.map((img, id) => (         
             <div key={id}>
