@@ -37,17 +37,16 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authEntryPoint))
                 .authorizeRequests(auth -> {
                     auth.antMatchers("/", "/error", "/webjars/**", "/swagger-ui.html").permitAll();
-                    auth.antMatchers("/auth/**").permitAll();
+                    auth.antMatchers("/auth/**", "/users/**").permitAll();
                     auth.antMatchers("/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
                     auth.antMatchers("/bookings/**").permitAll();//hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
-                    auth.antMatchers("/bookings/**").hasAnyAuthority("ROLE_ADMIN");
 //                    auth.antMatchers("/bookings/delete").hasAnyAuthority("ROLE_ADMIN");
 //                    auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
                     auth.antMatchers(GET, "/users/listWithToken").hasAnyAuthority("ROLE_ADMIN");
-                    auth.antMatchers(GET, "/api/users/**").hasAnyAuthority("ROLE_ADMIN");
-                    auth.antMatchers(POST, "/api/users/save").hasAnyAuthority("ROLE_ADMIN");
+//                    auth.antMatchers(GET, "/users/username").authenticated();
                     auth.anyRequest().authenticated();
                 })
+                .formLogin().and()
                 .oauth2Login()
                 .userInfoEndpoint().oidcUserService(customOidcUserService).and()
                 .defaultSuccessUrl("/").and()

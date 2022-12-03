@@ -20,51 +20,51 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/users")
+@RequestMapping("")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     private final IUserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable("id") Long id) {
         return ResponseEntity.ok().body(userService.findById(id));
     }
 
-    @PostMapping("/")
+    @PostMapping("/users/")
     public ResponseEntity<UserDto> findByUsername(@RequestBody String username) {
         return ResponseEntity.ok().body(userService.findByUsername(username));
     }
 
-    @GetMapping("/list")
+    @GetMapping("/users/list")
     public ResponseEntity<List<UserDto>> getUsers() {
         return ResponseEntity.ok().body(userService.findAllUsers());
     }
 
-    @GetMapping("/listWithToken")
+    @GetMapping("/users/listWithToken")
     public ResponseEntity<List<UserDto>> getUsersWithToken() {
         return ResponseEntity.ok().body(userService.findAllUsers());
     }
 
-    @PutMapping("/cancel")
-    public ResponseEntity<UserDto> cancel(@RequestBody String username) {
-        return ResponseEntity.ok().body(userService.cancelUserByUsername(username));
+    @PutMapping("/users/cancel")
+    public ResponseEntity<UserDto> cancel(@RequestBody UserDto userDto) {
+        return ResponseEntity.ok().body(userService.cancelUserByUsername(userDto.getUsername()));
     }
 
-    @PutMapping("/cancel/{id}")
+    @PutMapping("/users/cancel/{id}")
     public ResponseEntity<UserDto> cancel(@PathVariable("id") Long id) {
         return ResponseEntity.ok().body(userService.cancelUserById(id));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/users/delete/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<Void> deleteUser(@RequestBody String username) {
-        userService.deleteUserByUsername(username);
+    @DeleteMapping("/users/delete")
+    public ResponseEntity<Void> deleteUser(@RequestBody UserDto userDto) {
+        userService.deleteUserByUsername(userDto.getUsername());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

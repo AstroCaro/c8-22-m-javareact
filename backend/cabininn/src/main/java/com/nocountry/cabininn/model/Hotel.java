@@ -45,8 +45,5 @@ public class Hotel {
     @JoinColumn(name= "id_distance", referencedColumnName="id")
     private Distance distance;
 
-    @OneToMany(mappedBy = "hotel", cascade=CascadeType.ALL)
-    @JsonIgnore
-    private List<Booking> bookings;
 
 }

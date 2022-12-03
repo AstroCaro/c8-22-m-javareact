@@ -1,6 +1,5 @@
-package com.nocountry.cabininn.dto;
+package com.nocountry.cabininn.dto.response;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -8,12 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class AuthResponseDto {
+public class AuthResponse {
 
     private String accessToken;
     private String tokenType = "Bearer ";
 
-    public AuthResponseDto(String accessToken) {
+    public AuthResponse(String accessToken) {
         this.accessToken = accessToken;
     }
 }
