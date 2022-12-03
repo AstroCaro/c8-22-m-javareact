@@ -1,7 +1,7 @@
-
 package com.nocountry.cabininn.controller;
 
 import com.nocountry.cabininn.criteria.HotelCriteria;
+import com.nocountry.cabininn.dto.HotelDto;
 import com.nocountry.cabininn.dto.SearchDto;
 import com.nocountry.cabininn.model.Address;
 import com.nocountry.cabininn.model.Hotel;
@@ -21,31 +21,37 @@ import org.springframework.util.StringUtils;
 
 @RestController
 @RequestMapping("/hotels")
+@CrossOrigin(origins = "http://localhost:3000")
 public class HotelController {
-    
+
     @Autowired
     private IHotelService hotelServ;
-    
+
     @Autowired
     private IAddressService addServ;
-    
+
     @Autowired
     private HotelService2 hotel2Serv;
-    
+
     @GetMapping("")
     public ResponseEntity<List<Hotel>> showHotels(){
         return ResponseEntity.ok().body(hotelServ.showHotels());
     }
-    
+
     @GetMapping("/{id}")
     public Hotel findHotel(@PathVariable Long id) {
         return hotelServ.findHotel(id).orElse(null);
     }
-    
+
+    @GetMapping("/random")
+    public Hotel findHotelRandom() {
+        return hotelServ.findHotelRandom();
+    }
+
     @PostMapping("/add/{addressId}")
     public ResponseEntity<Hotel> createHotel(@PathVariable("addressId") Long addressId, @RequestBody Hotel hotel){
         Optional<Address> addOpt = addServ.findAddress(addressId);
-        
+
         if (addOpt.isPresent()){
             Address address = addOpt.get();
             hotel.setAddress(address);
@@ -54,14 +60,15 @@ public class HotelController {
         }
         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    
+
     @DeleteMapping("/delete/{id}")
-    public void deleteHotel(@PathVariable Long id){
+    public ResponseEntity<Void> deleteHotel(@PathVariable Long id){
         hotelServ.deleteHotel(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-    
+
 //    @PostMapping("/address/{addressId}/hotels/add")
-    
+
     @PostMapping("/list")
     public ResponseEntity<List<Hotel>> list(@RequestBody SearchDto searchDTO){
         HotelCriteria hotelCriteria = createCriteria(searchDTO);

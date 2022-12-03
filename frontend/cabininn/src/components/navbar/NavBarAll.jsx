@@ -34,6 +34,7 @@ const NavBarAll = ({
                 className="searchBox px-3"
                 placeholder=" Buscar"
               />
+
           <datalist id="countries">
             <option value="Argentina"></option>
             <option value="Perú"></option>
@@ -44,6 +45,7 @@ const NavBarAll = ({
           <ul>
             <li>
              
+
               <a
                 className="btn-reg rounded"
                 href="#"

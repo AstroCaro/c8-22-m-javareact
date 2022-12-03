@@ -1,7 +1,7 @@
 package com.nocountry.cabininn.service.impl;
 
-import com.nocountry.cabininn.dto.BookingDto;
-import com.nocountry.cabininn.dto.UserDto;
+import com.nocountry.cabininn.dto.request.BookingRequest;
+import com.nocountry.cabininn.dto.response.BookingResponse;
 import com.nocountry.cabininn.exception.ResourceFoundException;
 import com.nocountry.cabininn.exception.ResourceNotFoundException;
 import com.nocountry.cabininn.model.Booking;
@@ -35,49 +35,52 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
     private Mapper mapper;
 
     @Override
-    public BookingDto findById(Long id) {
+    public BookingResponse findById(Long id) {
         Booking booking = bookingRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Booking ID Invalid"));
-        BookingDto bookingDto = mapper.getMapper().map(booking, BookingDto.class);
+        BookingResponse bookingDto = mapper.getMapper().map(booking, BookingResponse.class);
         return bookingDto;
     }
 
     @Override
-    public List<BookingDto> findAllBookings() {
+    public List<BookingResponse> findAllBookings() {
         return bookingRepository.findAll().
                 stream().
                 map(booking ->
                         mapper.getMapper()
-                                .map(booking, BookingDto.class)
+                                .map(booking, BookingResponse.class)
                 ).collect(Collectors.toList());
     }
+
     @Override
-    public BookingDto createBooking(BookingDto bookingDto) {
+    public BookingResponse createBooking(BookingRequest bookingDto) {
         User userFound = mapper.getMapper().map(userService.findById(bookingDto.getUserId()),
                 User.class);
         Hotel hotelFound = mapper.getMapper().map(hotelService.findById(bookingDto.getHotelId()),
                 Hotel.class);
-        if (hotelFound != null && userFound != null) {
-            List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getCheckIn(), bookingDto.getCheckOut());
-            System.out.println(bookingDto);
-            if (bookingsFound.isEmpty()) {
-                Booking booking = mapper.getMapper().map(bookingDto, Booking.class);
-                System.out.println(booking.getHotel());
-                booking.setUser(userFound);
-                booking.setHotel(hotelFound);
-                booking.setCreationDate(new Date());
-                booking.setDuration();
-                booking.setPrice();
-                Booking bookingCreated = bookingRepository.save(booking);
-                return mapper.getMapper().map(bookingCreated, BookingDto.class);
-            }
-            throw new ResourceNotFoundException("Invalid Ids");
+        if (hotelFound == null || userFound == null) {
+            throw new ResourceFoundException("Invalid Ids");
         }
-        throw new ResourceFoundException("Cabin not available");
+        if (bookingDto.getCheckIn().compareTo(bookingDto.getCheckOut()) >= 0) {
+            throw new ResourceFoundException("Invalid dates");
+        }
+        List<Booking> bookingsFound = bookingRepository.findAllByHotelIdAndDateBetween(bookingDto.getHotelId(), bookingDto.getCheckIn(), bookingDto.getCheckOut());
+        if (!bookingsFound.isEmpty()) {
+            throw new ResourceNotFoundException("Cabin not available for these dates");
+        }
+        Booking booking = mapper.getMapper().map(bookingDto, Booking.class);
+        System.out.println(booking.getHotel());
+        booking.setUser(userFound);
+        booking.setHotel(hotelFound);
+        booking.setCreationDate(new Date());
+        booking.setDuration();
+        booking.setPrice();
+        Booking bookingCreated = bookingRepository.save(booking);
+        return mapper.getMapper().map(bookingCreated, BookingResponse.class);
     }
 
     @Override
-    public BookingDto cancelBookingById(Long id) {
+    public BookingResponse cancelBookingById(Long id) {
         Optional<Booking> booking = bookingRepository.findById(id);
         if (!booking.isPresent()) {
             throw new ResourceNotFoundException("Booking not found with the given id");
@@ -87,7 +90,7 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
         }
         booking.get().setCancellationDate(new Date());
         bookingRepository.save(booking.get());
-        BookingDto bookingDto = mapper.getMapper().map(booking, BookingDto.class);
+        BookingResponse bookingDto = mapper.getMapper().map(booking, BookingResponse.class);
         return bookingDto;
     }
 

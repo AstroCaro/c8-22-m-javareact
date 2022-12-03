@@ -9,7 +9,6 @@ import Pays from "../pages/pays/Pays";
 import ReservationByOne from "../pages/reservation/ReservationByOne";
 import axios from "axios";
 
-
 const IndexRouter = () => {
   const [modalShow, setModalShow] = useState(false);
 
@@ -19,8 +18,8 @@ const IndexRouter = () => {
 
   useEffect(() => {
     axios
-      .get("https://api.jsonbin.io/v3/b/638601547966e84526cf3d75")
-      .then((res) => sethotels(res.data.record))
+      .get("https://cabininn-backend-production.up.railway.app/hotels")
+      .then((res) => sethotels(res.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -43,7 +42,10 @@ const IndexRouter = () => {
       />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/results/:country" element={<Results capture={capture} hotels={hotels} />} />
+        <Route
+          path="/results/:country"
+          element={<Results capture={capture} hotels={hotels} />}
+        />
         <Route path="/reservation/:id" element={<ReservationByOne />} />
         <Route path="/pays" element={<Pays />} />
         <Route path="*" element={<NotFound />} />

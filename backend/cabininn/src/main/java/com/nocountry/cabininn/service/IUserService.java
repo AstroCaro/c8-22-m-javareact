@@ -13,12 +13,15 @@ public interface IUserService {
 
     UserDto findByUsername(String username);
 
+    UserDto findByUsernameOrNull(String username);
+
     List<UserDto> findAllUsers();
 
     UserDto cancelUserByUsername(String username);
 
-    void deleteUserById(Long id);
+    UserDto cancelUserById(Long id);
 
+    void deleteUserById(Long id);
 
     void deleteUserByUsername(String username);
 

@@ -40,7 +40,6 @@ public class RestResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ResourceNotFoundException.class)
-    @ResponseBody
     public ResponseEntity<Object> handleNotExistUserException (Exception exception) {
         ApiException apiException = ApiException.builder()
                 .status(HttpStatus.NOT_FOUND)

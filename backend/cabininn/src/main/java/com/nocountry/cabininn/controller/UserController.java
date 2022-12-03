@@ -1,5 +1,6 @@
 package com.nocountry.cabininn.controller;
 
+import com.nocountry.cabininn.dto.BookingDto;
 import com.nocountry.cabininn.dto.UserDto;
 import com.nocountry.cabininn.model.Role;
 import com.nocountry.cabininn.service.IUserService;
@@ -19,51 +20,57 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping()
+@RequestMapping("")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     private final IUserService userService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable("id") Long id) {
-        UserDto userDto = userService.findById(id);
-        return ResponseEntity.ok().body(userDto);
+        return ResponseEntity.ok().body(userService.findById(id));
     }
 
-    @PostMapping("/find")
+    @PostMapping("/users/")
     public ResponseEntity<UserDto> findByUsername(@RequestBody String username) {
         return ResponseEntity.ok().body(userService.findByUsername(username));
     }
 
-    @GetMapping("/list")
+    @GetMapping("/users/list")
     public ResponseEntity<List<UserDto>> getUsers() {
         return ResponseEntity.ok().body(userService.findAllUsers());
     }
 
-    @PutMapping("/cancel")
-    public ResponseEntity<UserDto> cancel(@RequestBody String username) {
-        return ResponseEntity.ok().body(userService.cancelUserByUsername(username));
+    @GetMapping("/users/listWithToken")
+    public ResponseEntity<List<UserDto>> getUsersWithToken() {
+        return ResponseEntity.ok().body(userService.findAllUsers());
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUser(
-            @PathVariable("id") Long id) {
+    @PutMapping("/users/cancel")
+    public ResponseEntity<UserDto> cancel(@RequestBody UserDto userDto) {
+        return ResponseEntity.ok().body(userService.cancelUserByUsername(userDto.getUsername()));
+    }
+
+    @PutMapping("/users/cancel/{id}")
+    public ResponseEntity<UserDto> cancel(@PathVariable("id") Long id) {
+        return ResponseEntity.ok().body(userService.cancelUserById(id));
+    }
+
+    @DeleteMapping("/users/delete/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUserById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<Void> deleteUser(
-            @RequestBody String username) {
-        userService.deleteUserByUsername(username);
+    @DeleteMapping("/users/delete")
+    public ResponseEntity<Void> deleteUser(@RequestBody UserDto userDto) {
+        userService.deleteUserByUsername(userDto.getUsername());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-
-    @GetMapping("/user")
+    @GetMapping("/username")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-        System.out.println(principal);
-        return Collections.singletonMap("name", principal.getAttribute("email"));
+        return Collections.singletonMap("username", principal.getAttribute("email"));
     }
 
     @PostMapping("/role/save")

@@ -19,7 +19,7 @@
         With Google: <a href="/oauth2/authorization/google">click here</a>
     </div>
     <div class="container authenticated" style="display:none">
-        Logged in as: <span id="user"></span>
+        Logged in as: <span id="username"></span>
         <div>
             <button onClick="logout()" class="btn btn-primary">Logout</button>
         </div>
@@ -44,16 +44,16 @@
 <!--        </div>-->
 <!--    </form>-->
     <script type="text/javascript">
-    $.get("/user", function(data) {
-        $("#user").html(data.name);
+    $.get("/username", function(data) {
+        $("#username").html(data.username);
         $(".unauthenticated").hide()
         $(".authenticated").show()
-        console.log(data.name);
+        console.log(data.username);
     });
 
     var logout = function() {
         $.post("/logout", function() {
-            $("#user").html('');
+            $("#username").html('');
             $(".unauthenticated").show();
             $(".authenticated").hide();
         })

@@ -1,16 +1,10 @@
-package com.nocountry.cabininn.dto;
+package com.nocountry.cabininn.dto.response;
 
 import com.nocountry.cabininn.model.Provider;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Builder
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserDto {
+public class UserResponse {
 
     private Long id;
 
