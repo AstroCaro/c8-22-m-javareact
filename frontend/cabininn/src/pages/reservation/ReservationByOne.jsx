@@ -24,6 +24,7 @@ const ReservationByOne = () => {
   const [cantAdults, setcantAdults] = useState(1);
   const [cantni, setcantni] = useState(1);
 
+  const [total, settotal] = useState(0);
   useEffect(() => {
     axios
       .get(`https://cabininn-backend-production.up.railway.app/hotels/${id}`)
@@ -41,14 +42,27 @@ const ReservationByOne = () => {
     // console.log(endDate.toLocaleDateString());
     // console.log(id);
     let numTotal = Number(cantAdults) + Number(cantni);
+    let cantDias = (endDate - startDate) / (1000 * 60 * 60 * 24);
     if (hotels.guestsNumber < numTotal) {
       Swal.fire(
         "Error!",
         `El Hotel tiene solo la capacidad de ${hotels.guestsNumber} Huespedes`,
         "error"
       );
+    } else {
+      calcularTotal(cantDias);
     }
   };
+
+ 
+
+  const calcularTotal = (cantDias) => {
+    settotal(Number(hotels?.dailyPrice) * cantDias);
+    
+  };
+
+ 
+
 
   return (
     <Container className="reservation">
@@ -82,7 +96,13 @@ const ReservationByOne = () => {
           <Col>
             <span className="d-flex justify-content-start align-content-center my-2">
               <BiMap className="mapIcon" />
-              <Link className="mx-2 text-decoration-none">Ver Mapa</Link>
+              <a
+                className="mx-2 text-decoration-none"
+                href={`https://www.google.com.pe/maps/search/${hotels.geoCode?.latitude},${hotels.geoCode?.longitude}`}
+                target="_blank"
+              >
+                Ver Mapa
+              </a>
             </span>
           </Col>
           <Col className="text-end align-content-center">
@@ -97,17 +117,34 @@ const ReservationByOne = () => {
             </span>
           </Col>
         </Row>
-        <Col className="text-center">
-          <h3 className="mainTitleResult mt-4">{hotels.name}</h3>
-          <p>
+        <Col className="">
+          <div className="d-flex justify-content-between mt-5">
+            <div>
+              <h3 className="mainTitleResult mt-4 mb-2">{hotels.name}</h3>
+              <i className="fa-regular fa-star fs-3 text-warning"></i>
+              <i className="fa-regular fa-star fs-3 text-warning"></i>
+              <i className="fa-regular fa-star fs-3 text-warning"></i>
+              <i className="fa-regular fa-star fs-3 text-warning"></i>
+            </div>
+            <div className="text-center">
+              <img
+                className="img-user"
+                src="https://random.imagecdn.app/100/100"
+                alt=""
+              />
+              <p className="nom-user">María Sanchez</p>
+              <p className="rol-user">alojadora</p>
+            </div>
+          </div>
+          <p className="fs-4">
             {hotels.rooms} Habitaciones - {hotels.guestsNumber} Huespedes -{" "}
             {hotels.bathrooms} Baños{" "}
           </p>
-          <p>$ {hotels.dailyPrice}</p>
-          <p>{hotels.descripcion}</p>
+          <p className="precio">$ {hotels.dailyPrice} / noche</p>
+          <p className="desc">{hotels.descripcion}</p>
         </Col>
         <Row>
-          <Col className="col-18">
+          <Col xl="6" className="col-18">
             <Form className="border rounded p-2 my-4">
               <Form.Label className="fw-bold">
                 Información de reserva
@@ -161,11 +198,11 @@ const ReservationByOne = () => {
                   <p className="fw-bold">Total: </p>
                 </Col>
                 <Col className="text-center">
-                  <p>$ {hotels.dailyPrice}</p>
+                  <p>$ {total}</p>
                 </Col>
               </Row>
               <Form.Group className="my-5 text-center">
-                {/* <Link to='../../pays'> */}
+                <Link to='../../pays'>
                 <Button
                   variant="success"
                   className="d-block mx-auto"
@@ -173,9 +210,41 @@ const ReservationByOne = () => {
                 >
                   Confirmar Reserva
                 </Button>
-                {/* </Link> */}
+                </Link>
               </Form.Group>
             </Form>
+          </Col>
+          <Col>
+            <h4 className="mb-4 fs-3 pt-4">Opiniones</h4>
+            <div className="mb-5">
+              <div className="d-flex">
+                <img
+                  className="img-user"
+                  src="https://random.imagecdn.app/80/80"
+                  alt=""
+                />
+
+                <p className="opi-user ms-2">Majo y Luis</p>
+              </div>
+              <p className="comm-user">
+                Fuimos de Luna de miel y la pasamos hermoso.La vista es única y
+                podes ir caminado a todos lados.
+              </p>
+            </div>
+            <div className="mb-5">
+              <div className="d-flex">
+                <img
+                  className="img-user"
+                  src="https://picsum.photos/80"
+                  alt=""
+                />
+
+                <p className="opi-user ms-2">Guillermo</p>
+              </div>
+              <p className="comm-user">
+                Recomendadísima, la cabaña es hermosa y superconfortable.
+              </p>
+            </div>
           </Col>
         </Row>
       </Row>
