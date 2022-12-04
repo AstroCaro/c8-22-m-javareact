@@ -9,13 +9,17 @@ import Pays from "../pages/pays/Pays";
 import ReservationByOne from "../pages/reservation/ReservationByOne";
 import axios from "axios";
 
+
 const IndexRouter = () => {
   const [modalShow, setModalShow] = useState(false);
+  const [modalshow1, setmodalshow1] = useState(false)
 
   const [searching, setsearching] = useState("");
   const [capture, setcapture] = useState();
   const [hotels, sethotels] = useState([]);
 
+  const [log, setlog] = useState(false)
+  const [user,setuser] = useState('')
   useEffect(() => {
     axios
       .get("https://cabininn-backend-production.up.railway.app/hotels")
@@ -36,9 +40,15 @@ const IndexRouter = () => {
       <NavBarAll
         setModalShow={setModalShow}
         modalShow={modalShow}
+        setmodalshow1={setmodalshow1}
+        modalshow1={modalshow1}
         setsearching={setsearching}
         search={search}
         searching={searching}
+        log={log}
+        setlog={setlog}
+        user={user}
+        setuser={setuser}
       />
       <Routes>
         <Route path="/" element={<Home />} />

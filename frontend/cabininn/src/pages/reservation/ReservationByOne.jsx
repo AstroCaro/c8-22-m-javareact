@@ -12,38 +12,45 @@ const ReservationByOne = () => {
  
   let {id} = useParams();
   const [hotels, sethotels] = useState([]);
-  const [hotelid, sethotelid] = useState()
+  
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
   useEffect(()=> {
-    axios.get('https://api.jsonbin.io/v3/b/638601547966e84526cf3d75')
-    .then(res=>sethotels(res.data.record))
+    axios.get(`https://cabininn-backend-production.up.railway.app/hotels/${id}`)
+    .then(res=>sethotels(res.data))
      
   },[])
 
 
+const reservar = () => {
+console.log('reservaste');
+console.log(startDate.toLocaleDateString());
+console.log(endDate.toLocaleDateString());
+console.log(id);
 
-  const hotelFind = hotels.filter(h => h.id == id)
+
+}
 
 
-  console.log(hotelFind);
+
+ 
 
   return (
     <div className="container pt-4 reservation">
-      <h2>{hotelFind[0]?.name}</h2>
-      <p className="fw-bold text-decoration-underline">{hotelFind[0]?.location} {hotelFind[0]?.country}</p>
+      <h2>{hotels.name}</h2>
+      <p className="fw-bold text-decoration-underline">{hotels.location} {hotels.country}</p>
       <div className="row">
         <div className="col-8">
           <img
-            src={hotelFind[0]?.urlFoto}
+            src={hotels.urlImage}
             alt=""
             className="img-fluid h-100"
           />
         </div>
         <div className="col-4">
           <img
-            src={hotelFind[0]?.img2}
+            src={hotels.urlImage2}
             alt=""
             className="img-fluid h-100"
           />
@@ -53,9 +60,9 @@ const ReservationByOne = () => {
         <div className="col-7">
           <h3>Cabaña entero - Anfitrión: Patty</h3>
           <p>2 huéspedes1 - habitación1 - cama1 - baño</p>
-          <p>$ {hotelFind[0]?.dailyPrice}</p>
+          <p>$ {hotels.dailyPrice}</p>
           <p>
-           {hotelFind[0]?.description}
+           {hotels.descripcion}
           </p>
 
           <p>
@@ -100,11 +107,12 @@ const ReservationByOne = () => {
             </Form.Select>
             <Form.Group className="mt-3 mb-1">
 
-            <Link to='../../pays'>
-              <Button variant="danger" className="d-block mx-auto">
+            {/* <Link to='../../pays'> */}
+              <Button variant="danger" className="d-block mx-auto"
+              onClick={reservar}>
                 Confirmar Reserva
               </Button>
-              </Link>
+              {/* </Link> */}
             </Form.Group>
             <p>No se hará ningún cargo por el momento</p>
             <hr />

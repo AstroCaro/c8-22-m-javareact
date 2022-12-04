@@ -134,9 +134,9 @@ const Results = ({ capture, hotels }) => {
                               </Card.Title>
                               <span className="d-flex justify-content-start align-content-center">
                                 <BiMap className="mapIcon" />
-                                <Link className="mx-2 text-decoration-none">
+                                {/* <Link className="mx-2 text-decoration-none">
                                   Ver Mapa
-                                </Link>
+                                </Link> */}
                               </span>
                             </Col>
                             <Col className="text-end">

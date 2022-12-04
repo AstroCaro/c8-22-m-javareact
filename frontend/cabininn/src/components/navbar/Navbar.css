@@ -87,6 +87,11 @@ header ul li a {
   display: none;
 }
 
+.user {
+  color: white;
+  font-size: 20px;
+}
+
 
 @media (max-width: 1199.98px) {
   .searchBox {
