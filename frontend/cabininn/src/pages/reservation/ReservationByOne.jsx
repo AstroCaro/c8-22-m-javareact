@@ -1,133 +1,168 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { useParams } from "react-router-dom";
-import DatePicker from "react-datepicker";
+import { Button, Container, Carousel } from "react-bootstrap";
+import { BiMap, BiCommentDetail } from "react-icons/bi";
+import { AiOutlineHeart } from "react-icons/ai";
+import { MdGTranslate } from "react-icons/md";
 import "react-datepicker/dist/react-datepicker.css";
-import './reservation.css'
-import axios from 'axios'
-import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import Swal from "sweetalert2";
+import "./reservation.css";
+
 const ReservationByOne = () => {
- 
-  let {id} = useParams();
+  let { id } = useParams();
   const [hotels, sethotels] = useState([]);
-  
+
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
 
-  useEffect(()=> {
-    axios.get(`https://cabininn-backend-production.up.railway.app/hotels/${id}`)
-    .then(res=>sethotels(res.data))
-     
-  },[])
+  useEffect(() => {
+    axios
+      .get(`https://cabininn-backend-production.up.railway.app/hotels/${id}`)
+      .then((res) => sethotels(res.data));
+  }, []);
 
-
-const reservar = () => {
-console.log('reservaste');
-console.log(startDate.toLocaleDateString());
-console.log(endDate.toLocaleDateString());
-console.log(id);
-
-
-}
-
-
-
- 
+  const reservar = () => {
+    Swal.fire(
+      "Felicidades!",
+      `Reservaste el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
+      "success"
+    );
+    console.log("reservaste");
+    console.log(startDate.toLocaleDateString());
+    console.log(endDate.toLocaleDateString());
+    console.log(id);
+  };
 
   return (
-    <div className="container pt-4 reservation">
-      <h2>{hotels.name}</h2>
-      <p className="fw-bold text-decoration-underline">{hotels.location} {hotels.country}</p>
-      <div className="row">
-        <div className="col-8">
-          <img
-            src={hotels.urlImage}
-            alt=""
-            className="img-fluid h-100"
-          />
-        </div>
-        <div className="col-4">
-          <img
-            src={hotels.urlImage2}
-            alt=""
-            className="img-fluid h-100"
-          />
-        </div>
-      </div>
-      <div className="row mt-2">
-        <div className="col-7">
-          <h3>Cabaña entero - Anfitrión: Patty</h3>
-          <p>2 huéspedes1 - habitación1 - cama1 - baño</p>
+    <Container className="reservation">
+      <Row>
+        <Carousel>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={hotels.urlImage}
+              alt="First slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={hotels.urlImage2}
+              alt="Second slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={hotels.urlImage3}
+              alt="Third slide"
+            />
+          </Carousel.Item>
+        </Carousel>
+      </Row>
+      <Row className="mt-4">
+        <Row>
+          <Col>
+            <span className="d-flex justify-content-start align-content-center my-2">
+              <BiMap className="mapIcon" />
+              <Link className="mx-2 text-decoration-none">Ver Mapa</Link>
+            </span>
+          </Col>
+          <Col className="text-end align-content-center">
+            <span className="cardIcons mx-2 my-2">
+              <BiCommentDetail />
+            </span>
+            <span className="cardIcons mx-2 my-2">
+              <AiOutlineHeart />
+            </span>
+            <span className="cardIcons mx-2 my-2">
+              <MdGTranslate />
+            </span>
+          </Col>
+        </Row>
+        <Col className="text-center">
+          <h3 className="mainTitleResult mt-4">{hotels.name}</h3>
+          <p>
+            {hotels.rooms} Habitaciones - {hotels.guestsNumber} Huespedes -{" "}
+            {hotels.bathrooms} Baños{" "}
+          </p>
           <p>$ {hotels.dailyPrice}</p>
-          <p>
-           {hotels.descripcion}
-          </p>
-
-          <p>
-            Tu salud y seguridad son nuestra principal preocupación. Hemos
-            tomado todas las medidas necesarias para limpiar y desinfectar
-            adecuadamente Airbnb. Se desinfectarán todas las superficies,
-            controles remotos de TV, manijas de puerta, grifos de baño y manijas
-            de inodoro. Encontrará alcohol en gel, jabón líquido y toalla de
-            papel para su uso.
-          </p>
-        </div>
-        <div className="col-5">
-          <Form className="border rounded p-2 mt-2">
-            <Form.Label className="fw-bold">Información de reserva</Form.Label>
-            <InputGroup className="mb-3">
-              <InputGroup.Text>Fechas: </InputGroup.Text>
-              <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                selectsStart
-                startDate={startDate}
-                endDate={endDate}
-                className='datatime text-center'
-                placeholderText="LLEGADA"
-              />
-              <DatePicker
-                selected={endDate}
-                onChange={(date) => setEndDate(date)}
-                selectsEnd
-                startDate={startDate}
-                endDate={endDate}
-                minDate={startDate}
-                className='datatime text-center'
-                placeholderText="SALIDA"
-              />
-            </InputGroup>
-            <Form.Select aria-label="Default select example">
-              <option>1 Adulto</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </Form.Select>
-            <Form.Group className="mt-3 mb-1">
-
-            {/* <Link to='../../pays'> */}
-              <Button variant="danger" className="d-block mx-auto"
-              onClick={reservar}>
-                Confirmar Reserva
-              </Button>
-              {/* </Link> */}
-            </Form.Group>
-            <p>No se hará ningún cargo por el momento</p>
-            <hr />
-            <div className="row">
-              <div className="col">
-                <p className="fw-bold">Total: </p>
-              </div>
-              <div className="col">
-                <p> $1500.00</p>
-              </div>
-            </div>
-          </Form>
-        </div>
-      </div>
-    </div>
+          <p>{hotels.descripcion}</p>
+        </Col>
+        <Row>
+          <Col className="col-18">
+            <Form className="border rounded p-2 my-4">
+              <Form.Label className="fw-bold">
+                Información de reserva
+              </Form.Label>
+              <InputGroup className="mb-3">
+                <InputGroup.Text>Fechas </InputGroup.Text>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  className="datatime text-center"
+                  placeholderText="Fecha de Inicio"
+                />
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  className="datatime text-center"
+                  placeholderText="Fecha de Salida"
+                />
+              </InputGroup>
+              <Form.Select aria-label="Default select example" className="my-4">
+                <option value="1">1 Adulto</option>
+                <option value="2">2 Adultos</option>
+                <option value="3">3 Adultos</option>
+                <option value="4">4 Adultos</option>
+                <option value="5">+4 Adultos</option>
+              </Form.Select>
+              <Form.Select aria-label="Default select example">
+                <option value="1">1 Niños</option>
+                <option value="2">2 Niños</option>
+                <option value="3">3 Niños</option>
+                <option value="4">4 Niños</option>
+                <option value="5">+4 Niños</option>
+              </Form.Select>
+              <Form.Group className="my-5 text-center">
+                {/* <Link to='../../pays'> */}
+                <Button
+                  variant="success"
+                  className="d-block mx-auto"
+                  onClick={reservar}
+                >
+                  Confirmar Reserva
+                </Button>
+                {/* </Link> */}
+              </Form.Group>
+              <hr/>
+              <Row>
+                <Col>
+                  <p className="fw-bold">Total: </p>
+                </Col>
+                <Col>
+                <p>$ {hotels.dailyPrice}</p>
+                </Col>
+              </Row>
+            </Form>
+          </Col>
+        </Row>
+      </Row>
+    </Container>
   );
 };
 
