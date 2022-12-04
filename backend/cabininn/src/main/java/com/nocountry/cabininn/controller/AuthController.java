@@ -1,8 +1,10 @@
 package com.nocountry.cabininn.controller;
 
+import com.nocountry.cabininn.dto.UserDto;
 import com.nocountry.cabininn.dto.response.AuthResponse;
 import com.nocountry.cabininn.dto.LoginDto;
 import com.nocountry.cabininn.dto.RegisterDto;
+import com.nocountry.cabininn.model.User;
 import com.nocountry.cabininn.security.CustomUserDetailsService;
 import com.nocountry.cabininn.security.JWTGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,15 +52,20 @@ public class AuthController {
         return ResponseEntity.ok(new AuthResponse(token));
     }
 
-//    @GetMapping("/logout")
-//    public ResponseEntity<?> logout (HttpServletRequest request, HttpServletResponse response) {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth != null) {
-//            new SecurityContextLogoutHandler().logout(request, response, auth);
-//        }
-//
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    }
+    @GetMapping("/user")
+    public ResponseEntity<UserDto> authenticatedUser() {
+        return ResponseEntity.ok().body(customUserDetailsService.getUserAuthenticated());
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity<?> logout (HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
     @RequestMapping("/exit")
     public void exit(HttpServletRequest request, HttpServletResponse response) {
