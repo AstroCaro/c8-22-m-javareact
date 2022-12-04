@@ -15,8 +15,8 @@ const NavBarAll = ({
   modalshow1,
   log,
   setlog,
-  user, 
-  setuser
+  user,
+  setuser,
 }) => {
   const [colore, setcolore] = useState(false);
 
@@ -84,7 +84,6 @@ const NavBarAll = ({
                 </a>
               </li>
 
-
               <li>
                 <Link
                   className="btn-search fs-2 ms-5"
@@ -100,7 +99,7 @@ const NavBarAll = ({
       </header>
       <Login
         show={modalShow}
-        setlog={()=>setlog(true)}
+        setlog={() => setlog(true)}
         onHide={() => setModalShow(false)}
         setuser={setuser}
       />
