@@ -70,8 +70,13 @@
   font-size: 26px;
 }
 
+.mapIcon {
+  color: #ff0000;
+  font-size: larger;
+}
+
 .cardTitleResult {
-  font-size: 28px;
+  font-size: 24px;
   line-height: 20px;
   font-weight: 700;
   color: var(--colorBase);
@@ -79,21 +84,10 @@
 
 .cardTotal { 
   font-weight: 600;
-}
-
-.btnCard {
-  color: var(--colorMainWhite);
-  background-color: var(--colorActivo);
-  width: 120px;
   font-size: 20px;
 }
 
-.btnCard:hover {
-  color: var(--colorMainWhite);
-  background-color: var(--colorHover);
-}
-
-.btnCard:active {
-  color: var(--colorMainWhite);
-  background-color: var(--colorActivo);
+.cardResult {
+  border-radius: 20px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }

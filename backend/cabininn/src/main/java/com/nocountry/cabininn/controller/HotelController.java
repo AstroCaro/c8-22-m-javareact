@@ -21,6 +21,7 @@ import org.springframework.util.StringUtils;
 
 @RestController
 @RequestMapping("/hotels")
+@CrossOrigin(origins = "http://localhost:3000")
 public class HotelController {
 
     @Autowired
