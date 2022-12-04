@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import google from "../../images/google_buscador.png";
-import facebook from "../../images/facebook-logo-2019.png";
+// import google from "../../images/google_buscador.png";
+// import facebook from "../../images/facebook-logo-2019.png";
 import "./login.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const Login = ({show, onHide, setlog, setuser}) => {
+const Login = ({ show, onHide, setlog, setuser }) => {
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
-  const [token, settoken] = useState();
+  // const [token, settoken] = useState();
 
   const logeo = (e) => {
     e.preventDefault();
-    
+
     axios
       .post("https://cabininn-backend-production.up.railway.app/auth/login", {
         username: email,
         password: pass,
       })
       .then((res) => {
-        Swal.fire("Bienvenido!", "datos correctos", "success");
-        onHide()
-        setlog(true)
-        setuser('Brajhan')
+        Swal.fire("Bienvenido!", "Inicio de sesion exitoso", "success");
+        onHide();
+        setlog(true);
+        setuser("Brajhan");
       })
       .catch((error) => {
         Swal.fire("Error!", "Datos erroneos, vuelve a intentarlo", "error");
@@ -38,7 +38,7 @@ const Login = ({show, onHide, setlog, setuser}) => {
     <>
       <Modal
         show={show}
-        onHide={onHide}        
+        onHide={onHide}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered

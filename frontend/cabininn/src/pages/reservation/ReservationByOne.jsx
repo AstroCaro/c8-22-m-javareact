@@ -138,6 +138,14 @@ const ReservationByOne = () => {
                 <option value="4">4 Niños</option>
                 <option value="5">+4 Niños</option>
               </Form.Select>
+              <Row className="my-5 mx-2">
+                <Col>
+                  <p className="fw-bold">Total: </p>
+                </Col>
+                <Col className="text-center">
+                  <p>$ {hotels.dailyPrice}</p>
+                </Col>
+              </Row>
               <Form.Group className="my-5 text-center">
                 {/* <Link to='../../pays'> */}
                 <Button
@@ -149,15 +157,6 @@ const ReservationByOne = () => {
                 </Button>
                 {/* </Link> */}
               </Form.Group>
-              <hr/>
-              <Row>
-                <Col>
-                  <p className="fw-bold">Total: </p>
-                </Col>
-                <Col>
-                <p>$ {hotels.dailyPrice}</p>
-                </Col>
-              </Row>
             </Form>
           </Col>
         </Row>

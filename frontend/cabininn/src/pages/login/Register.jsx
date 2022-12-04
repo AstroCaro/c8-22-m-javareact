@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import google from "../../images/google_buscador.png";
-import facebook from "../../images/facebook-logo-2019.png";
+// import google from "../../images/google_buscador.png";
+// import facebook from "../../images/facebook-logo-2019.png";
 import "./login.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = (props) => {
   const [email, setemail] = useState();
@@ -15,12 +16,22 @@ const Register = (props) => {
     e.preventDefault();
     console.log(email);
     console.log(pass);
-    // axios
-    //   .post("https://cabininn-backend-production.up.railway.app/auth/register", {
-    //     username: email,
-    //     password: pass,
-    //   })
-    //   .then((res) => console.log(res.data));
+    axios
+      .post(
+        "https://cabininn-backend-production.up.railway.app/auth/register",
+        {
+          username: email,
+          password: pass,
+        }
+      )
+      .then((res) => {
+        Swal.fire("Bienvenido!", "Nuevo Registro hecho", "success");
+        // console.log(res.data);
+      })
+      .catch((err) => {
+        Swal.fire("Error!", "Error al registrar", "error");
+        // console.log(err);
+      });
   };
 
   return (
@@ -89,15 +100,14 @@ const Register = (props) => {
               Continuar con Facebook
             </Button>
           </div> */}
-
         </Modal.Body>
         <Modal.Footer className="w-100 d-flex justify-content-center">
           <div className="">
-          <p className="text-center ytenes mb-3">¿ya tenes cuenta?</p>
-          <Button className="buton mb-2" 
-          onClick={props.onHide}>Ingresar</Button>
+            <p className="text-center ytenes mb-3">¿ya tenes cuenta?</p>
+            <Button className="buton mb-2" onClick={props.onHide}>
+              Ingresar
+            </Button>
           </div>
-          
         </Modal.Footer>
       </Modal>
     </>
