@@ -21,6 +21,8 @@ const ReservationByOne = () => {
 
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
+  const [cantAdults, setcantAdults] = useState(1);
+  const [cantni, setcantni] = useState(1);
 
   useEffect(() => {
     axios
@@ -29,15 +31,23 @@ const ReservationByOne = () => {
   }, []);
 
   const reservar = () => {
-    Swal.fire(
-      "Felicidades!",
-      `Reservaste el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
-      "success"
-    );
-    console.log("reservaste");
-    console.log(startDate.toLocaleDateString());
-    console.log(endDate.toLocaleDateString());
-    console.log(id);
+    // Swal.fire(
+    //   "Felicidades!",
+    //   `Reservaste el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
+    //   "success"
+    // );
+    // console.log("reservaste");
+    // console.log(startDate.toLocaleDateString());
+    // console.log(endDate.toLocaleDateString());
+    // console.log(id);
+    let numTotal = Number(cantAdults) + Number(cantni);
+    if (hotels.guestsNumber < numTotal) {
+      Swal.fire(
+        "Error!",
+        `El Hotel tiene solo la capacidad de ${hotels.guestsNumber} Huespedes`,
+        "error"
+      );
+    }
   };
 
   return (
@@ -124,14 +134,22 @@ const ReservationByOne = () => {
                   placeholderText="Fecha de Salida"
                 />
               </InputGroup>
-              <Form.Select aria-label="Default select example" className="my-4">
+              <Form.Select
+                id="adult"
+                aria-label="Default select example"
+                className="my-4"
+                onChange={(e) => setcantAdults(e.target.value)}
+              >
                 <option value="1">1 Adulto</option>
                 <option value="2">2 Adultos</option>
                 <option value="3">3 Adultos</option>
                 <option value="4">4 Adultos</option>
                 <option value="5">+4 Adultos</option>
               </Form.Select>
-              <Form.Select aria-label="Default select example">
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => setcantni(e.target.value)}
+              >
                 <option value="1">1 Niños</option>
                 <option value="2">2 Niños</option>
                 <option value="3">3 Niños</option>
