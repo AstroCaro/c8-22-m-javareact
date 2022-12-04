@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../components/footer/Footer";
-import NavBarAll from "../components/navbar/NavBarAll";
 import { Route, Routes } from "react-router-dom";
+import Footer from "../components/footer/Footer";
 import Home from "../pages/home/Home";
-import Results from "../pages/results/Results";
-import NotFound from "../pages/notfound/NotFound";
 import Pays from "../pages/pays/Pays";
 import ReservationByOne from "../pages/reservation/ReservationByOne";
+import NavBarAll from "../components/navbar/NavBarAll";
+import Results from "../pages/results/Results";
+import UserLoged from "../pages/user/UserLoged";
+import NotFound from "../pages/notfound/NotFound";
 import axios from "axios";
 
 
@@ -58,6 +59,7 @@ const IndexRouter = () => {
         />
         <Route path="/reservation/:id" element={<ReservationByOne />} />
         <Route path="/pays" element={<Pays />} />
+        <Route path="/user" element={<UserLoged/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

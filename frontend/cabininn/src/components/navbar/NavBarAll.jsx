@@ -55,6 +55,13 @@ const NavBarAll = ({
               <p className="user">Bienvenido, {user}</p>
               <li>
                 <Link
+                  className="btn-search fs-5 ms-5"
+                  to={`/user`}
+                  onClick={search}
+                >Usuario</Link>
+              </li>
+              <li>
+                <Link
                   className="btn-search fs-2 ms-5"
                   to={`./results/${searching}`}
                   onClick={search}
