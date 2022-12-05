@@ -116,4 +116,9 @@ border: none;
   .marg {
     width: 100%;
   }
+
+  .text {
+    font-size: 22px;
+  }
+
 }

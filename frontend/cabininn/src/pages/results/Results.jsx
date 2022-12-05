@@ -19,8 +19,11 @@ const Results = ({ capture, hotels }) => {
         (hotel) => hotel.address.countryName === country
       );
 
+      console.log(hotelbyCountry);
+
       return (
         <Container>
+
           <h2 className="mainTitleResult text-center ">
             Resultados para {country}
           </h2>
@@ -31,7 +34,8 @@ const Results = ({ capture, hotels }) => {
               gusté!{" "}
             </h2>
             <>
-              <Row xs={1} md={3} className="g-3 mt-2">
+            
+              <Row xs={1} sm={2} md={2} lg={3}  className="g-3 mt-2">
                 {hotelbyCountry.map((item) => (
                   <Col key={item.id} className="my-4 mb-5">
                     <Link
@@ -46,7 +50,7 @@ const Results = ({ capture, hotels }) => {
                         />
                         <Card.Body className="py-4 my-2 border-3 rounded">
                           <Row>
-                            <Col className="text-start mx-4">
+                            <Col className="text-start mx-1">
                               <Card.Title>
                                 <span className="cardTitleResult">
                                   {item.name}
@@ -54,9 +58,9 @@ const Results = ({ capture, hotels }) => {
                               </Card.Title>
                               <span className="d-flex justify-content-start align-content-center">
                                 <BiMap className="mapIcon" />
-                                <Link className="mx-2 text-decoration-none">
+                                <div className="mx-2 text-decoration-none mb-3">
                                   Ver Mapa
-                                </Link>
+                                </div>
                               </span>
                             </Col>
                             <Col className="text-end">
@@ -73,7 +77,10 @@ const Results = ({ capture, hotels }) => {
                           </Row>
                           <Row>
                             <Col className="text-start mx-4">
-                              <Card.Text>descripcion : {item.name}</Card.Text>
+                              <Card.Text>
+                                {item.rooms} Habitaciones - {item.guestsNumber}{" "}
+                                Huespedes - {item.bathrooms} Baños
+                              </Card.Text>
                               {/* <Card.Text>Codigo Pais : {item.iataCode},{item.address.countryName}.</Card.Text>
                               <Card.Text>
                                 Codigo Postal : {item.address.postalCode},
@@ -84,7 +91,7 @@ const Results = ({ capture, hotels }) => {
                                 {item.distance.unit}
                               </Card.Text> */}
                               <Card.Text className="cardTotal">
-                                Total : $ {item.dailyPrice}
+                                Precio: $ {item.dailyPrice}
                               </Card.Text>
                             </Col>
                           </Row>
@@ -111,7 +118,7 @@ const Results = ({ capture, hotels }) => {
               gusté!{" "}
             </h2>
             <>
-              <Row xs={1} md={3} className="g-3 mt-2">
+              <Row xs={1} sm={2} md={2} lg={3}  className="g-3 mt-2">
                 {capture.map((item) => (
                   <Col key={item.id} className="my-4 mb-5">
                     <Link
@@ -126,7 +133,7 @@ const Results = ({ capture, hotels }) => {
                         />
                         <Card.Body className="py-4 my-2 border-3 rounded">
                           <Row>
-                            <Col className="text-start mx-4">
+                            <Col className="text-start mx-1">
                               <Card.Title>
                                 <span className="cardTitleResult">
                                   {item.name}
@@ -134,9 +141,9 @@ const Results = ({ capture, hotels }) => {
                               </Card.Title>
                               <span className="d-flex justify-content-start align-content-center">
                                 <BiMap className="mapIcon" />
-                                {/* <Link className="mx-2 text-decoration-none">
+                                <div className="mx-2 text-decoration-none mb-3">
                                   Ver Mapa
-                                </Link> */}
+                                </div> 
                               </span>
                             </Col>
                             <Col className="text-end">
@@ -153,7 +160,10 @@ const Results = ({ capture, hotels }) => {
                           </Row>
                           <Row>
                             <Col className="text-start mx-4">
-                              <Card.Text>descripcion : {item.name}</Card.Text>
+                              <Card.Text>
+                              {item.rooms} Habitaciones - {item.guestsNumber}{" "}
+                                Huespedes - {item.bathrooms} Baños
+                              </Card.Text>
                               {/* <Card.Text>Codigo Pais : {item.iataCode},{item.address.countryName}.</Card.Text>
                               <Card.Text>
                                 Codigo Postal : {item.address.postalCode},
