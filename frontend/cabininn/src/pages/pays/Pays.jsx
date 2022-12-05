@@ -65,7 +65,7 @@ function BasicExample() {
                       </div>
                     </Form.Group>
 
-                    <Form.Group className="d-flex justify-content-between mt-3">
+                    <Form.Group className="d-flex justify-content-between mt-3 gap-4 gap-sm-0">
                       <div>
                       <Form.Label className="me-4 fec">
                         Fecha de Vencimiento{" "}
