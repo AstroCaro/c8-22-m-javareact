@@ -55,8 +55,7 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
 
     @Override
     public BookingResponse createBooking(BookingRequest bookingDto) {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User userFound = mapper.getMapper().map(userService.findByUsername(username),
+        User userFound = mapper.getMapper().map(userService.findById(bookingDto.getUserId()),
                 User.class);
         Hotel hotelFound = mapper.getMapper().map(hotelService.findById(bookingDto.getHotelId()),
                 Hotel.class);
