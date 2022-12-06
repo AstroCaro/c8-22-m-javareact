@@ -88,3 +88,57 @@
 
   color: #000000;
 }
+
+
+@media (max-width: 575.98px) { 
+
+  .carousel-indicators button {
+
+  height: 20px !important;
+  width: 20px !important;
+  }
+
+  .mainTitleResult { 
+
+    font-size: 22px !important;
+    margin-top: 0 ;
+  }
+
+  .img-user {
+    width: 70px;
+  }
+
+
+  .nom-user {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .rol-user {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .ds {
+    font-size: 16px !important;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .precio {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .desc {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .img-user {
+    width: 60px;
+    height: 60px;
+  }
+
+  .opi-user {
+    font-size: 25px;
+  }
+ }

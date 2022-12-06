@@ -51,18 +51,17 @@ const ReservationByOne = () => {
       );
     } else {
       calcularTotal(cantDias);
+      Swal.fire(
+        "Felicidades!",
+        `Estas a un paso de reservar el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
+        "success"
+      );
     }
   };
 
- 
-
   const calcularTotal = (cantDias) => {
     settotal(Number(hotels?.dailyPrice) * cantDias);
-    
   };
-
- 
-
 
   return (
     <Container className="reservation">
@@ -121,10 +120,12 @@ const ReservationByOne = () => {
           <div className="d-flex justify-content-between mt-5">
             <div>
               <h3 className="mainTitleResult mt-4 mb-2">{hotels.name}</h3>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
+              <div className="">
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+              </div>
             </div>
             <div className="text-center">
               <img
@@ -136,7 +137,7 @@ const ReservationByOne = () => {
               <p className="rol-user">alojadora</p>
             </div>
           </div>
-          <p className="fs-4">
+          <p className="fs-4 ds">
             {hotels.rooms} Habitaciones - {hotels.guestsNumber} Huespedes -{" "}
             {hotels.bathrooms} Baños{" "}
           </p>
@@ -202,14 +203,14 @@ const ReservationByOne = () => {
                 </Col>
               </Row>
               <Form.Group className="my-5 text-center">
-                <Link to='../../pays'>
-                <Button
-                  variant="success"
-                  className="d-block mx-auto"
-                  onClick={reservar}
-                >
-                  Confirmar Reserva
-                </Button>
+                <Link to="../../pays">
+                  <Button
+                    variant="success"
+                    className="d-block mx-auto"
+                    onClick={reservar}
+                  >
+                    Confirmar Reserva
+                  </Button>
                 </Link>
               </Form.Group>
             </Form>

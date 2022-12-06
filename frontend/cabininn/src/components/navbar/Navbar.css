@@ -102,11 +102,20 @@ header ul li a {
 
 @media (max-width: 991.98px) {
   .searchBox {
-    display: none;
+    
+    position: absolute;
+    top: 170px;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
 
   .btn-search {
-    display: none;
+    
+    position: absolute;
+    top: 160px;
+    right: 20px;
+   
   }
 
   ul {
@@ -130,5 +139,17 @@ header ul li a {
     color: white;
     font-size: 30px;
     font-weight: bold;
+  }
+
+  .searchBox {
+    top: 130px;
+    height: 40px;
+  }
+
+  .btn-search {
+    top: 120px;
+    right: 18px;
+    width: 60px;
+    height: 60px;
   }
 }
