@@ -4,7 +4,7 @@
 }
 
 .title {
-  font-family: "Poppins";
+  font-family: var(--mainFont);
   font-style: normal;
   font-weight: 700;
   font-size: 80px;
@@ -15,7 +15,7 @@
 }
 
 .des {
-  font-family: "Poppins";
+  font-family: var(--mainFont);
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -27,7 +27,7 @@
 }
 
 .det {
-  font-family: "Poppins";
+  font-family: var(--mainFont);
   font-style: normal;
   font-weight: 700;
   font-size: 50px;
@@ -37,7 +37,7 @@
 }
 
 .fec {
-  font-family: "Poppins";
+  font-family: var(--mainFont);
   font-style: normal;
   font-weight: 700;
   font-size: 30px;
@@ -47,43 +47,40 @@
 }
 
 .text {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 25px;
-line-height: 60px;
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 60px;
 
-color: rgba(0, 0, 0, 0.82);
+  color: rgba(0, 0, 0, 0.82);
 }
 
-.text-s{
-  font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 25px;
-line-height: 35px;
+.text-s {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 35px;
 
-color: #07A98B;
+  color: #07a98b;
 }
 
-.btn-r{
-background: #025F4E;
-border-radius: 8px;
-border: none;
+.btn-r {
+  background: #025f4e;
+  border-radius: 8px;
+  border: none;
 }
-
 
 .ctrol {
   border: none;
   border-bottom: 1px solid #025f4e;
 }
 @media (max-width: 1199.98px) {
-.fec {
-  font-size: 23px;
+  .fec {
+    font-size: 23px;
+  }
 }
-
- }
-
 
 @media (max-width: 991.98px) {
   .title {
@@ -120,5 +117,4 @@ border: none;
   .text {
     font-size: 22px;
   }
-
 }

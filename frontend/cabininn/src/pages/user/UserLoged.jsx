@@ -11,7 +11,7 @@ function UserLoged() {
     <>
       <Container className="userContainer">
         <Row>
-          <Col className="align-content-center">
+          <Col className="align-content-center w-75">
             <h1 className="userTitle my-2">Bienvenido</h1>
             <Image
               className="userAvatar my-4"
@@ -38,10 +38,10 @@ function UserLoged() {
             </div>
           </Col>
           <Col>
-            <Container>
+            <Container className="userStatContainer">
               <Row>
                 <Col className="align-content-center">
-                  <Card>
+                  <Card className="h-100">
                     <Card.Body>
                       <Card.Title>Balance del Mes</Card.Title>
                       <Card.Text className="statNumber">$354984</Card.Text>
@@ -52,7 +52,7 @@ function UserLoged() {
                   </Card>
                 </Col>
                 <Col>
-                  <Card>
+                  <Card className="h-100">
                     <Card.Body>
                       <Card.Title>Pagos del Dia</Card.Title>
                       <Card.Text className="statNumber">$12500</Card.Text>
@@ -63,7 +63,7 @@ function UserLoged() {
                   </Card>
                 </Col>
                 <Col>
-                  <Card>
+                  <Card className="h-100">
                     <Card.Body>
                       <Card.Title>Total Anual</Card.Title>
                       <Card.Text className="statNumber">$1.109.865</Card.Text>
@@ -174,6 +174,61 @@ function UserLoged() {
                     </Card.Body>
                   </Card>
                 </Col>
+                <Row>
+                  <Col className="align-content-center">
+                    <Card className="my-4">
+                      <Card.Body>
+                        <Card.Title className="userTitle text-center">
+                          Mensajes
+                        </Card.Title>
+                      </Card.Body>
+                      <Card className="my-2 mx-2">
+                        <Card.Body className="d-flex">
+                        <Card.Img
+                              className="avatar"
+                              src="https://www.w3schools.com/howto/img_avatar2.png"
+                              alt="Avatar"
+                            />
+                            <Card.Title className="mx-2 userMessageTitle">María luz</Card.Title>
+                          <Card.Text className="mt-4 userMessage">¡Hola! ¿Cuál es el horario del check in?</Card.Text>
+                        </Card.Body>
+                      </Card>
+                      <Card className="my-2 mx-2">
+                        <Card.Body className="d-flex">
+                        <Card.Img
+                              className="avatar"
+                              src="https://www.w3schools.com/howto/img_avatar.png"
+                              alt="Avatar"
+                            />
+                            <Card.Title className="mx-2 userMessageTitle">José Rodriguez</Card.Title>
+                          <Card.Text className="mt-4 userMessageSmall2">Buenas tardes ¿La blanquería está incluida?</Card.Text>
+                        </Card.Body>
+                      </Card>
+                      <Card className="my-2 mx-2">
+                        <Card.Body className="d-flex">
+                        <Card.Img
+                              className="avatar"
+                              src="https://www.w3schools.com/howto/img_avatar.png"
+                              alt="Avatar"
+                            />
+                            <Card.Title className="mx-2 userMessageTitle">Lucas Santoro</Card.Title>
+                          <Card.Text className="mt-4 userMessageSmall">¡Hola! ¿Cómo estás?</Card.Text>
+                        </Card.Body>
+                      </Card>
+                      <Card className="my-2 mx-2">
+                        <Card.Body className="d-flex">
+                        <Card.Img
+                              className="avatar"
+                              src="https://www.w3schools.com/howto/img_avatar2.png"
+                              alt="Avatar"
+                            />
+                            <Card.Title className="mx-2 userMessageTitle">Samanta</Card.Title>
+                          <Card.Text className="mt-4 userMessage">¡Buenos días! ¿Cuál sería la velocidad del internet?</Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </Card>
+                  </Col>
+                </Row>
               </Row>
             </Container>
           </Col>

@@ -2,6 +2,10 @@
   margin-top: 180px;
 }
 
+.userStatContainer {
+  width: 900px;
+}
+
 .userTitle {
   color: var(--colorActivo);
   font-family: "Poppins", sans-serif;
@@ -58,4 +62,16 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+
+.userMessage {
+  margin-left: -90px;
+}
+
+.userMessageSmall {
+  margin-left: -135px;
+}
+
+.userMessageSmall2 {
+  margin-left: -145px;
 }
