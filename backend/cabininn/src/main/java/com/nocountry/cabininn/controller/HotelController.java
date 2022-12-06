@@ -89,11 +89,10 @@ public class HotelController {
                 filter.setEquals(dto.getCityName());
                 hotelCriteria.setCityName(filter);
             }
-
-            if(dto.getMaxPrice()!=null){
+            if(dto.getGuestsNumber()!=null){
                 IntegerFilter filter = new IntegerFilter();
-                filter.setEquals(dto.getMaxPrice());
-                hotelCriteria.setDailyPrice(filter);
+                filter.setEquals(dto.getGuestsNumber());
+                hotelCriteria.setGuestsNumber(filter);
             }
         }
 
