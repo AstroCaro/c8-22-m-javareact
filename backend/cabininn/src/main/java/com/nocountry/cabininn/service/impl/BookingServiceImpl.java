@@ -12,6 +12,7 @@ import com.nocountry.cabininn.service.IHotelService;
 import com.nocountry.cabininn.service.IUserService;
 import com.nocountry.cabininn.utils.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;

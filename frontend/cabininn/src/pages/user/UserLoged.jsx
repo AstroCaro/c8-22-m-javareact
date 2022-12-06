@@ -8,6 +8,7 @@ import "./user.css";
 import { MdNorthWest } from "react-icons/md";
 
 function UserLoged() {
+
   const logout = () => {
    
 
@@ -15,11 +16,15 @@ function UserLoged() {
     window.location.assign("/");
   };
 
+
+
+    
+
   return (
     <>
       <Container className="userContainer">
         <Row>
-          <Col className="align-content-center w-75">
+          <Col className="align-content-center userDataContainer">
             <h1 className="userTitle my-2">Bienvenido</h1>
             <Image
               className="userAvatar my-4"
@@ -86,15 +91,15 @@ function UserLoged() {
                 <Col>
                   <Card>
                     <Card.Body>
-                      <Card.Title>Mis Propiedades</Card.Title>
+                      <Card.Title className="userDataTitle">Mis Propiedades</Card.Title>
                       <Card.Text>Card del propietario</Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
                 <Col>
-                  <Card>
+                  <Card className="h-100">
                     <Card.Body>
-                      <Card.Title>Calendario</Card.Title>
+                      <Card.Title className="userDataTitle">Calendario</Card.Title>
                       <Card.Text>Card del Calendario</Card.Text>
                     </Card.Body>
                   </Card>
@@ -104,7 +109,7 @@ function UserLoged() {
                 <Col>
                   <Card className="h-100">
                     <Card.Body>
-                      <Card.Title>Resumen - Estadisticas</Card.Title>
+                      <Card.Title className="userDataTitle">Resumen - Estadisticas</Card.Title>
                       <Card.Text className="text-muted">
                         Bariloche- Calle Sarmiento esq Ticornia
                       </Card.Text>
@@ -115,7 +120,7 @@ function UserLoged() {
                 <Col>
                   <Card className="h-100">
                     <Card.Body>
-                      <Card.Title>Puntuacion</Card.Title>
+                      <Card.Title className="userDataTitle">Puntuacion</Card.Title>
                       <Card.Text className="starIcons">
                         <ImStarFull />
                         <ImStarFull />
@@ -186,7 +191,7 @@ function UserLoged() {
                   <Col className="align-content-center">
                     <Card className="my-4">
                       <Card.Body>
-                        <Card.Title className="userTitle text-center">
+                        <Card.Title className="userDataTitle text-center">
                           Mensajes
                         </Card.Title>
                       </Card.Body>

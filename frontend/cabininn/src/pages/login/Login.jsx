@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const Login = ({ show, onHide, setlog, log }) => {
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
-  // const [token, settoken] = useState();
+  const [token, setToken] = useState();
 
   const logeo = (e) => {
     e.preventDefault();
@@ -20,14 +20,19 @@ const Login = ({ show, onHide, setlog, log }) => {
       .post("https://cabininn-backend-production.up.railway.app/auth/login", {
         username: email,
         password: pass,
+        token: token,
       })
       .then((res) => {
         Swal.fire("Bienvenido!", "Inicio de sesion exitoso", "success");
         onHide();
         setlog(true);
+
         localStorage.setItem('session', true)
         localStorage.setItem('dataSession',JSON.stringify({userId: res.data.id, email: res.data.username}))        
-       
+        console.log(res.data.accessToken)
+        setToken(res.data.accessToken);
+        
+
       })
       .catch((error) => {
         Swal.fire("Error!", "Datos erroneos, vuelve a intentarlo", "error");

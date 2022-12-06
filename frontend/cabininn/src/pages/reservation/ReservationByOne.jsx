@@ -96,6 +96,7 @@ const ReservationByOne = ({ idus }) => {
     } else {
 
 
+
         probando()
 
       let cantd = (endDate - startDate) / (1000 * 60 * 60 * 24);
@@ -117,6 +118,10 @@ const ReservationByOne = ({ idus }) => {
 
   const calcularTotal = () => {
     let cantDias = (endDate - startDate) / (1000 * 60 * 60 * 24);
+
+
+  const calcularTotal = (cantDias) => {
+
     settotal(Number(hotels?.dailyPrice) * cantDias);
   };
 
@@ -263,6 +268,7 @@ const ReservationByOne = ({ idus }) => {
                 </Col>
               </Row>
               <Form.Group className="my-5 text-center">
+
                 {/* <Link to={pago && '../../pays'}> */}
                 <Button
                   variant="success"
@@ -273,6 +279,7 @@ const ReservationByOne = ({ idus }) => {
                   Confirmar Reserva
                 </Button>
                 {/* </Link> */}
+
               </Form.Group>
             </Form>
           </Col>
