@@ -68,7 +68,7 @@ const NavBarAll = ({
               </li>
               <li>
                 <Link
-                  className="btn-search fs-2 ms-5"
+                  className="btn-search fs-2"
                   to={`./results/${searching}`}
                   onClick={search}
                 >
@@ -78,6 +78,15 @@ const NavBarAll = ({
             </ul>
           ) : (
             <ul>
+            <li>
+                <Link
+                  className="btn-search fs-2"
+                  to={`./results/${searching}`}
+                  onClick={search}
+                >
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </Link>
+              </li>
               <li>
                 <a
                   className="btn-reg rounded"
@@ -95,16 +104,6 @@ const NavBarAll = ({
                 >
                   Ingresar
                 </a>
-              </li>
-
-              <li>
-                <Link
-                  className="btn-search fs-2 ms-5"
-                  to={`./results/${searching}`}
-                  onClick={search}
-                >
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                </Link>
               </li>
             </ul>
           )}

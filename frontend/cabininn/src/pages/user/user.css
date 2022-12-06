@@ -131,15 +131,15 @@
     width: 300px;
   }
 
-  .searchBox {
-    width: 350px;
-    display: none;
-  }
 
-  .btn-search {
-    top: 120px;
-    right: 0px;
-  }
+ /* .container-searchbox 
+   margin: 10px 0px 0 -150px; 
+}  */
+
+.searchBox {
+  margin: 0px 0 0px 0;
+  width: 250px;
+}
 
   .userDataTitle {
     font-size: 24px;
@@ -165,3 +165,5 @@
     margin-left: -140px;
   }
 }
+
+
