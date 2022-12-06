@@ -13,8 +13,6 @@ public class BookingDto {
 
     private Long hotelId;
 
-    private Long userId;
-
     @JsonFormat(pattern="dd-MM-yyyy")
     private LocalDate checkIn;
 

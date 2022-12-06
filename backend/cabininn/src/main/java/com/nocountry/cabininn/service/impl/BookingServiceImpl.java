@@ -12,6 +12,7 @@ import com.nocountry.cabininn.service.IHotelService;
 import com.nocountry.cabininn.service.IUserService;
 import com.nocountry.cabininn.utils.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -54,7 +55,8 @@ public class BookingServiceImpl implements com.nocountry.cabininn.service.IBooki
 
     @Override
     public BookingResponse createBooking(BookingRequest bookingDto) {
-        User userFound = mapper.getMapper().map(userService.findById(bookingDto.getUserId()),
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User userFound = mapper.getMapper().map(userService.findByUsername(username),
                 User.class);
         Hotel hotelFound = mapper.getMapper().map(hotelService.findById(bookingDto.getHotelId()),
                 Hotel.class);
