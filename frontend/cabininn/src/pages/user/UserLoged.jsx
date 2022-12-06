@@ -13,7 +13,7 @@ function UserLoged() {
     <>
       <Container className="userContainer">
         <Row>
-          <Col className="align-content-center">
+          <Col className="align-content-center userDataContainer">
             <h1 className="userTitle my-2">Bienvenido</h1>
             <Image
               className="userAvatar my-4"
@@ -86,7 +86,7 @@ function UserLoged() {
                   </Card>
                 </Col>
                 <Col>
-                  <Card>
+                  <Card className="h-100">
                     <Card.Body>
                       <Card.Title className="userDataTitle">Calendario</Card.Title>
                       <Card.Text>Card del Calendario</Card.Text>
