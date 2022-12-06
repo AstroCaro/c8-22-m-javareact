@@ -1,7 +1,33 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import "./pays.css";
-function BasicExample() {
+import Swal from "sweetalert2";
+function BasicExample({}) {
+
+  
+  
+   const datospago = JSON.parse(localStorage.getItem('pay'))
+
+
+   const confirmReserva = () => {
+
+    Swal.fire(
+      "Felicidades!",
+      `se genero tu reserva con el codigo ${new Date()}`,
+      "success"
+    );
+
+    setTimeout(()=>{
+      localStorage.removeItem('pay')
+      // localStorage.removeItem('dataSession')
+      // localStorage.removeItem('session')
+      window.location.assign('/')
+
+    },3000)
+   
+
+   }
+   
   return (
     <>
       <Container className="mt-3 marg">
@@ -15,26 +41,26 @@ function BasicExample() {
                 <div className="d-flex justify-content-between">
                   <p className="fec m-0">
                     Fecha de viaje:{" "}
-                    <span className="text m-0"> 28/11/22 al 10/12/22 </span>
+                    <span className="text m-0"> {datospago.checkin} al {datospago.checkout} </span>
                   </p>
                   <p className="fec m-0">
-                    Viajeros: <span className="text m-0">1</span>{" "}
+                    Viajeros: <span className="text m-0">{datospago.viajeros}</span>{" "}
                   </p>
                 </div>
                 <hr />
                 <p className="text-s">
-                  Precio 10 noches <span className="text ms-4"> $ 99.000 </span>{" "}
+                  Precio {datospago.cantdias} noches <span className="text ms-4"> $ {datospago.total} </span>{" "}
                 </p>
                 <p className="text-s">
                   Tarifa de limpieza{" "}
-                  <span className="text ms-4"> $ 5 000 </span>{" "}
+                  <span className="text ms-4"> $ 5000 </span>{" "}
                 </p>
                 <p className="text-s">
                   Tarifa por servicio <span className="text ms-4"> $ 918 </span>{" "}
                 </p>
                 <hr />
                 <p className="text-end fec">
-                  TOTAL: <span className="text fs-3">$ 106 0000</span>
+                  TOTAL: <span className="text fs-3">$ {Number(datospago.total) + 5918}</span>
                 </p>
               </div>
             </Card>
@@ -78,7 +104,7 @@ function BasicExample() {
                       </div>
                     </Form.Group>
                   </Form.Group>
-                  <Button className="d-block mx-auto mt-5 btn-r px-5 py-3">Reservar</Button>
+                  <Button className="d-block mx-auto mt-5 btn-r px-5 py-3" onClick={confirmReserva}>Reservar</Button>
                 </Form>
               </div>
             </Card>

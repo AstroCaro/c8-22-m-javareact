@@ -5,10 +5,21 @@ import Col from "react-bootstrap/Col";
 import { Card, Image } from "react-bootstrap";
 import { ImStarHalf, ImStarFull } from "react-icons/im";
 import "./user.css";
+import { MdNorthWest } from "react-icons/md";
 
 function UserLoged() {
 
+  const logout = () => {
+   
+
+    localStorage.removeItem("session");
+    window.location.assign("/");
+  };
+
+
+
     
+
   return (
     <>
       <Container className="userContainer">
@@ -26,7 +37,7 @@ function UserLoged() {
               Editar perfil
             </button>
             <br />
-            <button className="btn btn-primary btnLogout my-2">
+            <button className="btn btn-primary btnLogout my-2" onClick={logout}>
               Cerrar sesion
             </button>
             <div className="my-2 py-2">
