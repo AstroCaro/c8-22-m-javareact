@@ -52,25 +52,16 @@ const ReservationByOne = () => {
     } else {
       calcularTotal(cantDias);
       Swal.fire(
-      "Felicidades!",
-      `Estas a un paso de reservar el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
-      "success"
-    );
-
-
-
+        "Felicidades!",
+        `Estas a un paso de reservar el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
+        "success"
+      );
     }
   };
 
- 
-
   const calcularTotal = (cantDias) => {
     settotal(Number(hotels?.dailyPrice) * cantDias);
-    
   };
-
- 
-
 
   return (
     <Container className="reservation">
@@ -130,10 +121,10 @@ const ReservationByOne = () => {
             <div>
               <h3 className="mainTitleResult mt-4 mb-2">{hotels.name}</h3>
               <div className="">
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
               </div>
             </div>
             <div className="text-center">
@@ -212,14 +203,14 @@ const ReservationByOne = () => {
                 </Col>
               </Row>
               <Form.Group className="my-5 text-center">
-                <Link to='../../pays'>
-                <Button
-                  variant="success"
-                  className="d-block mx-auto"
-                  onClick={reservar}
-                >
-                  Confirmar Reserva
-                </Button>
+                <Link to="../../pays">
+                  <Button
+                    variant="success"
+                    className="d-block mx-auto"
+                    onClick={reservar}
+                  >
+                    Confirmar Reserva
+                  </Button>
                 </Link>
               </Form.Group>
             </Form>

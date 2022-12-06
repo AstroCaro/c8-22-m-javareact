@@ -58,7 +58,9 @@ const NavBarAll = ({
                   className="btn-search fs-5 ms-5"
                   to={`/user`}
                   onClick={search}
-                >Usuario</Link>
+                >
+                  Ajustes
+                </Link>
               </li>
               <li>
                 <Link
