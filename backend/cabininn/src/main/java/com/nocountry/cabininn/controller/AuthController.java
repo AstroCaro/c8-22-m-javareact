@@ -4,6 +4,7 @@ import com.nocountry.cabininn.dto.UserDto;
 import com.nocountry.cabininn.dto.response.AuthResponse;
 import com.nocountry.cabininn.dto.LoginDto;
 import com.nocountry.cabininn.dto.RegisterDto;
+import com.nocountry.cabininn.dto.response.LoginResponse;
 import com.nocountry.cabininn.model.User;
 import com.nocountry.cabininn.security.CustomUserDetailsService;
 import com.nocountry.cabininn.security.JWTGenerator;
@@ -44,13 +45,19 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginDto loginDto) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(),
                         loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        LoginResponse userLogged = customUserDetailsService.findByUsername(loginDto.getUsername());
+
         String token = jwtGenerator.generateToken(authentication);
-        return ResponseEntity.ok(new AuthResponse(token));
+
+        userLogged.setToken(token);
+
+        return ResponseEntity.ok(userLogged);
     }
 
     @GetMapping("/user")

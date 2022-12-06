@@ -2,7 +2,9 @@ package com.nocountry.cabininn.security;
 
 import com.nocountry.cabininn.dto.RegisterDto;
 import com.nocountry.cabininn.dto.UserDto;
+import com.nocountry.cabininn.dto.response.LoginResponse;
 import com.nocountry.cabininn.exception.ResourceFoundException;
+import com.nocountry.cabininn.exception.ResourceNotFoundException;
 import com.nocountry.cabininn.model.Role;
 import com.nocountry.cabininn.model.User;
 import com.nocountry.cabininn.repository.RoleRepository;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -102,5 +105,13 @@ public class CustomUserDetailsService  implements UserDetailsService {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserDto userDto = mapper.getMapper().map(userRepository.findByUsername(username), UserDto.class);
         return userDto;
+    }
+
+    public LoginResponse findByUsername(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
+        if (user.isPresent()) {
+            return mapper.getMapper().map(user, LoginResponse.class);
+        }
+        throw new ResourceNotFoundException("Username not found");
     }
 }
