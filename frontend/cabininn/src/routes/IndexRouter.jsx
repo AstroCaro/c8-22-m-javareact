@@ -19,8 +19,14 @@ const IndexRouter = () => {
   const [capture, setcapture] = useState();
   const [hotels, sethotels] = useState([]);
 
-  const [log, setlog] = useState(false)
+  const [log, setlog] = useState(Boolean(localStorage.getItem('session')))
   const [user,setuser] = useState('')
+  const [idus, setidus] = useState(0)
+// datos para el pago
+
+const [dataPago, setdataPago] = useState({})
+
+
   useEffect(() => {
     axios
       .get("https://cabininn-backend-production.up.railway.app/hotels")
@@ -36,6 +42,7 @@ const IndexRouter = () => {
     // return <Link to="./results"> </Link>;
   };
 
+  
   return (
     <div>
       <NavBarAll
@@ -50,6 +57,7 @@ const IndexRouter = () => {
         setlog={setlog}
         user={user}
         setuser={setuser}
+        setidus={setidus}
       />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -57,7 +65,7 @@ const IndexRouter = () => {
           path="/results/:country"
           element={<Results capture={capture} hotels={hotels} />}
         />
-        <Route path="/reservation/:id" element={<ReservationByOne />} />
+        <Route path="/reservation/:id" element={<ReservationByOne idus={idus} setidus={setidus} />} />
         <Route path="/pays" element={<Pays />} />
         <Route path="/user" element={<UserLoged/>} />
         <Route path="*" element={<NotFound />} />

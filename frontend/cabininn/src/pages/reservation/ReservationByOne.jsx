@@ -15,34 +15,78 @@ import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 import "./reservation.css";
 
-const ReservationByOne = () => {
+const ReservationByOne = ({ idus }) => {
   let { id } = useParams();
   const [hotels, sethotels] = useState([]);
 
   const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  const [endDate, setEndDate] = useState("");
   const [cantAdults, setcantAdults] = useState(1);
   const [cantni, setcantni] = useState(1);
 
   const [total, settotal] = useState(0);
+
   useEffect(() => {
     axios
       .get(`https://cabininn-backend-production.up.railway.app/hotels/${id}`)
       .then((res) => sethotels(res.data));
   }, []);
 
+  const probando = () => {
+    let fechai = startDate.toLocaleDateString().replaceAll('/','-')
+    let fechaf = endDate.toLocaleDateString().replaceAll('/','-')
+    const usuario = JSON.parse(localStorage.getItem("dataSession"));
+    
+    if (!usuario) {
+      Swal.fire(
+        "Error!",
+        `Debe iniciar sesión para que pueda reservar`,
+        "error"
+      );
+      return;
+    }
+
+
+    if (fechai.split('-')[0].length == 1) {
+      fechai = '0'.concat(fechai)
+    }
+    if (fechaf.split('-')[0].length == 1) {
+      fechaf = '0'.concat(fechaf)
+    }
+  
+
+    console.log(fechai, fechaf);
+
+    axios
+      .post("https://cabininn-backend-production.up.railway.app/bookings/", {
+        userId: usuario.userId,
+        hotelId: id,
+        checkIn: fechai,
+        checkOut: fechaf,
+      })
+      .then((res) => {
+
+            Swal.fire(
+            "Felicidades!",
+            `Estas a un paso de reservar el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
+            "success"
+          );
+          window.location.assign("../../pays");
+      })
+      .catch((err) => {
+        Swal.fire(
+          "Error!",
+          `Fechas no disponibles, porfavor elija otra fecha`,
+          "error"
+        );
+
+      });
+  };
+
   const reservar = () => {
-    // Swal.fire(
-    //   "Felicidades!",
-    //   `Reservaste el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
-    //   "success"
-    // );
-    // console.log("reservaste");
-    // console.log(startDate.toLocaleDateString());
-    // console.log(endDate.toLocaleDateString());
-    // console.log(id);
+    
     let numTotal = Number(cantAdults) + Number(cantni);
-    let cantDias = (endDate - startDate) / (1000 * 60 * 60 * 24);
+
     if (hotels.guestsNumber < numTotal) {
       Swal.fire(
         "Error!",
@@ -50,27 +94,31 @@ const ReservationByOne = () => {
         "error"
       );
     } else {
-      calcularTotal(cantDias);
-      Swal.fire(
-      "Felicidades!",
-      `Estas a un paso de reservar el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
-      "success"
-    );
 
 
+        probando()
 
+      let cantd = (endDate - startDate) / (1000 * 60 * 60 * 24);
+
+      localStorage.setItem(
+        "pay",
+        JSON.stringify({
+          checkin: startDate.toLocaleDateString(),
+          checkout: endDate.toLocaleDateString(),
+          viajeros: numTotal,
+          cantdias: cantd,
+          total: total,
+        })
+      );
+
+      
     }
   };
 
- 
-
-  const calcularTotal = (cantDias) => {
+  const calcularTotal = () => {
+    let cantDias = (endDate - startDate) / (1000 * 60 * 60 * 24);
     settotal(Number(hotels?.dailyPrice) * cantDias);
-    
   };
-
- 
-
 
   return (
     <Container className="reservation">
@@ -130,10 +178,10 @@ const ReservationByOne = () => {
             <div>
               <h3 className="mainTitleResult mt-4 mb-2">{hotels.name}</h3>
               <div className="">
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
-              <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
+                <i className="fa-regular fa-star fs-3 text-warning"></i>
               </div>
             </div>
             <div className="text-center">
@@ -172,7 +220,10 @@ const ReservationByOne = () => {
                 />
                 <DatePicker
                   selected={endDate}
-                  onChange={(date) => setEndDate(date)}
+                  onChange={(date) => {
+                    setEndDate(date);
+                  }}
+                  onCalendarClose={calcularTotal}
                   selectsEnd
                   startDate={startDate}
                   endDate={endDate}
@@ -212,15 +263,16 @@ const ReservationByOne = () => {
                 </Col>
               </Row>
               <Form.Group className="my-5 text-center">
-                <Link to='../../pays'>
+                {/* <Link to={pago && '../../pays'}> */}
                 <Button
                   variant="success"
                   className="d-block mx-auto"
                   onClick={reservar}
+                  // onClick={probando}
                 >
                   Confirmar Reserva
                 </Button>
-                </Link>
+                {/* </Link> */}
               </Form.Group>
             </Form>
           </Col>

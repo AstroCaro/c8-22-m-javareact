@@ -5,8 +5,16 @@ import Col from "react-bootstrap/Col";
 import { Card, Image } from "react-bootstrap";
 import { ImStarHalf, ImStarFull } from "react-icons/im";
 import "./user.css";
+import { MdNorthWest } from "react-icons/md";
 
 function UserLoged() {
+  const logout = () => {
+   
+
+    localStorage.removeItem("session");
+    window.location.assign("/");
+  };
+
   return (
     <>
       <Container className="userContainer">
@@ -24,7 +32,7 @@ function UserLoged() {
               Editar perfil
             </button>
             <br />
-            <button className="btn btn-primary btnLogout my-2">
+            <button className="btn btn-primary btnLogout my-2" onClick={logout}>
               Cerrar sesion
             </button>
             <div className="my-2 py-2">
@@ -184,46 +192,62 @@ function UserLoged() {
                       </Card.Body>
                       <Card className="my-2 mx-2">
                         <Card.Body className="d-flex">
-                        <Card.Img
-                              className="avatar"
-                              src="https://www.w3schools.com/howto/img_avatar2.png"
-                              alt="Avatar"
-                            />
-                            <Card.Title className="mx-2 userMessageTitle">María luz</Card.Title>
-                          <Card.Text className="mt-4 userMessage">¡Hola! ¿Cuál es el horario del check in?</Card.Text>
+                          <Card.Img
+                            className="avatar"
+                            src="https://www.w3schools.com/howto/img_avatar2.png"
+                            alt="Avatar"
+                          />
+                          <Card.Title className="mx-2 userMessageTitle">
+                            María luz
+                          </Card.Title>
+                          <Card.Text className="mt-4 userMessage">
+                            ¡Hola! ¿Cuál es el horario del check in?
+                          </Card.Text>
                         </Card.Body>
                       </Card>
                       <Card className="my-2 mx-2">
                         <Card.Body className="d-flex">
-                        <Card.Img
-                              className="avatar"
-                              src="https://www.w3schools.com/howto/img_avatar.png"
-                              alt="Avatar"
-                            />
-                            <Card.Title className="mx-2 userMessageTitle">José Rodriguez</Card.Title>
-                          <Card.Text className="mt-4 userMessageSmall2">Buenas tardes ¿La blanquería está incluida?</Card.Text>
+                          <Card.Img
+                            className="avatar"
+                            src="https://www.w3schools.com/howto/img_avatar.png"
+                            alt="Avatar"
+                          />
+                          <Card.Title className="mx-2 userMessageTitle">
+                            José Rodriguez
+                          </Card.Title>
+                          <Card.Text className="mt-4 userMessageSmall2">
+                            Buenas tardes ¿La blanquería está incluida?
+                          </Card.Text>
                         </Card.Body>
                       </Card>
                       <Card className="my-2 mx-2">
                         <Card.Body className="d-flex">
-                        <Card.Img
-                              className="avatar"
-                              src="https://www.w3schools.com/howto/img_avatar.png"
-                              alt="Avatar"
-                            />
-                            <Card.Title className="mx-2 userMessageTitle">Lucas Santoro</Card.Title>
-                          <Card.Text className="mt-4 userMessageSmall">¡Hola! ¿Cómo estás?</Card.Text>
+                          <Card.Img
+                            className="avatar"
+                            src="https://www.w3schools.com/howto/img_avatar.png"
+                            alt="Avatar"
+                          />
+                          <Card.Title className="mx-2 userMessageTitle">
+                            Lucas Santoro
+                          </Card.Title>
+                          <Card.Text className="mt-4 userMessageSmall">
+                            ¡Hola! ¿Cómo estás?
+                          </Card.Text>
                         </Card.Body>
                       </Card>
                       <Card className="my-2 mx-2">
                         <Card.Body className="d-flex">
-                        <Card.Img
-                              className="avatar"
-                              src="https://www.w3schools.com/howto/img_avatar2.png"
-                              alt="Avatar"
-                            />
-                            <Card.Title className="mx-2 userMessageTitle">Samanta</Card.Title>
-                          <Card.Text className="mt-4 userMessage">¡Buenos días! ¿Cuál sería la velocidad del internet?</Card.Text>
+                          <Card.Img
+                            className="avatar"
+                            src="https://www.w3schools.com/howto/img_avatar2.png"
+                            alt="Avatar"
+                          />
+                          <Card.Title className="mx-2 userMessageTitle">
+                            Samanta
+                          </Card.Title>
+                          <Card.Text className="mt-4 userMessage">
+                            ¡Buenos días! ¿Cuál sería la velocidad del internet?
+                          </Card.Text>
                         </Card.Body>
                       </Card>
                     </Card>

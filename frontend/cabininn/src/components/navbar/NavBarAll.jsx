@@ -17,6 +17,7 @@ const NavBarAll = ({
   setlog,
   user,
   setuser,
+  setidus
 }) => {
   const [colore, setcolore] = useState(false);
 
@@ -25,6 +26,9 @@ const NavBarAll = ({
   };
 
   window.addEventListener("scroll", changecolor);
+
+  const usuario = JSON.parse(localStorage.getItem('dataSession'));
+
 
   return (
     <>
@@ -52,7 +56,7 @@ const NavBarAll = ({
         <nav className="me-5">
           {log ? (
             <ul>
-              <p className="user">Bienvenido, {user}</p>
+              <p className="user">Bienvenido, {usuario?.email.split('@')[0]}</p>
               <li>
                 <Link
                   className="btn-search fs-5 ms-5"
@@ -108,7 +112,9 @@ const NavBarAll = ({
         show={modalShow}
         setlog={() => setlog(true)}
         onHide={() => setModalShow(false)}
+        log = {log}
         setuser={setuser}
+        setidus={setidus}
       />
       <Register show={modalshow1} onHide={() => setmodalshow1(false)} />
     </>

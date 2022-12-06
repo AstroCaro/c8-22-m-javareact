@@ -8,7 +8,7 @@ import "./login.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const Login = ({ show, onHide, setlog, setuser }) => {
+const Login = ({ show, onHide, setlog, log }) => {
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
   // const [token, settoken] = useState();
@@ -25,7 +25,9 @@ const Login = ({ show, onHide, setlog, setuser }) => {
         Swal.fire("Bienvenido!", "Inicio de sesion exitoso", "success");
         onHide();
         setlog(true);
-        setuser("Brajhan");
+        localStorage.setItem('session', true)
+        localStorage.setItem('dataSession',JSON.stringify({userId: res.data.id, email: res.data.username}))        
+       
       })
       .catch((error) => {
         Swal.fire("Error!", "Datos erroneos, vuelve a intentarlo", "error");
