@@ -16,6 +16,8 @@ import Swal from "sweetalert2";
 import "./reservation.css";
 
 const ReservationByOne = ({ idus }) => {
+
+  
   let { id } = useParams();
   const [hotels, sethotels] = useState([]);
 
@@ -30,13 +32,14 @@ const ReservationByOne = ({ idus }) => {
     axios
       .get(`https://cabininn-backend-production.up.railway.app/hotels/${id}`)
       .then((res) => sethotels(res.data));
+      window.scrollTo(0,0)
   }, []);
 
   const probando = () => {
-    let fechai = startDate.toLocaleDateString().replaceAll('/','-')
-    let fechaf = endDate.toLocaleDateString().replaceAll('/','-')
+    let fechai = startDate.toLocaleDateString().replaceAll("/", "-");
+    let fechaf = endDate.toLocaleDateString().replaceAll("/", "-");
     const usuario = JSON.parse(localStorage.getItem("dataSession"));
-    
+
     if (!usuario) {
       Swal.fire(
         "Error!",
@@ -46,14 +49,12 @@ const ReservationByOne = ({ idus }) => {
       return;
     }
 
-
-    if (fechai.split('-')[0].length == 1) {
-      fechai = '0'.concat(fechai)
+    if (fechai.split("-")[0].length == 1) {
+      fechai = "0".concat(fechai);
     }
-    if (fechaf.split('-')[0].length == 1) {
-      fechaf = '0'.concat(fechaf)
+    if (fechaf.split("-")[0].length == 1) {
+      fechaf = "0".concat(fechaf);
     }
-  
 
     console.log(fechai, fechaf);
 
@@ -65,13 +66,12 @@ const ReservationByOne = ({ idus }) => {
         checkOut: fechaf,
       })
       .then((res) => {
-
-            Swal.fire(
-            "Felicidades!",
-            `Estas a un paso de reservar el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
-            "success"
-          );
-          window.location.assign("../../pays");
+        Swal.fire(
+          "Felicidades!",
+          `Estas a un paso de reservar el día ${startDate.toLocaleDateString()} hasta el dia ${endDate.toLocaleDateString()}`,
+          "success"
+        );
+        window.location.assign("../../pays");
       })
       .catch((err) => {
         Swal.fire(
@@ -79,12 +79,10 @@ const ReservationByOne = ({ idus }) => {
           `Fechas no disponibles, porfavor elija otra fecha`,
           "error"
         );
-
       });
   };
 
   const reservar = () => {
-    
     let numTotal = Number(cantAdults) + Number(cantni);
 
     if (hotels.guestsNumber < numTotal) {
@@ -94,10 +92,7 @@ const ReservationByOne = ({ idus }) => {
         "error"
       );
     } else {
-
-
-
-        probando()
+      probando();
 
       let cantd = (endDate - startDate) / (1000 * 60 * 60 * 24);
 
@@ -111,17 +106,11 @@ const ReservationByOne = ({ idus }) => {
           total: total,
         })
       );
-
-      
     }
   };
 
   const calcularTotal = () => {
     let cantDias = (endDate - startDate) / (1000 * 60 * 60 * 24);
-
-
-  const calcularTotal = (cantDias) => {
-
     settotal(Number(hotels?.dailyPrice) * cantDias);
   };
 
@@ -268,7 +257,6 @@ const ReservationByOne = ({ idus }) => {
                 </Col>
               </Row>
               <Form.Group className="my-5 text-center">
-
                 {/* <Link to={pago && '../../pays'}> */}
                 <Button
                   variant="success"
@@ -279,7 +267,6 @@ const ReservationByOne = ({ idus }) => {
                   Confirmar Reserva
                 </Button>
                 {/* </Link> */}
-
               </Form.Group>
             </Form>
           </Col>

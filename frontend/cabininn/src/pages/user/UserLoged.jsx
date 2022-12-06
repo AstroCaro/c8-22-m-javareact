@@ -13,6 +13,7 @@ function UserLoged() {
    
 
     localStorage.removeItem("session");
+    localStorage.removeItem("dataSession");
     window.location.assign("/");
   };
 
