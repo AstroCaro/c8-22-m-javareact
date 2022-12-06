@@ -1,6 +1,7 @@
 :root {
   --mainFont: url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
   --colorMainWhite: #fff;
+  --colorMainGreen:#07A98B;
   --colorBase: #10d3b0;
   --colorHover: #26b499;
   --colorActivo: #025f4e;
