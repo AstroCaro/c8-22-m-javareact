@@ -47,6 +47,12 @@ public class HotelService2 extends QueryService<Hotel> {
                        specification
                                .and(buildRangeSpecification(criteria.getDailyPrice(), Hotel_.dailyPrice));
            }
+
+            if(criteria.getGuestsNumber()!=null){
+                specification =
+                        specification
+                                .and(buildRangeSpecification(criteria.getGuestsNumber(), Hotel_.guestsNumber));
+            }
         }
         
        return specification;

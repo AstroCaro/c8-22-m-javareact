@@ -1,33 +1,15 @@
 package com.nocountry.cabininn.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class SearchDto {
     
     private String countryName;
     private String cityName;
     private Integer maxPrice;
-
-    public String getCountryName() {
-        return countryName;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public Integer getMaxPrice() {
-        return maxPrice;
-    }
-
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public void setMaxPrice(Integer maxPrice) {
-        this.maxPrice = maxPrice;
-    }
+    private Integer guestsNumber;
 
 }
