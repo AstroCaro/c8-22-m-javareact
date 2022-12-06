@@ -21,7 +21,7 @@
 }
 
 .buton {
-  background: #07a98b;
+  background: var(--colorMainGreen);
   border: none;
   border-radius: 8px;
   width: 200px;
