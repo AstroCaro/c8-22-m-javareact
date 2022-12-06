@@ -10,13 +10,14 @@ const NotFound = () => {
         <h1 className="mainTitleResult">
           ¡Algo paso! Volvamos a tierras seguras.
         </h1>
-        <div className="my-5">
+        <Container className="fluid">
           <Image
             src="https://static7.depositphotos.com/1302980/788/v/950/depositphotos_7883151-stock-illustration-files-conflict-error-404.jpg"
             alt="not-found"
-            className="my-5"
-          ></Image>
-        </div>
+            fluid
+            className="my-5 mx-auto"
+          />
+        </Container>
         <div>
           <h2 className="mainTitleResult text-center">
             Si el error persiste espera unos minutos y volvé a intentar
