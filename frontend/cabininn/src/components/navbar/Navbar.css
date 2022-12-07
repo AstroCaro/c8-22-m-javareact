@@ -154,6 +154,7 @@ header ul li a {
     margin: 10px 0px 0 -25px;
     width: 60px;
     height: 60px;
+    display: none;
   }
 
   .user {

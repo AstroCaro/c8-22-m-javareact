@@ -22,7 +22,7 @@ const ReservationByOne = ({ idus }) => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState("");
   const [cantAdults, setcantAdults] = useState(1);
-  const [cantni, setcantni] = useState(1);
+  const [cantni, setcantni] = useState(0);
 
   const [total, settotal] = useState(0);
 
@@ -114,6 +114,16 @@ const ReservationByOne = ({ idus }) => {
 
   return (
     <Container className="reservation">
+      <form action="" className="form-input d-sm-none">
+            <input
+              list="countries"
+              type="text"
+              // onChange={(e) => setsearching(e.target.value)}
+              // value={searching}
+              className="searchBox px-3 w-100 mx-3 "
+              placeholder=" Buscar"
+            />
+          </form>
       <Row>
         <Carousel>
           <Carousel.Item>
