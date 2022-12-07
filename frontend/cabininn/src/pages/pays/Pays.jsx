@@ -1,135 +1,118 @@
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import "./pays.css";
+import Swal from "sweetalert2";
+function BasicExample({}) {
 
-function BasicExample() {
+  
+  
+   const datospago = JSON.parse(localStorage.getItem('pay'))
+
+
+   const confirmReserva = () => {
+
+    Swal.fire(
+      "Felicidades!",
+      `se genero tu reserva con el codigo ${new Date()}`,
+      "success"
+    );
+
+    setTimeout(()=>{
+      localStorage.removeItem('pay')
+      // localStorage.removeItem('dataSession')
+      // localStorage.removeItem('session')
+      window.location.assign('/')
+
+    },3000)
+   
+
+   }
+   
   return (
     <>
-      <Container className="mt-3">
+      <Container className="mt-3 marg">
+        <h2 className="title">¡Estás a muy cerca de tu alojamiento soñado!</h2>
+        <p className="des mt-3">Llena tus datos de pago y listo</p>
+        <h2 className="det text-center mt-5">Detalles de tu viaje</h2>
         <Row>
           <Col>
-            {/* Tarjeta 1 */}
-            <Card className="mb-3">
+            <Card className="mb-5">
               <div className="card-body">
-                <p className="h5 fw-bold"> Tu viaje</p>
-                <Row>
-                  <Col>
-                    <Card.Text className=" fw-bold">
-                      Fecha <br />
-                      1-6 de dic
-                    </Card.Text>
-                    <Card.Text className=" fw-bold">
-                      Huespedes <br />1 huesped
-                    </Card.Text>
-                  </Col>
-                  <Col>
-                    <Card.Text>Edita </Card.Text>
-                    <Card.Text>Edita</Card.Text>
-                    <Card.Text>Edita</Card.Text>
-                  </Col>
-                </Row>
+                <div className="d-flex justify-content-between">
+                  <p className="fec m-0">
+                    Fecha de viaje:{" "}
+                    <span className="text m-0"> {datospago.checkin} al {datospago.checkout} </span>
+                  </p>
+                  <p className="fec m-0">
+                    Viajeros: <span className="text m-0">{datospago.viajeros}</span>{" "}
+                  </p>
+                </div>
+                <hr />
+                <p className="text-s">
+                  Precio {datospago.cantdias} noches <span className="text ms-4"> $ {datospago.total} </span>{" "}
+                </p>
+                <p className="text-s">
+                  Tarifa de limpieza{" "}
+                  <span className="text ms-4"> $ 5000 </span>{" "}
+                </p>
+                <p className="text-s">
+                  Tarifa por servicio <span className="text ms-4"> $ 918 </span>{" "}
+                </p>
+                <hr />
+                <p className="text-end fec">
+                  TOTAL: <span className="text fs-3">$ {Number(datospago.total) + 5918}</span>
+                </p>
               </div>
             </Card>
 
-            <Form>
-              <Form.Text className="fw-bold body">Paga con</Form.Text>
-              <Form.Select className="mb-3" aria-label="Default select example">
-                <option>Tarjeta de credito o debito</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </Form.Select>
+            <Card className="mb-5">
+              <div className="card-body">
+                <Form>
+                  <Form.Group>
+                    <Form.Group className="d-flex mb-3">
+                      <div className="col-5">
+                        <Form.Label className="fec">
+                          Nombre completo:{" "}
+                        </Form.Label>
+                      </div>
+                      <div className="col-7">
+                        <Form.Control className="ctrol"></Form.Control>
+                      </div>
+                    </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formGridAddress1">
-                <Form.Control placeholder="Numero de Tarjeta" />
-              </Form.Group>
+                    <Form.Group className="d-flex">
+                      <div className="col-5">
+                        <Form.Label className="fec">
+                          Número de tarjeta:{" "}
+                        </Form.Label>
+                      </div>
+                      <div className="col-7">
+                        <Form.Control className="ctrol"></Form.Control>
+                      </div>
+                    </Form.Group>
 
-              <Row>
-                <Col>
-                  <Form.Control placeholder="Caducidad" />
-                </Col>
-                <Col>
-                  <Form.Control placeholder="Codigo CVV" />
-                </Col>
-              </Row>
-              <Form.Text className="fw-bold">
-                Direccion de Facturacion
-              </Form.Text>
-              <Form.Group className="mb-3" controlId="formGridAddress1">
-                <Form.Control placeholder="Direccion" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formGridAddress1">
-                <Form.Control placeholder="Numero de apartamento o de sulte" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formGridAddress1">
-                <Form.Control placeholder="Ciudad" />
-              </Form.Group>
-              <Row>
-                <Col>
-                  <Form.Control placeholder="Estado/Provincia/Departamento" />
-                </Col>
-                <Col>
-                  <Form.Control placeholder="Codigo postal" />
-                </Col>
-              </Row>
-              <Form.Select
-                className="mb-3 mt-2"
-                aria-label="Default select example"
-              >
-                <option>Pais/region</option>
-                <option value="1">Ecuador</option>
-                <option value="2">Peru</option>
-                <option value="3">Argentina</option>
-              </Form.Select>
-            </Form>
-          </Col>
-          <Col>
-            <Card>
-              <Card.Body>
-                <Row>
-                  <Col>
-                    <Card.Img src="https://cdn.pixabay.com/photo/2016/12/06/14/33/log-cabin-1886620_960_720.jpg" />
-                  </Col>
-                  <Col>
-                    <Card.Text>Villa entero</Card.Text>
-                    <Card.Text>
-                      Villa Punta del Sol con Piscina y playa
-                    </Card.Text>
-                    <Card.Text>5.00 (6 reseñas)</Card.Text>
-                  </Col>
-                </Row>
-                <hr />
-                <Card.Text>
-                  Tu reservacion cuenta con la proteccion de aircover
-                </Card.Text>
-                <hr />
-                <Card.Text className="fw-bold">
-                  Informacion del precio
-                </Card.Text>
-                <Row>
-                  <Col>
-                    <Card.Text>S/1,904.70</Card.Text>
-                    <Card.Text>Tarifa de limpieza</Card.Text>
-                    <Card.Text>Tarifa por servicio</Card.Text>
-                  </Col>
-                  <Col>
-                    <Card.Text>$ 1000</Card.Text>
-                    <Card.Text>$ 1000</Card.Text>
-                    <Card.Text>$ 1000</Card.Text>
-                  </Col>
-                </Row>
-                <hr />
-                <Row>
-                  <Col>
-                    <Card.Text>Total</Card.Text>
-                  </Col>
-                  <Col>
-                    <Card.Text>$ 1000</Card.Text>
-                  </Col>
-                </Row>
-              </Card.Body>
+                    <Form.Group className="d-flex justify-content-between mt-3 gap-4 gap-sm-0">
+                      <div>
+                      <Form.Label className="me-4 fec">
+                        Fecha de Vencimiento{" "}
+                      </Form.Label>
+                      <Form.Control className="ctrol"></Form.Control>
+                      </div>
+                      <div>
+                      <Form.Label className="mx-4 fec">CVV </Form.Label>
+                      <Form.Control className="ctrol"></Form.Control>
+                      </div>
+                    </Form.Group>
+                  </Form.Group>
+                  <Button className="d-block mx-auto mt-5 btn-r px-5 py-3" onClick={confirmReserva}>Reservar</Button>
+                </Form>
+              </div>
             </Card>
           </Col>
         </Row>
+        {/* <h3>Conocé más sobre la política de cancelación</h3>
+        <p>Podés cancelar tu viaje con hasta 73 horas de cancelación pasado ese tiempo se cobrará una penalidad.</p>
+        <p>Para conocer más sobre la misma ingresá acá.</p> */}
       </Container>
     </>
   );

@@ -1,6 +1,7 @@
 :root {
   --mainFont: url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
   --colorMainWhite: #fff;
+  --colorMainGreen:#07A98B;
   --colorBase: #10d3b0;
   --colorHover: #26b499;
   --colorActivo: #025f4e;
@@ -11,6 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -30,3 +32,4 @@ h3 {
   font-style: normal;
   font-weight: 400;
 }
+

@@ -1,0 +1,169 @@
+.userContainer {
+  margin-top: 180px;
+}
+
+.userStatContainer {
+  width: 900px;
+}
+
+.userDataTitle {
+  font-size: 36px;
+  text-align: center;
+  color: var(--colorMainGreen);
+}
+
+.userTitle {
+  color: var(--colorMainGreen);
+  font-family: "Poppins", sans-serif;
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.userAvatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.userHello {
+  color: var(--colorMainGreen);
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.btnEdit {
+  color: var(--colorMainWhite);
+  background-color: var(--colorBase);
+  border-color: var(--colorBase);
+}
+
+.btnEdit:hover {
+  background-color: var(--colorActivo);
+  border-color: var(--colorActivo);
+}
+
+.btnLogout {
+  color: var(--colorMainWhite);
+  background-color: var(--colorActivo);
+  border-color: var(--colorActivo);
+}
+
+.btnLogout:hover {
+  background-color: var(--colorBase);
+  border-color: var(--colorBase);
+}
+
+.statNumber {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--colorMainGreen);
+}
+
+.starIcons {
+  color: #ffc107;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.userMessage {
+  margin-left: -90px;
+}
+
+.userMessageSmall {
+  margin-left: -135px;
+}
+
+.userMessageSmall2 {
+  margin-left: -145px;
+}
+
+@media only screen and (min-width: 1025px) {
+  .userContainer {
+    margin-top: 180px;
+  }
+
+  .userStatContainer {
+    width: 700px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .userContainer {
+    margin-top: 250px;
+  }
+
+  .col {
+    margin-top: 20px;
+  }
+
+  .searchBox {
+    width: 600px;
+  }
+
+  .btn-search {
+    top: 170px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .userStatContainer {
+    width: 500px;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .userContainer {
+    margin-top: 150px;
+  }
+
+  .userStatContainer {
+    width: 200px;
+  }
+
+  .userDataContainer {
+    text-align: center;
+    width: 300px;
+  }
+
+
+ /* .container-searchbox 
+   margin: 10px 0px 0 -150px; 
+}  */
+
+.searchBox {
+  margin: 0px 0 0px 0;
+  width: 250px;
+}
+
+  .userDataTitle {
+    font-size: 24px;
+  }
+
+  .userMessageTitle {
+    font-size: 18px;
+    height: 40px; 
+  }
+
+  .userMessage {
+    margin-left: -115px;
+    padding-top: 50px;
+  }
+  
+  .userMessageSmall {
+    padding-top: 50px;
+    margin-left: -135px;
+  }
+  
+  .userMessageSmall2 {
+    padding-top: 50px;
+    margin-left: -140px;
+  }
+}
+
+

@@ -1,0 +1,42 @@
+.registro-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 75px;
+  /* identical to box height */
+
+  color: #025f4e;
+}
+
+.email {
+  border: none;
+  border-bottom: 1px solid #025f4e;
+  color: rgba(2, 95, 78, 0.4);
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 40px;
+}
+
+.buton {
+  background: var(--colorMainGreen);
+  border: none;
+  border-radius: 8px;
+  width: 200px;
+ 
+}
+
+.buton-active {
+  background: #025F4E;
+}
+
+.buton:hover {
+  background: #045f4e;
+}
+
+.ytenes {
+  color: rgba(2, 95, 78, 0.4);
+  font-size: 20px;
+}

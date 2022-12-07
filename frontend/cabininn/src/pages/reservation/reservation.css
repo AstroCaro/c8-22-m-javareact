@@ -1,14 +1,139 @@
 .datatime {
-   width: 100%;
-   padding: 5px 0 5px 0;
+  width: 100%;
+  padding: 5px 0 5px 0;
 }
 
-
-
 .input-group {
-    flex-wrap:nowrap !important;
+  flex-wrap: nowrap !important;
 }
 
 .reservation {
-    margin-top: 180px;
+  margin-top: 180px;
+  margin-bottom: 120px;
+}
+
+.carousel-indicators button {
+  background-color: #07a98b !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+}
+
+.mainTitleResult {
+  font-size: 45px;
+}
+
+.img-user {
+  border-radius: 50%;
+}
+
+.nom-user {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 68px;
+  margin: 0;
+
+  color: rgba(48, 46, 46, 0.82);
+}
+
+.rol-user {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 52px;
+  margin: 0;
+
+  color: rgba(48, 46, 46, 0.82);
+}
+
+.desc {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: justify;
+  color: #000000;
+}
+
+.precio {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 68px;
+
+  color: #000000;
+}
+
+.opi-user {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 68px;
+  /* identical to box height */
+
+  color: #000000;
+}
+
+.comm-user {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+
+  color: #000000;
+}
+
+@media (max-width: 575.98px) {
+  .carousel-indicators button {
+    height: 20px !important;
+    width: 20px !important;
+  }
+
+  .mainTitleResult {
+    font-size: 22px !important;
+    margin-top: 0;
+  }
+
+  .img-user {
+    width: 70px;
+  }
+
+  .nom-user {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  .rol-user {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .ds {
+    font-size: 20px !important;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .precio {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .desc {
+    font-family: var(--mainFont);
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  .img-user {
+    width: 60px;
+    height: 60px;
+  }
+
+  .opi-user {
+    font-size: 25px;
+  }
 }

@@ -1,49 +1,20 @@
-/* .btnNav {
-  color: var(--colorMainWhite);
-  background-color: var(--colorBase);
-}
-
-.btn-primary {
-  border-color: transparent;
-}
-
-.btnNav:hover {
-  color: var(--colorMainWhite);
-  background-color: var(--colorHover);
-} */
-
-/* Boton del nav activo, 
-se edito la clase directamente de Bootstrap pero,
- afecta a los demas botones de la pagina,
-la clase era .btn.active */
-
-/* .btnNav.active {
-  color: var(--colorMainWhite);
-  background-color: var(--colorActivo);
-}
-
-btnNav:active {
-  color: var(--colorMainWhite);
-  background-color: var(--colorActivo);
-}
-*/
-
 .logo {
   height: 100%;
-} 
+}
 
 header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 30px 20px;
+  padding: 15px 15px;
   position: fixed;
   z-index: 10;
   top: 0;
 }
 
 .bg-header {
-  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  background: rgba(7, 169, 139, 0.75);
 }
 
 nav {
@@ -56,6 +27,7 @@ header ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 header ul li {
@@ -69,13 +41,18 @@ header ul li a {
 }
 
 .searchBox {
-  width: 50%;
-  height: 30%;
-  position: absolute;
-  top: 28%;
-  right: 30%;
+  width: 80%;
+  height: 60px;
+  font-size: 25px;
   border-radius: 10px;
   border-color: var(--colorBase);
+}
+
+.container-searchbox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchBox:active {
@@ -96,7 +73,6 @@ header ul li a {
 }
 
 .btn-search {
-  display: inline-block;
   background-color: var(--colorBase);
   width: 69px;
   height: 69px;
@@ -104,4 +80,83 @@ header ul li a {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+}
+
+.text-logo {
+  display: none;
+}
+
+.user {
+  color: white;
+  font-size: 20px;
+}
+
+
+@media (max-width: 1199.98px) {
+  .searchBox {
+    height: 50px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  /* .searchBox {
+    position: absolute;
+    top: 170px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  } */
+
+  /* .btn-search {
+    display: none;
+    position: absolute;
+    top: 160px;
+    right: 20px;
+   
+  } */
+
+  
+
+  ul {
+    margin: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .btn-reg {
+    display: none;
+  }
+
+  .logo {
+    width: 80px;
+    clip-path: inset(0 0 18px 0);
+  }
+
+  .text-logo {
+    display: inline-block;
+    
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .container-searchbox {
+  margin: 10px 0px 0 -150px;
+}
+
+.searchBox {
+  margin: 70px 0 10px 0;
+  width: 250px;
+}
+
+  .btn-search {
+    margin: 10px 0px 0 -25px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .user {
+    display: none;
+  }
 }

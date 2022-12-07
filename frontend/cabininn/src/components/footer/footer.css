@@ -11,13 +11,13 @@
 } */
 
 .ico-redes{
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 }
 
 .footer {
-    background-color: #07A98B;
-    color: white;
+    background-color: var(--colorMainGreen);
+    color: var(--colorMainWhite);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,4 +27,20 @@
 .der {
     font-size: 20px;
     margin: 0;
+}
+
+@media (max-width: 991.98px) { 
+
+    .der {
+        font-size: 15px;
+    }
+
+}
+
+@media (max-width: 575.98px) {
+
+.footer {
+    display: none;
+}
+
 }

@@ -1,0 +1,120 @@
+.marg {
+  margin-top: 180px !important;
+  width: 60%;
+}
+
+.title {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 100px;
+  text-align: center;
+
+  color: #025f4e;
+}
+
+.des {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 52px;
+
+  text-align: center;
+
+  color: rgba(48, 46, 46, 0.82);
+}
+
+.det {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 80px;
+
+  color: #07a98b;
+}
+
+.fec {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 40px;
+
+  color: #07a98b;
+}
+
+.text {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 60px;
+
+  color: rgba(0, 0, 0, 0.82);
+}
+
+.text-s {
+  font-family: var(--mainFont);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 35px;
+
+  color: #07a98b;
+}
+
+.btn-r {
+  background: #025f4e;
+  border-radius: 8px;
+  border: none;
+}
+
+.ctrol {
+  border: none;
+  border-bottom: 1px solid #025f4e;
+}
+@media (max-width: 1199.98px) {
+  .fec {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .title {
+    font-size: 60px;
+    line-height: 80px;
+  }
+
+  .des {
+    font-size: 30px;
+  }
+  .marg {
+    width: 80%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .title {
+    font-size: 40px;
+    line-height: 55px;
+  }
+
+  .des {
+    font-size: 20px;
+  }
+
+  .det {
+    font-size: 35px;
+    line-height: 50px;
+  }
+  .marg {
+    width: 100%;
+  }
+
+  .text {
+    font-size: 22px;
+  }
+}

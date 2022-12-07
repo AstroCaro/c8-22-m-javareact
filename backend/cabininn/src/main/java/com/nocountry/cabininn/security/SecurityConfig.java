@@ -22,7 +22,6 @@ import static org.springframework.http.HttpMethod.POST;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
     private final CustomOAuth2UserService customOAuth2UserService;
     private final CustomOidcUserService customOidcUserService;
     private final JwtAuthEntryPoint authEntryPoint;
@@ -37,17 +36,17 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(authEntryPoint))
                 .authorizeRequests(auth -> {
-                    auth.antMatchers("/", "/error", "/webjars/**").permitAll();
-                    auth.antMatchers("/auth/**").permitAll();
-                    auth.antMatchers("/list/**", "/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
+                    auth.antMatchers("/", "/error", "/webjars/**", "/swagger-ui.html").permitAll();
+                    auth.antMatchers("/auth/**", "/users/**").permitAll();
+                    auth.antMatchers("/hotels/**", "/addresses/**", "/distances/**", "/geoCodes/**").permitAll();
                     auth.antMatchers("/bookings/**").permitAll();//hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
 //                    auth.antMatchers("/bookings/delete").hasAnyAuthority("ROLE_ADMIN");
-                    auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
-
-                    auth.antMatchers(GET, "/api/users/**").hasAnyAuthority("ROLE_ADMIN");
-                    auth.antMatchers(POST, "/api/users/save").hasAnyAuthority("ROLE_ADMIN");
+//                    auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
+                    auth.antMatchers(GET, "/users/listWithToken").hasAnyAuthority("ROLE_ADMIN");
+//                    auth.antMatchers(GET, "/users/username").authenticated();
                     auth.anyRequest().authenticated();
                 })
+                .formLogin().and()
                 .oauth2Login()
                 .userInfoEndpoint().oidcUserService(customOidcUserService).and()
                 .defaultSuccessUrl("/").and()
@@ -61,7 +60,7 @@ public class SecurityConfig {
 //                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS)
 // .addFilter(customAuthenticationFilter)
 //               .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-//                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
@@ -83,48 +82,3 @@ public class SecurityConfig {
     }
 
 }
-
-//
-//    @Bean
-//    public SecurityFilterChain oAuthFilterChain(HttpSecurity http) throws Exception {
-//        return http
-//                .csrf(csrf -> csrf.disable())
-//                .authorizeRequests(auth -> {
-//                    auth.antMatchers("/", "/error", "/webjars/**").permitAll();
-//////                    auth.antMatchers("/auth/**", "/login").permitAll();
-////                    auth.antMatchers("/list/**", "/hotels", "/addresses").permitAll();
-////                    auth.antMatchers("/hotels/delete/**", "hotels/add/**").hasAnyAuthority("ROLE_ADMIN");
-////                    auth.antMatchers(GET, "/api/users/**").hasAnyAuthority("ROLE_ADMIN");
-////                    auth.antMatchers(POST, "/api/users/save").hasAnyAuthority("ROLE_ADMIN");
-//                    auth.anyRequest().authenticated();
-//                })
-//                .exceptionHandling(exception -> exception.authenticationEntryPoint(authEntryPoint))
-//
-////                .httpBasic().and()
-////                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-//                //.addFilter(customAuthenticationFilter)
-////               .addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-//                //
-//                // .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-////                .loginPage("/oauth_login");
-////                    .defaultSuccessUrl("/loginSuccess")
-////                .userInfoEndpoint()
-////                .userService(oAuth2UserService)
-////                .and()
-////                    .failureUrl("/loginFailure")
-////                .httpBasic().and()
-//                .logout(l -> l
-//                        .logoutSuccessUrl("/")
-//                        .deleteCookies("JSESSIONID")
-//                        .logoutUrl("/logout")
-//                        .invalidateHttpSession(true)
-//                        .clearAuthentication(true).permitAll()
-//                        .logoutSuccessHandler(oidcLogoutSuccessHandler())
-//                )
-//                .oauth2Login()
-//                .and()
-//                .csrf(c -> c
-//                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-//                )
-//                .build();
-//    }

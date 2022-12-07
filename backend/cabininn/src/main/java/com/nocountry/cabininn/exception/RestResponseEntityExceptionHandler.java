@@ -7,7 +7,6 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletResponse;
@@ -40,7 +39,6 @@ public class RestResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ResourceNotFoundException.class)
-    @ResponseBody
     public ResponseEntity<Object> handleNotExistUserException (Exception exception) {
         ApiException apiException = ApiException.builder()
                 .status(HttpStatus.NOT_FOUND)

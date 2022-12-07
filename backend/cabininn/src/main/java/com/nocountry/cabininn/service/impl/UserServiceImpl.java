@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,10 +39,20 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDto findByUsername(String username) {
-        User user = userRepository.findByUsername(username).orElseThrow(
-                () -> new ResourceNotFoundException("Username not found"));
-        UserDto userDto = mapper.getMapper().map(user, UserDto.class);
-        return userDto;
+        Optional<User> user = userRepository.findByUsername(username);
+        if (user.isPresent()) {
+            return mapper.getMapper().map(user, UserDto.class);
+        }
+        throw new ResourceNotFoundException("Username not found");
+    }
+
+    @Override
+    public UserDto findByUsernameOrNull(String username) {
+        Optional<User> user = userRepository.findByUsername(username);
+        if (user.isPresent()) {
+            return mapper.getMapper().map(user, UserDto.class);
+        }
+        return null;
     }
 
     @Override
@@ -57,6 +68,17 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserDto cancelUserByUsername(String username) {
         User user = userRepository.findByUsername(username).orElseThrow(
+                () -> new ResourceNotFoundException("Username not found")
+        );
+        user.setActive(false);
+        User userSaved = userRepository.save(user);
+        UserDto userDto = mapper.getMapper().map(userSaved, UserDto.class);
+        return userDto;
+    }
+
+    @Override
+    public UserDto cancelUserById(Long id) {
+        User user = userRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("User ID Invalid")
         );
         user.setActive(false);
@@ -76,7 +98,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void deleteUserByUsername(String username) {
         User user = userRepository.findByUsername(username).orElseThrow(
-                () -> new ResourceNotFoundException("User ID Invalid")
+                () -> new ResourceNotFoundException("Username Invalid")
         );
         userRepository.deleteByUsername(username);
     }
