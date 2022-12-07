@@ -4,6 +4,7 @@ import "./carrousel.css";
 import image1 from "../../images/Barilocheuikit.jpg";
 import image2 from "../../images/Ushuaiazoomuikit.jpg";
 import image3 from "../../images/CarlosPazzoomuikit.jpg";
+import img from '../../images/Frame 133.png'
 import { Link } from "react-router-dom";
 
 const images = [image1, image2, image3];
