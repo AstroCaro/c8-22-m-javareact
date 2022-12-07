@@ -116,6 +116,16 @@ const Results = ({ capture, hotels }) => {
     } else {
       return (
         <Container>
+          <form action="" className="form-input d-sm-none">
+            <input
+              list="countries"
+              type="text"
+              // onChange={(e) => setsearching(e.target.value)}
+              // value={searching}
+              className="searchBox px-3 w-100 mx-3 "
+              placeholder=" Buscar"
+            />
+          </form>
           <h2 className="mainTitleResult text-center ">
             Resultados para {country}
           </h2>
