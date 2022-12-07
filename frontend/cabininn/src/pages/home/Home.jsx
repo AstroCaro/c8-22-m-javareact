@@ -4,10 +4,11 @@ import HeaderAll from "../../components/header/HeaderAll";
 import SectionImg2 from "../../components/sectionImg/SectionImg2";
 import SectionImg3 from "../../components/sectionImg/SectionImg3";
 
-const Home = () => {
+const Home = ({setsearching, searching, search}) => {
   return (
     <>
-      <HeaderAll />
+      <HeaderAll setsearching={setsearching}
+        searching={searching} search={search} />
       <CarrouselAll />
       <SectionImg2 />
       <SectionImg3 />

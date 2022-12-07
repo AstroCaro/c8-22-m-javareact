@@ -14,8 +14,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 import "./reservation.css";
+import { AiOutlineSearch } from "react-icons/ai";
 
-const ReservationByOne = ({ idus }) => {
+const ReservationByOne = ({ setsearching, searching, search }) => {
   let { id } = useParams();
   const [hotels, sethotels] = useState([]);
 
@@ -112,18 +113,26 @@ const ReservationByOne = ({ idus }) => {
     settotal(Number(hotels?.dailyPrice) * cantDias);
   };
 
+  const data = (e) => {
+    e.preventDefault()
+    search()
+    window.location.assign(`../results/${searching}`);
+    
+  }
+
   return (
     <Container className="reservation">
 
       
-      <form action="" className="form-input d-sm-none">
+      <form onSubmit={ data} className="form-input d-sm-none">
+      <AiOutlineSearch className="icon-s" />
             <input
               list="countries"
               type="text"
-              // onChange={(e) => setsearching(e.target.value)}
-              // value={searching}
-              className="searchBox px-3 w-100 mx-3 "
-              placeholder=" Buscar"
+              onChange={(e) => setsearching(e.target.value)}
+              value={searching}
+              className="searchBox px-3 w-100 mx-3 ps-5"
+              placeholder="Buscar"
             />
           </form>
       <Row>
@@ -131,8 +140,8 @@ const ReservationByOne = ({ idus }) => {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              // src={hotels.urlImage}
-              src='https://images.pexels.com/photos/11678903/pexels-photo-11678903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+              src={hotels.urlImage}
+              
               alt="First slide"
             />
           </Carousel.Item>

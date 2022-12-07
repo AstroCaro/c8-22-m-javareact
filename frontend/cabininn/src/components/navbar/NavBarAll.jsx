@@ -46,6 +46,7 @@ const NavBarAll = ({
             placeholder=" Buscar"
           />
 
+
           <datalist id="countries">
             <option value="Argentina"></option>
             <option value="Perú"></option>
@@ -64,10 +65,12 @@ const NavBarAll = ({
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </Link>
               </li>
-              <p className="user ms-4">
+              <li>
+              <p className="user m-0 mx-2">
                 Bienvenido, {usuario?.email.split("@")[0]}
               </p>
-              <li>
+              </li>
+              {/* <li>
                 <Link
                   className="btn-search fs-5 mx-5about"
                   to={`/user`}
@@ -75,7 +78,7 @@ const NavBarAll = ({
                 >
                   Ajustes
                 </Link>
-              </li>
+              </li> */}
               {/* <li>
                 <Link
                   className="btn-search fs-2"

@@ -4,18 +4,32 @@ import '../navbar/Navbar.css'
 import "./header.css";
 import backgroundImg from './backgroundImg.jpg'
 import Card from "react-bootstrap/Card";
+import { AiOutlineSearch } from "react-icons/ai";
 
-const HeaderAll = () => {
+const HeaderAll = ({setsearching, searching, search}) => {
+
+  
+const data = (e) => {
+  e.preventDefault()
+  search()
+  window.location.assign(`./results/${searching}`);
+  
+}
+
   return (
     <>
-     <form action="" className="form-input d-sm-none">
+
+     <form onSubmit={ data}
+      
+       className="form-input d-sm-none">
+        <AiOutlineSearch className="icon-s" />
            <input
             list="countries"
             type="text"
-            // onChange={(e) => setsearching(e.target.value)}
-            // value={searching}
-            className="searchBox px-3 w-100 mx-3 "
-            placeholder=" Buscar"
+            onChange={(e) => setsearching(e.target.value)}
+            value={searching}
+            className="searchBox px-3 w-100 mx-3 ps-5 "
+            placeholder="Busca acá tu alojamiento ideal"
           />
           </form>
       <Card className="heroCard bg-dark">
