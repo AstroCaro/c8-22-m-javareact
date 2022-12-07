@@ -23,7 +23,16 @@ const Results = ({ capture, hotels }) => {
 
       return (
         <Container>
-
+          <form action="" className="form-input d-sm-none">
+            <input
+              list="countries"
+              type="text"
+              // onChange={(e) => setsearching(e.target.value)}
+              // value={searching}
+              className="searchBox px-3 w-100 mx-3 "
+              placeholder=" Buscar"
+            />
+          </form>
           <h2 className="mainTitleResult text-center ">
             Resultados para {country}
           </h2>
@@ -34,8 +43,7 @@ const Results = ({ capture, hotels }) => {
               gusté!{" "}
             </h2>
             <>
-            
-              <Row xs={1} sm={2} md={2} lg={3}  className="g-3 mt-2">
+              <Row xs={1} sm={2} md={2} lg={3} className="g-3 mt-2">
                 {hotelbyCountry.map((item) => (
                   <Col key={item.id} className="my-4 mb-5">
                     <Link
@@ -108,6 +116,16 @@ const Results = ({ capture, hotels }) => {
     } else {
       return (
         <Container>
+          <form action="" className="form-input d-sm-none">
+            <input
+              list="countries"
+              type="text"
+              // onChange={(e) => setsearching(e.target.value)}
+              // value={searching}
+              className="searchBox px-3 w-100 mx-3 "
+              placeholder=" Buscar"
+            />
+          </form>
           <h2 className="mainTitleResult text-center ">
             Resultados para {country}
           </h2>
@@ -118,7 +136,7 @@ const Results = ({ capture, hotels }) => {
               gusté!{" "}
             </h2>
             <>
-              <Row xs={1} sm={2} md={2} lg={3}  className="g-3 mt-2">
+              <Row xs={1} sm={2} md={2} lg={3} className="g-3 mt-2">
                 {capture.map((item) => (
                   <Col key={item.id} className="my-4 mb-5">
                     <Link
@@ -143,7 +161,7 @@ const Results = ({ capture, hotels }) => {
                                 <BiMap className="mapIcon" />
                                 <div className="mx-2 text-decoration-none mb-3">
                                   Ver Mapa
-                                </div> 
+                                </div>
                               </span>
                             </Col>
                             <Col className="text-end">
@@ -161,7 +179,7 @@ const Results = ({ capture, hotels }) => {
                           <Row>
                             <Col className="text-start mx-4">
                               <Card.Text>
-                              {item.rooms} Habitaciones - {item.guestsNumber}{" "}
+                                {item.rooms} Habitaciones - {item.guestsNumber}{" "}
                                 Huespedes - {item.bathrooms} Baños
                               </Card.Text>
                               {/* <Card.Text>Codigo Pais : {item.iataCode},{item.address.countryName}.</Card.Text>

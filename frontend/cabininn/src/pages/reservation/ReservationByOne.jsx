@@ -22,7 +22,7 @@ const ReservationByOne = ({ idus }) => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState("");
   const [cantAdults, setcantAdults] = useState(1);
-  const [cantni, setcantni] = useState(1);
+  const [cantni, setcantni] = useState(0);
 
   const [total, settotal] = useState(0);
 
@@ -114,12 +114,25 @@ const ReservationByOne = ({ idus }) => {
 
   return (
     <Container className="reservation">
+
+      
+      <form action="" className="form-input d-sm-none">
+            <input
+              list="countries"
+              type="text"
+              // onChange={(e) => setsearching(e.target.value)}
+              // value={searching}
+              className="searchBox px-3 w-100 mx-3 "
+              placeholder=" Buscar"
+            />
+          </form>
       <Row>
         <Carousel>
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={hotels.urlImage}
+              // src={hotels.urlImage}
+              src='https://images.pexels.com/photos/11678903/pexels-photo-11678903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
               alt="First slide"
             />
           </Carousel.Item>
