@@ -42,7 +42,7 @@ const NavBarAll = ({
             type="text"
             onChange={(e) => setsearching(e.target.value)}
             value={searching}
-            className="searchBox px-3"
+            className="searchBox px-3 d-none d-sm-block"
             placeholder=" Buscar"
           />
 
