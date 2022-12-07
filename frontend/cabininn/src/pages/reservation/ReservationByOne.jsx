@@ -16,8 +16,6 @@ import Swal from "sweetalert2";
 import "./reservation.css";
 
 const ReservationByOne = ({ idus }) => {
-
-  
   let { id } = useParams();
   const [hotels, sethotels] = useState([]);
 
@@ -32,7 +30,7 @@ const ReservationByOne = ({ idus }) => {
     axios
       .get(`https://cabininn-backend-production.up.railway.app/hotels/${id}`)
       .then((res) => sethotels(res.data));
-      window.scrollTo(0,0)
+    window.scrollTo(0, 0);
   }, []);
 
   const probando = () => {
@@ -185,14 +183,14 @@ const ReservationByOne = ({ idus }) => {
                 alt=""
               />
               <p className="nom-user">María Sanchez</p>
-              <p className="rol-user">alojadora</p>
+              <p className="rol-user">Alojadora</p>
             </div>
           </div>
           <p className="fs-4 ds">
             {hotels.rooms} Habitaciones - {hotels.guestsNumber} Huespedes -{" "}
             {hotels.bathrooms} Baños{" "}
           </p>
-          <p className="precio">$ {hotels.dailyPrice} / noche</p>
+          <p className="precio">$ {hotels.dailyPrice} / Noche</p>
           <p className="desc">{hotels.descripcion}</p>
         </Col>
         <Row>
@@ -242,6 +240,7 @@ const ReservationByOne = ({ idus }) => {
                 aria-label="Default select example"
                 onChange={(e) => setcantni(e.target.value)}
               >
+                <option value="0">Sin Niños</option>
                 <option value="1">1 Niños</option>
                 <option value="2">2 Niños</option>
                 <option value="3">3 Niños</option>

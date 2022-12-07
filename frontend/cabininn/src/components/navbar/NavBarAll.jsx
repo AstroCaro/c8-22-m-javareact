@@ -17,7 +17,7 @@ const NavBarAll = ({
   setlog,
   user,
   setuser,
-  setidus
+  setidus,
 }) => {
   const [colore, setcolore] = useState(false);
 
@@ -27,8 +27,7 @@ const NavBarAll = ({
 
   window.addEventListener("scroll", changecolor);
 
-  const usuario = JSON.parse(localStorage.getItem('dataSession'));
-
+  const usuario = JSON.parse(localStorage.getItem("dataSession"));
 
   return (
     <>
@@ -56,16 +55,6 @@ const NavBarAll = ({
         <nav className="me-5">
           {log ? (
             <ul>
-              <p className="user">Bienvenido, {usuario?.email.split('@')[0]}</p>
-              <li>
-                <Link
-                  className="btn-search fs-5 ms-5"
-                  to={`/user`}
-                  onClick={search}
-                >
-                  Ajustes
-                </Link>
-              </li>
               <li>
                 <Link
                   className="btn-search fs-2"
@@ -75,10 +64,31 @@ const NavBarAll = ({
                   <i className="fa-solid fa-magnifying-glass"></i>
                 </Link>
               </li>
+              <p className="user ms-4">
+                Bienvenido, {usuario?.email.split("@")[0]}
+              </p>
+              <li>
+                <Link
+                  className="btn-search fs-5 mx-5about"
+                  to={`/user`}
+                  onClick={search}
+                >
+                  Ajustes
+                </Link>
+              </li>
+              {/* <li>
+                <Link
+                  className="btn-search fs-2"
+                  to={`./results/${searching}`}
+                  onClick={search}
+                >
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </Link>
+              </li> */}
             </ul>
           ) : (
             <ul>
-            <li>
+              <li>
                 <Link
                   className="btn-search fs-2"
                   to={`./results/${searching}`}
@@ -113,7 +123,7 @@ const NavBarAll = ({
         show={modalShow}
         setlog={() => setlog(true)}
         onHide={() => setModalShow(false)}
-        log = {log}
+        log={log}
         setuser={setuser}
         setidus={setidus}
       />
