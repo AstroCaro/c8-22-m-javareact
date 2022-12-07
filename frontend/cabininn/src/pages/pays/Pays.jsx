@@ -3,31 +3,32 @@ import Form from "react-bootstrap/Form";
 import "./pays.css";
 import Swal from "sweetalert2";
 function BasicExample({}) {
+  const datospago = JSON.parse(localStorage.getItem("pay"));
 
-  
-  
-   const datospago = JSON.parse(localStorage.getItem('pay'))
+  let rand = function () {
+    return Math.random().toString(36).substr(2); // remove `0.`
+  };
 
+  let token = function () {
+    return rand() + rand(); // to make it longer
+  };
 
-   const confirmReserva = () => {
-
+  const confirmReserva = () => {
     Swal.fire(
       "Felicidades!",
-      `se genero tu reserva con el codigo ${new Date()}`,
+      `se genero tu reserva con el codigo ${token()}, \n
+      se envio los datos de compra a su email.`,
       "success"
     );
 
-    setTimeout(()=>{
-      localStorage.removeItem('pay')
+    setTimeout(() => {
+      localStorage.removeItem("pay");
       // localStorage.removeItem('dataSession')
       // localStorage.removeItem('session')
-      window.location.assign('/')
+      window.location.assign("/");
+    }, 3000);
+  };
 
-    },3000)
-   
-
-   }
-   
   return (
     <>
       <Container className="mt-3 marg">
@@ -41,26 +42,33 @@ function BasicExample({}) {
                 <div className="d-flex justify-content-between">
                   <p className="fec m-0">
                     Fecha de viaje:{" "}
-                    <span className="text m-0"> {datospago.checkin} al {datospago.checkout} </span>
+                    <span className="text m-0">
+                      {" "}
+                      {datospago.checkin} al {datospago.checkout}{" "}
+                    </span>
                   </p>
                   <p className="fec m-0">
-                    Viajeros: <span className="text m-0">{datospago.viajeros}</span>{" "}
+                    Viajeros:{" "}
+                    <span className="text m-0">{datospago.viajeros}</span>{" "}
                   </p>
                 </div>
                 <hr />
                 <p className="text-s">
-                  Precio {datospago.cantdias} noches <span className="text ms-4"> $ {datospago.total} </span>{" "}
+                  Precio {datospago.cantdias} noches{" "}
+                  <span className="text ms-4"> $ {datospago.total} </span>{" "}
                 </p>
                 <p className="text-s">
-                  Tarifa de limpieza{" "}
-                  <span className="text ms-4"> $ 5000 </span>{" "}
+                  Tarifa de limpieza <span className="text ms-4"> $ 5000 </span>{" "}
                 </p>
                 <p className="text-s">
                   Tarifa por servicio <span className="text ms-4"> $ 918 </span>{" "}
                 </p>
                 <hr />
                 <p className="text-end fec">
-                  TOTAL: <span className="text fs-3">$ {Number(datospago.total) + 5918}</span>
+                  TOTAL:{" "}
+                  <span className="text fs-3">
+                    $ {Number(datospago.total) + 5918}
+                  </span>
                 </p>
               </div>
             </Card>
@@ -93,18 +101,23 @@ function BasicExample({}) {
 
                     <Form.Group className="d-flex justify-content-between mt-3 gap-4 gap-sm-0">
                       <div>
-                      <Form.Label className="me-4 fec">
-                        Fecha de Vencimiento{" "}
-                      </Form.Label>
-                      <Form.Control className="ctrol"></Form.Control>
+                        <Form.Label className="me-4 fec">
+                          Fecha de Vencimiento{" "}
+                        </Form.Label>
+                        <Form.Control className="ctrol"></Form.Control>
                       </div>
                       <div>
-                      <Form.Label className="mx-4 fec">CVV </Form.Label>
-                      <Form.Control className="ctrol"></Form.Control>
+                        <Form.Label className="mx-4 fec">CVV </Form.Label>
+                        <Form.Control className="ctrol"></Form.Control>
                       </div>
                     </Form.Group>
                   </Form.Group>
-                  <Button className="d-block mx-auto mt-5 btn-r px-5 py-3" onClick={confirmReserva}>Reservar</Button>
+                  <Button
+                    className="d-block mx-auto mt-5 btn-r px-5 py-3"
+                    onClick={confirmReserva}
+                  >
+                    Reservar
+                  </Button>
                 </Form>
               </div>
             </Card>

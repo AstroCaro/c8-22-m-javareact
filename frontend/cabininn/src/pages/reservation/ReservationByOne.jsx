@@ -26,12 +26,13 @@ const ReservationByOne = ({ setsearching, searching, search }) => {
   const [cantni, setcantni] = useState(0);
 
   const [total, settotal] = useState(0);
-
+  
   useEffect(() => {
+    
     axios
       .get(`https://cabininn-backend-production.up.railway.app/hotels/${id}`)
       .then((res) => sethotels(res.data));
-    window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
   }, []);
 
   const probando = () => {
@@ -55,7 +56,7 @@ const ReservationByOne = ({ setsearching, searching, search }) => {
       fechaf = "0".concat(fechaf);
     }
 
-    console.log(fechai, fechaf);
+    // console.log(fechai, fechaf);
 
     axios
       .post("https://cabininn-backend-production.up.railway.app/bookings/", {
