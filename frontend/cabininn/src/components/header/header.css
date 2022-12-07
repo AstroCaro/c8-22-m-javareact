@@ -88,8 +88,16 @@
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
+.icon-s{
+  font-size: 40px;
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  color: #10D3B0;
+}
 
 @media only screen and (max-width: 768px) {
   .heroTitle {
