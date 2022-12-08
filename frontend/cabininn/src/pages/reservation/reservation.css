@@ -88,6 +88,10 @@
 }
 
 @media (max-width: 575.98px) {
+
+  .reservation {
+    margin-top: 140px;
+  }
   .carousel-indicators button {
     height: 20px !important;
     width: 20px !important;
@@ -124,7 +128,7 @@
 
   .desc {
     font-family: var(--mainFont);
-    font-size: 28px;
+    font-size: 22px;
     line-height: 30px;
   }
 

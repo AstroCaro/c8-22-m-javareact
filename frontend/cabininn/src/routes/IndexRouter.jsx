@@ -9,6 +9,7 @@ import Results from "../pages/results/Results";
 import UserLoged from "../pages/user/UserLoged";
 import NotFound from "../pages/notfound/NotFound";
 import axios from "axios";
+import FooterMobile from "../components/footer/FooterMobile";
 
 
 const IndexRouter = () => {
@@ -60,17 +61,21 @@ const [dataPago, setdataPago] = useState({})
         setidus={setidus}
       />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home setsearching={setsearching}
+        searching={searching} search={search} />} />
         <Route
           path="/results/:country"
-          element={<Results capture={capture} hotels={hotels} />}
+          element={<Results capture={capture} hotels={hotels} setsearching={setsearching}
+          searching={searching} search={search}/>}
         />
-        <Route path="/reservation/:id" element={<ReservationByOne idus={idus} setidus={setidus} />} />
+        <Route path="/reservation/:id" element={<ReservationByOne idus={idus} setidus={setidus} setsearching={setsearching}
+        searching={searching} search={search}/>} />
         <Route path="/pays" element={<Pays />} />
         <Route path="/user" element={<UserLoged/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      <FooterMobile setModalShow={setModalShow} setmodalshow1={setmodalshow1}/>
     </div>
   );
 };
